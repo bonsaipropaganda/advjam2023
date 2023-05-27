@@ -18,5 +18,6 @@ CREDITS & LINKS:
 	Summerville Forest Asset: 			https://hakatales.itch.io/summerville-forest-asset-pack
 	Pixel Art GUI Elements 				https://mounirtohami.itch.io/pixel-art-gui-elements
 	8x8 Gold Coin Spinning Animation	https://evercrazy.itch.io/gold-coin-spinning-animation
-
+	Pixel Art Effect Slashing			https://nyknck.itch.io/fx084
+	
 """
