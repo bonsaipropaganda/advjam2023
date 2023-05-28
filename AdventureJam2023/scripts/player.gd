@@ -31,8 +31,8 @@ func _physics_process(delta):
 	slash(slash)
 
 	#ANIMATION FUNCIONS
-	walk_animation(input_direction)#this function makes does all of the player "Walk animation"
-	slash_animation(slash)#this one's for the slash animations
+	walk_animation(input_direction, delta)#this function makes does all of the player "Walk animation"
+	slash_animation(slash, delta)#this one's for the slash animations
 	
 	previous_input_direction = input_direction
 
@@ -66,7 +66,9 @@ func slash(is_slashing:bool) -> void:
 
 
 #the walk animation-manager stuff. mhm
-func walk_animation(input_direction:Vector2) -> void:
+func walk_animation(input_direction:Vector2, delta:float) -> void:
+	if delta==0:
+		return
 	if(velocity.x != 0):
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	
@@ -94,8 +96,12 @@ func walk_animation(input_direction:Vector2) -> void:
 
 		$AnimatedSprite2D.play()
 
-func slash_animation(is_slashing:bool) -> void:
+func slash_animation(is_slashing:bool, delta:float) -> void:
+	if delta==0:
+		return
+	
 	if is_slashing:
+		print($AnimatedSprite2D.animation,"	", previous_input_direction)
 		var animation:AnimatedSprite2D = sword.get_node("Animation")#get the animation stuff from the slash object
 		
 		sword.get_node("Animation").flip_h = not $AnimatedSprite2D.flip_h
@@ -108,33 +114,31 @@ func slash_animation(is_slashing:bool) -> void:
 		match $AnimatedSprite2D.animation:
 			"walk_down":
 				$AnimatedSprite2D.set_animation("swing_down")
+				sword.get_node("CollisionShape2D").position = Vector2(0,16)
 			"idle_down":
 				$AnimatedSprite2D.set_animation("swing_down")
+				sword.get_node("CollisionShape2D").position = Vector2(0,16)
 				
 			"walk_up":
 				$AnimatedSprite2D.set_animation("swing_up")
+				sword.get_node("CollisionShape2D").position = Vector2(0,-16)
 			"idle_up":
 				$AnimatedSprite2D.set_animation("swing_up")
+				sword.get_node("CollisionShape2D").position = Vector2(0,-16)
 			
 			"walk_side":
 				$AnimatedSprite2D.set_animation("swing_side")
-			"idle_side":
-				$AnimatedSprite2D.set_animation("swing_side")
-		
-
-		# Position collision box of slash according to direction of player
-		match $AnimatedSprite2D.animation:
-			"swing_down":
-				sword.get_node("CollisionShape2D").position = Vector2(0,16)
-			
-			"swing_up":
-				sword.get_node("CollisionShape2D").position = Vector2(0,-16)
-			
-			"swing_side":
 				if(sword.get_node("Animation").flip_h == true):
 					sword.get_node("CollisionShape2D").position = Vector2(16,0)
 				else:
 					sword.get_node("CollisionShape2D").position = Vector2(-16,0)
+			"idle_side":
+				$AnimatedSprite2D.set_animation("swing_side")
+				if(sword.get_node("Animation").flip_h == true):
+					sword.get_node("CollisionShape2D").position = Vector2(16,0)
+				else:
+					sword.get_node("CollisionShape2D").position = Vector2(-16,0)
+		
 			
 		sword.get_node("CollisionShape2D").position = Vector2(0,0)
 		

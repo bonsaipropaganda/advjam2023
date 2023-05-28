@@ -18,6 +18,40 @@ var qte_delta_time:float = 0
 
 var success:bool = false
 
+
+
+##############################################
+func init_qte() -> void:
+	is_qte = true
+	qte_sequence = sequence(5)
+	spawn_qte_sprites()
+	Engine.time_scale = 0.0
+	qte_timer = qte_reset_timer
+	qte_counter = 0
+
+
+func sequence(max_len:int)->Array[int]:
+	var seq:Array[int]
+	for i in range(max_len):
+		var value:int = randi_range(0, images.size() - 2)
+		seq.append(value)
+	return seq
+
+func spawn_qte_sprites():
+	var counter:int = 0
+	var player:Object = get_parent()
+	
+	for i in qte_sequence:
+		var sprite:Sprite2D = Sprite2D.new()
+		add_child(sprite)
+		
+		sprite.texture = images[i]
+		sprite.global_position =Vector2(counter*20, 0) + player.global_position
+		
+		counter += 1
+
+
+
 func _process(delta):
 	qte_delta_time_process()
 	if is_qte:
@@ -71,7 +105,6 @@ func sprite_shift():
 		sprite_stuff.position.x -= 20
 
 
-
 func qte_delta_time_process()->void:
 	var current_time:float = Time.get_ticks_msec()
 	qte_delta_time = (current_time - qte_previous_time)/1000
@@ -84,41 +117,7 @@ func qte_time_out()->void:
 		is_qte = false
 	qte_timer-=qte_delta_time
 
-
-
 func destroy_sprites()->void:
 	for i in range(get_child_count()):
 		get_child(i).queue_free()
 	Engine.time_scale = 1
-
-##############################################
-func init_qte() -> void:
-	is_qte = true
-	qte_sequence = sequence(5)
-	spawn_qte_sprites()
-	Engine.time_scale = 0.0
-	qte_timer = qte_reset_timer
-	qte_counter = 0
-
-
-func sequence(max_len:int)->Array[int]:
-	var seq:Array[int]
-	for i in range(max_len):
-		var value:int = randi_range(0, images.size() - 2)
-		seq.append(value)
-	return seq
-
-func spawn_qte_sprites():
-	var counter:int = 0
-	for i in qte_sequence:
-		var sprite:Sprite2D = Sprite2D.new()
-		add_child(sprite)
-		
-		sprite.texture = images[i]
-		sprite.global_position =Vector2(counter*20, 0)
-		
-		counter += 1
-
-
-
-
