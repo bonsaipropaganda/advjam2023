@@ -1,26 +1,68 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed:float = 200
 @export var swing_animation: PackedScene
 
 
 #Used to remember the previous direction of player - to prevent changing animation every frame
 #Only changes animation when previous input direction does not match current
-@onready var previous_input_direction = Vector2(0,0)
+@onready var previous_input_direction:Vector2 = Vector2(0,0)
 
-@onready var swinging = false
+@onready var swinging:bool = false
+@onready var sword:Area2D = $SwordSlash
+
+var health:int = 100
 
 func _ready():
-	pass
+	sword.set_visible(false)
 
 
-func get_input():
-	# CHECK INPUT
-	var input_direction = Input.get_vector("keyboard_left", "keyboard_right", "keyboard_up", "keyboard_down")
-	# Set velocity
-	velocity = input_direction.normalized() * speed
+######################################################################################
+#---------------------------------the main stuff--------------------------------------
+######################################################################################
+func _physics_process(delta):
+	#first getting alllll the inputs from the player as a dictinary
+	var user_input:Dictionary = user_input()
+	var input_direction:Vector2 = user_input["input_direction"]
+	var slash:bool = user_input["slash"]
 	
-	# Flip sprite depending on x direction 
+	#a tiny function to make the player move!!!
+	move(input_direction, delta, slash)
+	slash(slash)
+
+	#ANIMATION FUNCIONS
+	walk_animation(input_direction)#this function makes does all of the player "Walk animation"
+	slash_animation(slash)#this one's for the slash animations
+	
+	previous_input_direction = input_direction
+
+
+#getting all the input from the player!!!
+func user_input() -> Dictionary:
+	var input_direction:Vector2 = Input.get_vector("keyboard_left", "keyboard_right", "keyboard_up", "keyboard_down")
+	var slash:bool = Input.is_action_pressed("keyboard_space")
+	
+	return {"input_direction":input_direction, "slash":slash}
+
+
+#moving the player!!!
+func move(input_direction:Vector2, delta:float,  is_slashing:bool) -> void:
+	if is_slashing:
+		return
+	velocity = input_direction.normalized() * speed
+	move_and_slide()
+
+
+#is da player slashing???. bring the slash thingy from the edge of the map and make it visible
+func slash(is_slashing:bool) -> void:
+	if is_slashing:
+		sword.set_visible(true)
+		sword.position = Vector2(0,0)
+
+
+
+#the walk animation-manager stuff. mhm
+func walk_animation(input_direction:Vector2) -> void:
 	if(velocity.x != 0):
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	
@@ -36,7 +78,7 @@ func get_input():
 		if Input.is_action_pressed("keyboard_up"):
 			$AnimatedSprite2D.set_animation("walk_up")
 			
-			# If not moving, check animation and set idle version of it
+		# If not moving, check animation and set idle version of it
 		if input_direction == Vector2(0,0):
 			match $AnimatedSprite2D.animation:
 				"walk_down":
@@ -45,13 +87,18 @@ func get_input():
 					$AnimatedSprite2D.set_animation("idle_up")
 				"walk_side":
 					$AnimatedSprite2D.set_animation("idle_side")
-						
+
 		$AnimatedSprite2D.play()
+
+func slash_animation(is_slashing:bool) -> void:
+	if is_slashing:
+		var animation:AnimatedSprite2D = sword.get_node("Animation")#get the animation stuff from the slash object
 		
-	# ATTACKS
-	## SLASH
-	if not swinging and Input.is_action_pressed("keyboard_space"):
-		swinging = true 
+		sword.get_node("Animation").flip_h = not $AnimatedSprite2D.flip_h
+
+		sword.get_node("Animation").flip_v = ($AnimatedSprite2D.animation == "swing_up" )
+		sword.set_z_index(z_index-2*int($AnimatedSprite2D.animation == "swing_up" ))
+		
 		
 		# Change the player's animation
 		match $AnimatedSprite2D.animation:
@@ -69,55 +116,35 @@ func get_input():
 				$AnimatedSprite2D.set_animation("swing_side")
 			"idle_side":
 				$AnimatedSprite2D.set_animation("swing_side")
+		
 
-		# Create animation for slash
-		var slash = swing_animation.instantiate()
-		
-		# Flip slash according to direction of player
-		slash.get_node("Animation").flip_h = not $AnimatedSprite2D.flip_h
-		if ($AnimatedSprite2D.animation == "swing_up" ):
-			slash.get_node("Animation").flip_v = true
-			slash.set_z_index(z_index-2)
-		
 		# Position collision box of slash according to direction of player
 		match $AnimatedSprite2D.animation:
 			"swing_down":
-				slash.get_node("CollisionShape2D").position = Vector2(0,16)
+				sword.get_node("CollisionShape2D").position = Vector2(0,16)
 			
 			"swing_up":
-				slash.get_node("CollisionShape2D").position = Vector2(0,-16)
+				sword.get_node("CollisionShape2D").position = Vector2(0,-16)
 			
 			"swing_side":
-				if(slash.get_node("Animation").flip_h == true):
-					slash.get_node("CollisionShape2D").position = Vector2(16,0)
+				if(sword.get_node("Animation").flip_h == true):
+					sword.get_node("CollisionShape2D").position = Vector2(16,0)
 				else:
-					slash.get_node("CollisionShape2D").position = Vector2(-16,0)
+					sword.get_node("CollisionShape2D").position = Vector2(-16,0)
 			
-		slash.get_node("CollisionShape2D").position = Vector2(0,0)
+		sword.get_node("CollisionShape2D").position = Vector2(0,0)
 		
-		add_child(slash)
-		
-		velocity = Vector2(0,0) #Stop the player movement
-		
-		
-	# Remember previous direction of player
-	previous_input_direction = input_direction
-	
-	
-func _physics_process(_delta):
-	if not swinging:
-		get_input()
-		move_and_slide()
+		animation.play()
+
+
 
 func _on_animated_sprite_2d_animation_looped():
 	swinging = false
 	match $AnimatedSprite2D.animation:
 		"swing_down":
 			$AnimatedSprite2D.set_animation("idle_down")
-
 		"swing_up":
 			$AnimatedSprite2D.set_animation("idle_up")
-
 		"swing_side":
 			$AnimatedSprite2D.set_animation("idle_side")
 	

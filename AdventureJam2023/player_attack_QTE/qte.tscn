@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://evtep5rqp3ve"]
+
+[ext_resource type="Script" path="res://player_attack_QTE/qte.gd" id="1_yjpc1"]
+
+[node name="qte" type="Node2D"]
+script = ExtResource("1_yjpc1")
+images = Array[Texture]([null, null, null, null, null])

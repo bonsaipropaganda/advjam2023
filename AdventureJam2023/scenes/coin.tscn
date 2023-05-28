@@ -178,6 +178,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_8sv50"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_4w5w5"]
 resource_name = "float"
 length = 2.0
@@ -193,9 +196,6 @@ tracks/0/keys = {
 "update": 0,
 "values": []
 }
-
-[sub_resource type="Animation" id="Animation_8sv50"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pip0s"]
 _data = {

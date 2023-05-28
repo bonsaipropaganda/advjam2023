@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3]
+[gd_scene load_steps=74 format=3 uid="uid://dptnmpga3vup3"]
 
 [ext_resource type="Texture2D" uid="uid://brixg843i7iea" path="res://sprites/Apocalypse Character Pack/Zombie/Idle.png" id="1_0dlhq"]
 [ext_resource type="Script" path="res://scripts/zombie.gd" id="1_1aooy"]
@@ -519,22 +519,31 @@ animations = [{
 radius = 8.0
 height = 24.0
 
-[node name="Zombie" type="AnimatableBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xg3m1"]
+radius = 6.0
+
+[node name="Zombie" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(1.04082e-12, 1.04082e-12)
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_1aooy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_clb0t")
-animation = &"death_up"
+animation = &"walk_up"
 autoplay = "idle_side"
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_02opy")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.04082e-12, 12)
+shape = SubResource("CircleShape2D_xg3m1")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

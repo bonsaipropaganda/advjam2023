@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://cdl1ltsr2sgr5"]
 
 [ext_resource type="Script" path="res://scripts/sword_slash.gd" id="1_xxay3"]
 [ext_resource type="Texture2D" uid="uid://cscu53v68f4m3" path="res://sprites/Swipe Effect/green_slash/SP301_01.png" id="2_6ihk2"]
@@ -35,12 +35,13 @@ radius = 16.0
 
 [node name="SwordSlash" type="Area2D" groups=["attack"]]
 y_sort_enabled = true
+collision_layer = 2
 script = ExtResource("1_xxay3")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ek2va")
 autoplay = "default"
-frame_progress = 0.231203
+frame_progress = 0.336454
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rpq0h")
