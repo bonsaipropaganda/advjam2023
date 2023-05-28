@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://evtep5rqp3ve"]
+[gd_scene load_steps=7 format=3 uid="uid://evtep5rqp3ve"]
 
 [ext_resource type="Script" path="res://player_attack_QTE/qte.gd" id="1_yjpc1"]
+[ext_resource type="Texture2D" uid="uid://c8b3rede507wy" path="res://player_attack_QTE/sprites/up.png" id="2_4cukj"]
+[ext_resource type="Texture2D" uid="uid://b27qr3o02ajlt" path="res://player_attack_QTE/sprites/right.png" id="3_76j53"]
+[ext_resource type="Texture2D" uid="uid://cssvt4xtud1ua" path="res://player_attack_QTE/sprites/left.png" id="4_gvexl"]
+[ext_resource type="Texture2D" uid="uid://cx438jhppdhbc" path="res://player_attack_QTE/sprites/down.png" id="5_cldjd"]
+[ext_resource type="Texture2D" uid="uid://bn14xrccwipav" path="res://player_attack_QTE/sprites/attack.png" id="6_ob7w8"]
 
 [node name="qte" type="Node2D"]
 script = ExtResource("1_yjpc1")
-images = Array[Texture]([null, null, null, null, null])
+images = Array[Texture]([ExtResource("2_4cukj"), ExtResource("3_76j53"), ExtResource("4_gvexl"), ExtResource("5_cldjd"), ExtResource("6_ob7w8")])
