@@ -101,47 +101,45 @@ func slash_animation(is_slashing:bool, delta:float) -> void:
 		return
 	
 	if is_slashing:
-		print($AnimatedSprite2D.animation,"	", previous_input_direction)
 		var animation:AnimatedSprite2D = sword.get_node("Animation")#get the animation stuff from the slash object
-		
-		sword.get_node("Animation").flip_h = not $AnimatedSprite2D.flip_h
-
-		sword.get_node("Animation").flip_v = ($AnimatedSprite2D.animation == "swing_up" )
-		sword.set_z_index(z_index-2*int($AnimatedSprite2D.animation == "swing_up" ))
-		
 		
 		# Change the player's animation
 		match $AnimatedSprite2D.animation:
 			"walk_down":
 				$AnimatedSprite2D.set_animation("swing_down")
-				sword.get_node("CollisionShape2D").position = Vector2(0,16)
 			"idle_down":
 				$AnimatedSprite2D.set_animation("swing_down")
-				sword.get_node("CollisionShape2D").position = Vector2(0,16)
 				
 			"walk_up":
 				$AnimatedSprite2D.set_animation("swing_up")
-				sword.get_node("CollisionShape2D").position = Vector2(0,-16)
 			"idle_up":
 				$AnimatedSprite2D.set_animation("swing_up")
-				sword.get_node("CollisionShape2D").position = Vector2(0,-16)
 			
 			"walk_side":
 				$AnimatedSprite2D.set_animation("swing_side")
-				if(sword.get_node("Animation").flip_h == true):
-					sword.get_node("CollisionShape2D").position = Vector2(16,0)
-				else:
-					sword.get_node("CollisionShape2D").position = Vector2(-16,0)
 			"idle_side":
 				$AnimatedSprite2D.set_animation("swing_side")
+		
+		sword.get_node("Animation").flip_h = not $AnimatedSprite2D.flip_h
+
+		sword.get_node("Animation").flip_v = ($AnimatedSprite2D.animation == "swing_up" )
+		sword.set_z_index(z_index-2*int($AnimatedSprite2D.animation == "swing_up" ))
+
+		# Position collision box of slash according to direction of player
+		match $AnimatedSprite2D.animation:
+			"swing_down":
+				sword.get_node("CollisionShape2D").position = Vector2(0,16)
+			
+			"swing_up":
+				sword.get_node("CollisionShape2D").position = Vector2(0,-16)
+			
+			"swing_side":
 				if(sword.get_node("Animation").flip_h == true):
 					sword.get_node("CollisionShape2D").position = Vector2(16,0)
 				else:
 					sword.get_node("CollisionShape2D").position = Vector2(-16,0)
-		
 			
 		sword.get_node("CollisionShape2D").position = Vector2(0,0)
-		
 		animation.play()
 
 
