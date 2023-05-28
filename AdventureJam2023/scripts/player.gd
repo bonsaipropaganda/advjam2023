@@ -40,7 +40,7 @@ func _physics_process(delta):
 #getting all the input from the player!!!
 func user_input() -> Dictionary:
 	var input_direction:Vector2 = Input.get_vector("keyboard_left", "keyboard_right", "keyboard_up", "keyboard_down")
-	var slash:bool = Input.is_action_pressed("keyboard_space")
+	var slash:bool = Input.is_action_just_pressed("keyboard_space")
 	
 	return {"input_direction":input_direction, "slash":slash}
 
@@ -55,9 +55,13 @@ func move(input_direction:Vector2, delta:float,  is_slashing:bool) -> void:
 
 #is da player slashing???. bring the slash thingy from the edge of the map and make it visible
 func slash(is_slashing:bool) -> void:
-	if is_slashing:
+	if is_slashing and $qte.is_qte==false:
+		$qte.init_qte()
+
+	if $qte.is_success():
 		sword.set_visible(true)
 		sword.position = Vector2(0,0)
+		$qte.reset()
 
 
 
