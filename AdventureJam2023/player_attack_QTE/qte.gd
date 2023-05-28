@@ -20,23 +20,33 @@ var success:bool = false
 
 
 
-##############################################
+##############################################. 
+
+#this is where the whole code starts
 func init_qte() -> void:
 	is_qte = true
+	
+	#get a random sequence of stuff
 	qte_sequence = sequence(5)
+	#spawn some sprites
 	spawn_qte_sprites()
+	
+	#stop the time
 	Engine.time_scale = 0.0
+	
+	#hey, da QTE timer!!!. AHHH!!!!, TODO: make some sorta weird shader that'll slowly make the screen go grayscale to indicate that the time's gonna run out
 	qte_timer = qte_reset_timer
-	qte_counter = 0
+	qte_counter = 0#how many correct characters the player has ah. done.
 
-
+#get the random sequence of characetsrs
 func sequence(max_len:int)->Array[int]:
 	var seq:Array[int]
 	for i in range(max_len):
 		var value:int = randi_range(0, images.size() - 2)
 		seq.append(value)
 	return seq
-
+	
+#spawn the sprites
 func spawn_qte_sprites():
 	var counter:int = 0
 	var player:Object = get_parent()
@@ -51,17 +61,18 @@ func spawn_qte_sprites():
 		counter += 1
 
 
-
+#the main loop
 func _process(delta):
+	#custom delta time, cuz time has been stopped now. soo no traditional delta time
 	qte_delta_time_process()
-	if is_qte:
-		var input:int = fetch_input()
-		qte_iter(input)
-		qte_time_out()
-	if is_qte==false:
-		if not get_child_count()==0:
+	if is_qte:#are you still playing da QTE?.
+		var input:int = fetch_input()#get da input
+		qte_iter(input)#see if it's right. if it is, check iterate
+		qte_time_out()#timed out?. exit da QTE
+	if is_qte==false:#if the qte is done
+		if not get_child_count()==0:#delete all the sprites
 			destroy_sprites()
-		Engine.time_scale = 1
+		Engine.time_scale = 1#set the engine time to 1.
 
 #export functions!!!
 func is_success()->bool:
@@ -81,37 +92,37 @@ func fetch_input()->int:
 		return 2
 	if Input.is_action_just_pressed("keyboard_down"):
 		return 3
-	if Input.is_action_just_pressed("keyboard_space"):
-		return -1
 	return ret_val
 
 
 func qte_iter(input:int) -> void:
-	if input < 0 or not is_qte:
+	if input < 0:#if there has NOT been any input, exit 
 		return
+	
+	#yayyy!!, if the input is right, resert the qte timer. and iterate the qte_counter so you can check the next element in the sequence
 	if input == qte_sequence[qte_counter]:
 		qte_timer = qte_reset_timer
 		qte_counter += 1
-		if qte_counter == qte_sequence.size():
+		if qte_counter == qte_sequence.size():#if you'er at the end of the sequence, exitttt, and sucess is truee
 			is_qte = false
 			success = true
 		sprite_shift()
-	else:
+	else:# if you have failed, then just quit
 		is_qte = false
 
-func sprite_shift():
+func sprite_shift():#for moving the sprite around after every input
 	for i in range(get_child_count()):
 		var sprite_stuff:Object = get_child(i)
 		sprite_stuff.position.x -= 20
 
 
-func qte_delta_time_process()->void:
+func qte_delta_time_process()->void:#delta timeee,when the time is stopped
 	var current_time:float = Time.get_ticks_msec()
 	qte_delta_time = (current_time - qte_previous_time)/1000
 	qte_previous_time = current_time
 
 
-func qte_time_out()->void:
+func qte_time_out()->void:#timedd out
 	if qte_timer < 0:
 		qte_timer = qte_reset_timer
 		is_qte = false

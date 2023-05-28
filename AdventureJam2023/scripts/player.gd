@@ -13,8 +13,9 @@ extends CharacterBody2D
 
 var health:int = 100
 
+
 func _ready():
-	sword.set_visible(false)
+	sword.set_visible(false)#sets the sword as invisible. duh. don't wanna see it.
 
 
 ######################################################################################
@@ -28,12 +29,13 @@ func _physics_process(delta):
 	
 	#a tiny function to make the player move!!!
 	move(input_direction, delta, slash)
-	slash(slash)
+	slash(slash)#a tiny function that communicates with the QTE stuff, and do the QTE game
 
 	#ANIMATION FUNCIONS
 	walk_animation(input_direction, delta)#this function makes does all of the player "Walk animation"
 	slash_animation(slash, delta)#this one's for the slash animations
 	
+	#the previous input directionsss.
 	previous_input_direction = input_direction
 
 
@@ -47,7 +49,7 @@ func user_input() -> Dictionary:
 
 #moving the player!!!
 func move(input_direction:Vector2, delta:float,  is_slashing:bool) -> void:
-	if is_slashing:
+	if is_slashing:#is the player slashing?. then don't move.
 		return
 	velocity = input_direction.normalized() * speed
 	move_and_slide()
@@ -55,9 +57,12 @@ func move(input_direction:Vector2, delta:float,  is_slashing:bool) -> void:
 
 #is da player slashing???. bring the slash thingy from the edge of the map and make it visible
 func slash(is_slashing:bool) -> void:
+	
+	#is the player slashing?. and the qte is not being used?. use it!!!
 	if is_slashing and $qte.is_qte==false:
 		$qte.init_qte()
-
+	
+	#yayy!!!, is the QTE is successful, reset it. and teleport the sword from the edge of the map to the player
 	if $qte.is_success():
 		sword.set_visible(true)
 		sword.position = Vector2(0,0)
@@ -67,8 +72,10 @@ func slash(is_slashing:bool) -> void:
 
 #the walk animation-manager stuff. mhm
 func walk_animation(input_direction:Vector2, delta:float) -> void:
-	if delta==0:
+	if delta==0:#if time has stopped, no animation.
 		return
+	
+	#horizontal flip!
 	if(velocity.x != 0):
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	
@@ -120,6 +127,8 @@ func slash_animation(is_slashing:bool, delta:float) -> void:
 			"idle_side":
 				$AnimatedSprite2D.set_animation("swing_side")
 		
+		
+		#set the sword's horizontal and vertical flip
 		sword.get_node("Animation").flip_h = not $AnimatedSprite2D.flip_h
 
 		sword.get_node("Animation").flip_v = ($AnimatedSprite2D.animation == "swing_up" )
