@@ -1,4 +1,9 @@
+
+=====================================================================================================
 Game developers who worked on this project:
+	Day 1 - Brandloose
+
+=====================================================================================================
 
 People whose work we used:
 
@@ -9,3 +14,5 @@ People whose work we used:
 	Pixel Art GUI Elements 			https://mounirtohami.itch.io/pixel-art-gui-elements
 	8x8 Gold Coin Spinning Animation	https://evercrazy.itch.io/gold-coin-spinning-animation
 	Pixel Art Effect Slashing		https://nyknck.itch.io/fx084
+
+=====================================================================================================
