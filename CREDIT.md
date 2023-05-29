@@ -3,6 +3,7 @@
 Game developers who worked on this project:
 	Day 1 - Brandloose
 	Day 2 - Iso-veli
+	Day 3 - Timmy Soup
 
 =====================================================================================================
 
