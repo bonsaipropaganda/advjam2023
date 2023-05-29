@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Zombie
+
 @onready var player:Object = get_tree().get_nodes_in_group("Player")[0]
 
 
@@ -16,8 +18,9 @@ var chase_distance:float = 80
 var is_chasing:bool = false
 
 func _process(delta):
-	move(delta)
-	walk_animation()
+	if alive:
+		move(delta)
+		walk_animation()
 
 func move(delta:float)->void:
 	var distance_from_player:float = player.global_position.distance_to(global_position)
@@ -61,6 +64,7 @@ func walk_animation()->void:
 func _on_area_2d_area_entered(area):
 	if "SwordSlash" in area.name and alive:
 		alive = false
+		is_chasing = false
 		match $AnimatedSprite2D.animation:
 			"idle_down":
 				$AnimatedSprite2D.set_animation("death_down")

@@ -23,11 +23,15 @@ var success:bool = false
 ##############################################. 
 
 #this is where the whole code starts
-func init_qte() -> void:
+func init_qte(sequenceLength : int = 5,resetBonusTime : float = 1.5,totalCompletionTime : float = 1.5) -> void:
 	is_qte = true
 	
+	qte_reset_timer = resetBonusTime
+	qte_timer = totalCompletionTime
+	
 	#get a random sequence of stuff
-	qte_sequence = sequence(5)
+	qte_sequence = sequence(sequenceLength)
+	
 	#spawn some sprites
 	spawn_qte_sprites()
 	
@@ -101,7 +105,8 @@ func qte_iter(input:int) -> void:
 	
 	#yayyy!!, if the input is right, resert the qte timer. and iterate the qte_counter so you can check the next element in the sequence
 	if input == qte_sequence[qte_counter]:
-		qte_timer = qte_reset_timer
+		if qte_reset_timer > 0:
+			qte_timer = clampf(qte_timer+qte_reset_timer,0,qte_timer)
 		qte_counter += 1
 		if qte_counter == qte_sequence.size():#if you'er at the end of the sequence, exitttt, and sucess is truee
 			is_qte = false
@@ -120,6 +125,9 @@ func qte_delta_time_process()->void:#delta timeee,when the time is stopped
 	var current_time:float = Time.get_ticks_msec()
 	qte_delta_time = (current_time - qte_previous_time)/1000
 	qte_previous_time = current_time
+	
+	for i in range(get_child_count()):
+		get_child(i).scale = Vector2(1,1) * (qte_timer/(qte_timer-qte_delta_time))
 
 
 func qte_time_out()->void:#timedd out

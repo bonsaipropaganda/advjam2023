@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=11 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/player.tscn" id="1_vwy11"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/INSERT CREDITS HERE.gd" id="2_xi8ne"]
 [ext_resource type="Texture2D" uid="uid://dwrtog8bsnfvq" path="res://sprites/SUMMERVILLE - Forest/Tileset/Water.png" id="3_t467g"]
 [ext_resource type="PackedScene" uid="uid://dptnmpga3vup3" path="res://scenes/zombie.tscn" id="5_vqh4h"]
+[ext_resource type="Script" path="res://scripts/zombie_pool.gd" id="6_ojryj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_82h8j"]
 texture = ExtResource("2_qfotn")
@@ -1175,6 +1176,7 @@ layer_4/tile_data = PackedInt32Array()
 z_index = 1
 
 [node name="zombie_pool" type="Node2D" parent="."]
+script = ExtResource("6_ojryj")
 
 [node name="Zombie" parent="zombie_pool" instance=ExtResource("5_vqh4h")]
 position = Vector2(63, -2)
