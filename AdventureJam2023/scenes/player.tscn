@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://ctftvg83q0ap5"]
+[gd_scene load_steps=71 format=3 uid="uid://ctftvg83q0ap5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_eug0i"]
 [ext_resource type="PackedScene" uid="uid://cdl1ltsr2sgr5" path="res://scenes/sword_slash.tscn" id="2_5ehdk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4vnyc7ntq6h4" path="res://sprites/Apocalypse Character Pack/Player/Death.png" id="3_y6oqw"]
 [ext_resource type="Texture2D" uid="uid://dj4r850dlly5q" path="res://sprites/Apocalypse Character Pack/Player/Shoot.png" id="4_7iru8"]
 [ext_resource type="PackedScene" uid="uid://evtep5rqp3ve" path="res://player_attack_QTE/qte.tscn" id="8_iuh4x"]
+[ext_resource type="PackedScene" uid="uid://dc3a7wo5qwamg" path="res://scenes/death_screen.tscn" id="9_63pm2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dmm8g"]
 atlas = ExtResource("3_y6oqw")
@@ -502,6 +503,8 @@ animations = [{
 radius = 7.0
 height = 14.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65n6a"]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 2
@@ -521,7 +524,37 @@ shape = SubResource("CapsuleShape2D_38v6o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+position_smoothing_enabled = true
 
 [node name="SwordSlash" parent="." instance=ExtResource("2_5ehdk")]
 
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
+qte_counter = 3
+qte_reset_timer = 5.0
+qte_timer = 5.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+self_modulate = Color(0.972549, 0.407843, 0, 1)
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 133.0
+offset_bottom = 11.0
+scale = Vector2(0.2, 0.2)
+
+[node name="RegenTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_65n6a")
+
+[node name="DeathScreen" parent="." instance=ExtResource("9_63pm2")]
+position = Vector2(-126, -65)
+scale = Vector2(0.2, 0.2)
+
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

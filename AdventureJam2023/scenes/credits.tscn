@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjocw1vf1hxwh"]
+
+[ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="1_7tdg7"]
+[ext_resource type="Script" path="res://scenes/credits.gd" id="1_7y88s"]
+[ext_resource type="Texture2D" uid="uid://cssvt4xtud1ua" path="res://player_attack_QTE/sprites/left.png" id="2_bf2e3"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_7y88s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1806.0
+offset_top = -884.0
+offset_right = 1846.0
+offset_bottom = 924.0
+color = Color(0.101961, 0.235294, 0.337255, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 121.0
+offset_top = 16.0
+offset_right = 1160.0
+offset_bottom = 703.0
+theme_override_colors/default_color = Color(0.85098, 0.760784, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_7tdg7")
+theme_override_font_sizes/normal_font_size = 64
+text = "Day 1  : brandloose 
+Day 2  : BEARRRRRRR 
+Day 3  : Timmy Soup 
+Day 4  : A98K Dev
+Day 5  : Dreamn Skull 
+Day 6  : Mondaley 
+Day 7  : Geazas 
+Day 8  : Whomst628 
+Day 9  : Quaffy 
+Day 10: Abraxas 
+Day 11: GopherDev
+Day 12: Khusheete 
+Day 13: BLOXA 
+Day 14: bonsaipropaganda"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 115.0
+offset_bottom = 106.0
+texture_normal = ExtResource("2_bf2e3")
+stretch_mode = 0
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

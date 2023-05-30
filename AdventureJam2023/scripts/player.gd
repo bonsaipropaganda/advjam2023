@@ -3,19 +3,20 @@ extends CharacterBody2D
 @export var speed:float = 200
 @export var swing_animation: PackedScene
 
-
 #Used to remember the previous direction of player - to prevent changing animation every frame
 #Only changes animation when previous input direction does not match current
 @onready var previous_input_direction:Vector2 = Vector2(0,0)
 
 @onready var swinging:bool = false
 @onready var sword:Area2D = $SwordSlash
+@onready var deathScreen = $DeathScreen
 
 var health:int = 100
 
 
 func _ready():
 	sword.set_visible(false)#sets the sword as invisible. duh. don't wanna see it.
+	deathScreen.visible = false
 
 
 ######################################################################################
@@ -37,6 +38,17 @@ func _physics_process(delta):
 	
 	#the previous input directionsss.
 	previous_input_direction = input_direction
+	update_health()
+	print(health)
+#pause doesnt work
+#	if Input.is_action_just_pressed("ui_cancel"):
+#		if get_tree().paused == true:
+#			get_tree().paused = false
+#			$pause.visible = false
+#		else:
+#			$pause.visible = true
+#			get_tree().paused = true
+		
 
 
 #getting all the input from the player!!!
@@ -45,16 +57,12 @@ func _user_input() -> Dictionary:
 	var _slash:bool = Input.is_action_just_pressed("keyboard_space")
 	
 	return {"input_direction":input_direction, "slash":_slash}
-
-
 #moving the player!!!
 func move(input_direction:Vector2, _delta:float,  is_slashing:bool) -> void:
 	if is_slashing:#is the player slashing?. then don't move.
 		return
 	velocity = input_direction.normalized() * speed
 	move_and_slide()
-
-
 #is da player slashing???. bring the slash thingy from the edge of the map and make it visible
 func slash(is_slashing:bool) -> void:
 	
@@ -67,9 +75,6 @@ func slash(is_slashing:bool) -> void:
 		sword.set_visible(true)
 		sword.position = Vector2(0,0)
 		$qte.reset()
-
-
-
 #the walk animation-manager stuff. mhm
 func walk_animation(input_direction:Vector2, delta:float) -> void:
 	if delta==0:#if time has stopped, no animation.
@@ -151,23 +156,29 @@ func slash_animation(is_slashing:bool, delta:float) -> void:
 		sword.get_node("CollisionShape2D").position = Vector2(0,0)
 		animation.play()
 
+func update_health():
+	var healthBar = $HealthBar
+	healthBar.value = health
+	
+	if health >= 100: healthBar.visible = false
+	else: healthBar.visible = true
+	if health == 0:
+		die()
+	
+func _on_regen_timer_timeout():
+	if health < 100: 
+		health += 20
+		if health>100:
+			health = 100
+	if health == 0:
+		health = 0
+func die():
+	if health<=0:
+		get_tree().paused = true
+		deathScreen.visible = true
 
 
-#func _on_animated_sprite_2d_animation_looped():
-#	
+func _on_area_2d_body_entered(body):
+	health -= 10
 
-#
-#func _on_animated_sprite_2d_animation_looped():
-#	pass
-#
-#func _on_animated_sprite_2d_animation_finished():
-#	swinging = false
-#	match $AnimatedSprite2D.animation:
-#		"swing_down":
-#			$AnimatedSprite2D.set_animation("idle_down")
-#		"swing_up":
-#			$AnimatedSprite2D.set_animation("idle_up")
-#		"swing_side":
-#			$AnimatedSprite2D.set_animation("idle_side")
-#
-#	previous_input_direction = Vector2(10,10) # Filler to force the get_input() to update after the animation
+

@@ -1,0 +1,107 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkco16setj375"]
+
+[ext_resource type="Script" path="res://scripts/zombie_pool.gd" id="1_csd0s"]
+[ext_resource type="PackedScene" uid="uid://dptnmpga3vup3" path="res://scenes/zombie.tscn" id="2_44mmo"]
+
+[node name="zombie_pool" type="Node2D"]
+visible = false
+script = ExtResource("1_csd0s")
+
+[node name="Zombie" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(63, -2)
+
+[node name="Zombie4" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-14, 33)
+
+[node name="Zombie5" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-47, -16)
+
+[node name="Zombie6" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-16, -31)
+
+[node name="Zombie2" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-182, 87)
+
+[node name="Zombie3" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-125, -34)
+
+[node name="Zombie7" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(18, -29)
+
+[node name="Zombie8" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-148, 89)
+
+[node name="Zombie9" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-91, -32)
+
+[node name="Zombie10" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(39, -2)
+
+[node name="Zombie11" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-127, 116)
+
+[node name="Zombie12" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-70, -5)
+
+[node name="Zombie13" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(127, 29)
+
+[node name="Zombie14" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-39, 147)
+
+[node name="Zombie15" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(18, 26)
+
+[node name="Zombie16" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(151, 63)
+
+[node name="Zombie17" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-15, 181)
+
+[node name="Zombie18" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(42, 60)
+
+[node name="Zombie19" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(64, 26)
+
+[node name="Zombie20" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-102, 144)
+
+[node name="Zombie21" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-45, 23)
+
+[node name="Zombie22" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-42, -59)
+
+[node name="Zombie23" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-208, 59)
+
+[node name="Zombie24" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-151, -62)
+
+[node name="Zombie25" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(39, -60)
+
+[node name="Zombie26" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-127, 58)
+
+[node name="Zombie27" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-70, -63)
+
+[node name="Zombie28" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(108, -60)
+
+[node name="Zombie29" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-58, 58)
+
+[node name="Zombie30" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-1, -63)
+
+[node name="Zombie31" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(81, 0)
+
+[node name="Zombie32" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-85, 118)
+
+[node name="Zombie33" parent="." instance=ExtResource("2_44mmo")]
+position = Vector2(-28, -3)

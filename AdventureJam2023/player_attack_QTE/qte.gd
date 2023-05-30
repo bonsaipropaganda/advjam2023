@@ -6,15 +6,15 @@ extends Node2D
 var called:bool = false
 
 
-var qte_sequence:Array[int]
-var qte_counter:int = 0
+@export var qte_sequence:Array[int]
+@export var qte_counter:int = 0
 var is_qte:bool = false
 
 
-var qte_reset_timer:float = 1.5
-var qte_timer:float = 1.5
-var qte_previous_time:float = 0
-var qte_delta_time:float = 0
+@export var qte_reset_timer:float = 1.5
+@export var qte_timer:float = 1.5
+@export var qte_previous_time:float = 0
+@export var qte_delta_time:float = 0
 
 var success:bool = false
 
@@ -23,7 +23,7 @@ var success:bool = false
 ##############################################. 
 
 #this is where the whole code starts
-func init_qte(sequenceLength : int = 5,resetBonusTime : float = 1.5,totalCompletionTime : float = 1.5) -> void:
+func init_qte(sequenceLength : int = 3,resetBonusTime : float = 1.5,totalCompletionTime : float = 3.0) -> void:
 	is_qte = true
 	
 	qte_reset_timer = resetBonusTime

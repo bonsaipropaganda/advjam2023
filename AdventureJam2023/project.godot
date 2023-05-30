@@ -11,15 +11,20 @@ config_version=5
 [application]
 
 config/name="Adventure Jam 2023"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
+boot_splash/bg_color=Color(0.294118, 0.34902, 0, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+BgMusic="*res://scenes/Autoload/bg_music.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/resizable=false
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [input]

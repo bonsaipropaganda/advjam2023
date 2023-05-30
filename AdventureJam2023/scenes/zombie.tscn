@@ -519,8 +519,8 @@ animations = [{
 radius = 8.0
 height = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xg3m1"]
-radius = 6.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1gsqh"]
+radius = 8.0
 
 [node name="Zombie" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -542,7 +542,7 @@ collision_mask = 3
 shape = SubResource("CapsuleShape2D_02opy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.04082e-12, 12)
-shape = SubResource("CircleShape2D_xg3m1")
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_1gsqh")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
