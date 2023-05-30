@@ -44,6 +44,7 @@ func init_qte(sequenceLength : int = 5,resetBonusTime : float = 1.5,totalComplet
 
 #get the random sequence of characetsrs
 func sequence(max_len:int)->Array[int]:
+	@warning_ignore("unassigned_variable")
 	var seq:Array[int]
 	for i in range(max_len):
 		var value:int = randi_range(0, images.size() - 2)
@@ -66,7 +67,7 @@ func spawn_qte_sprites():
 
 
 #the main loop
-func _process(delta):
+func _process(_delta):
 	#custom delta time, cuz time has been stopped now. soo no traditional delta time
 	qte_delta_time_process()
 	if is_qte:#are you still playing da QTE?.

@@ -84,6 +84,6 @@ func _on_area_2d_area_entered(area):
 		set_process(false)
 
 
-
-func _on_animated_sprite_2d_animation_finished():
-	$AnimatedSprite2D.pause()
+#
+#func _on_animated_sprite_2d_animation_finished():
+#	$AnimatedSprite2D.pause()

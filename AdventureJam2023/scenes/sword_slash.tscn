@@ -47,4 +47,3 @@ frame_progress = 0.336454
 shape = SubResource("CircleShape2D_rpq0h")
 
 [connection signal="animation_looped" from="Animation" to="." method="_on_animation_animation_looped"]
-[connection signal="animation_looped" from="Animation" to="Animation" method="_on_animation_looped"]

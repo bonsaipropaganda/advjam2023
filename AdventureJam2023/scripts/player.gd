@@ -23,32 +23,32 @@ func _ready():
 ######################################################################################
 func _physics_process(delta):
 	#first getting alllll the inputs from the player as a dictinary
-	var user_input:Dictionary = user_input()
+	var user_input:Dictionary = _user_input()
 	var input_direction:Vector2 = user_input["input_direction"]
-	var slash:bool = user_input["slash"]
+	var _slash:bool = user_input["slash"]
 	
 	#a tiny function to make the player move!!!
-	move(input_direction, delta, slash)
-	slash(slash)#a tiny function that communicates with the QTE stuff, and do the QTE game
+	move(input_direction, delta, _slash)
+	slash(_slash)#a tiny function that communicates with the QTE stuff, and do the QTE game
 
 	#ANIMATION FUNCIONS
 	walk_animation(input_direction, delta)#this function makes does all of the player "Walk animation"
-	slash_animation(slash, delta)#this one's for the slash animations
+	slash_animation(_slash, delta)#this one's for the slash animations
 	
 	#the previous input directionsss.
 	previous_input_direction = input_direction
 
 
 #getting all the input from the player!!!
-func user_input() -> Dictionary:
+func _user_input() -> Dictionary:
 	var input_direction:Vector2 = Input.get_vector("keyboard_left", "keyboard_right", "keyboard_up", "keyboard_down")
-	var slash:bool = Input.is_action_just_pressed("keyboard_space")
+	var _slash:bool = Input.is_action_just_pressed("keyboard_space")
 	
-	return {"input_direction":input_direction, "slash":slash}
+	return {"input_direction":input_direction, "slash":_slash}
 
 
 #moving the player!!!
-func move(input_direction:Vector2, delta:float,  is_slashing:bool) -> void:
+func move(input_direction:Vector2, _delta:float,  is_slashing:bool) -> void:
 	if is_slashing:#is the player slashing?. then don't move.
 		return
 	velocity = input_direction.normalized() * speed
@@ -153,14 +153,21 @@ func slash_animation(is_slashing:bool, delta:float) -> void:
 
 
 
-func _on_animated_sprite_2d_animation_looped():
-	swinging = false
-	match $AnimatedSprite2D.animation:
-		"swing_down":
-			$AnimatedSprite2D.set_animation("idle_down")
-		"swing_up":
-			$AnimatedSprite2D.set_animation("idle_up")
-		"swing_side":
-			$AnimatedSprite2D.set_animation("idle_side")
-	
-	previous_input_direction = Vector2(10,10) # Filler to force the get_input() to update after the animation
+#func _on_animated_sprite_2d_animation_looped():
+#	
+
+#
+#func _on_animated_sprite_2d_animation_looped():
+#	pass
+#
+#func _on_animated_sprite_2d_animation_finished():
+#	swinging = false
+#	match $AnimatedSprite2D.animation:
+#		"swing_down":
+#			$AnimatedSprite2D.set_animation("idle_down")
+#		"swing_up":
+#			$AnimatedSprite2D.set_animation("idle_up")
+#		"swing_side":
+#			$AnimatedSprite2D.set_animation("idle_side")
+#
+#	previous_input_direction = Vector2(10,10) # Filler to force the get_input() to update after the animation
