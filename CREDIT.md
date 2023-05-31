@@ -5,6 +5,7 @@ Game developers who worked on this project:
 	Day 2 - Iso-veli
 	Day 3 - Timmy Soup
 	Day 4 - A98K
+	Day 5 - DreamnSkull
 
 =====================================================================================================
 
