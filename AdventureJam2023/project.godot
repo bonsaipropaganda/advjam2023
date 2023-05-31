@@ -24,7 +24,6 @@ BgMusic="*res://scenes/Autoload/bg_music.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/mode=3
 window/stretch/mode="viewport"
 
 [input]
@@ -61,6 +60,6 @@ keyboard_space={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
