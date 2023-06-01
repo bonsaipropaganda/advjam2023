@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bld06b12eock6"]
+[gd_scene load_steps=3 format=3 uid="uid://dc3a7wo5qwamg"]
 
-[ext_resource type="Script" path="res://scripts/DeathScreen.gd" id="1_gh1rd"]
-[ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="2_kvtxt"]
+[ext_resource type="Script" path="res://scripts/DeathScreen.gd" id="1_vkkwr"]
+[ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="2_lp8i2"]
 
 [node name="DeathScreen" type="Node2D"]
 process_mode = 3
 z_index = 5
-script = ExtResource("1_gh1rd")
+script = ExtResource("1_vkkwr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1433.0
@@ -20,7 +20,7 @@ offset_left = 68.0
 offset_top = 59.0
 offset_right = 1282.0
 offset_bottom = 193.0
-theme_override_fonts/normal_font = ExtResource("2_kvtxt")
+theme_override_fonts/normal_font = ExtResource("2_lp8i2")
 theme_override_font_sizes/normal_font_size = 128
 text = "You have fallen!"
 
@@ -30,7 +30,7 @@ offset_top = 268.0
 offset_right = 538.0
 offset_bottom = 299.0
 scale = Vector2(5, 5)
-theme_override_fonts/font = ExtResource("2_kvtxt")
+theme_override_fonts/font = ExtResource("2_lp8i2")
 text = "Retry"
 
 [node name="Button2" type="Button" parent="."]
@@ -39,7 +39,7 @@ offset_top = 453.0
 offset_right = 538.0
 offset_bottom = 484.0
 scale = Vector2(5, 5)
-theme_override_fonts/font = ExtResource("2_kvtxt")
+theme_override_fonts/font = ExtResource("2_lp8i2")
 text = "Quit"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
