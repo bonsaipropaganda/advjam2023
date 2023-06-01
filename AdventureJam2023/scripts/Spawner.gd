@@ -2,7 +2,7 @@
 extends Node
 
 @onready var timer = $Timer
-var zombie = preload("res://scenes/zombie.tscn")
+var zombie = preload("res://scenes/Entities/zombie.tscn")
 var spawn_pos = null
 
 ## Called when the node enters the scene tree for the first time.

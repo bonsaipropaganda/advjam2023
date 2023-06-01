@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://ce64hr3ek1ewn"]
+
+[ext_resource type="Texture2D" uid="uid://bqntpniabhw5w" path="res://sprites/Entities/NPCs/Dark Figure.png" id="1_euaj0"]
+[ext_resource type="Script" path="res://scenes/Entities/DarkFigure/force_field.gd" id="1_fct3w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w00ql"]
+radius = 17.0
+height = 54.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb1rq"]
+atlas = ExtResource("1_euaj0")
+region = Rect2(0, 32, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihrfs"]
+atlas = ExtResource("1_euaj0")
+region = Rect2(32, 32, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vui10"]
+atlas = ExtResource("1_euaj0")
+region = Rect2(64, 32, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cggqb"]
+atlas = ExtResource("1_euaj0")
+region = Rect2(96, 32, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twc75"]
+atlas = ExtResource("1_euaj0")
+region = Rect2(128, 32, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riptq"]
+atlas = ExtResource("1_euaj0")
+region = Rect2(160, 32, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xltov"]
+atlas = ExtResource("1_euaj0")
+region = Rect2(192, 32, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsu61"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_nb1rq")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ihrfs")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vui10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_cggqb")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_twc75")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_riptq")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_xltov")
+}],
+"loop": false,
+"name": &"disappear",
+"speed": 5.0
+}]
+
+[node name="ForceField" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_fct3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_w00ql")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nsu61")
+animation = &"disappear"

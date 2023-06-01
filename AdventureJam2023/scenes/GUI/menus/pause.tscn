@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ug0vdknyyuo"]
+
+[ext_resource type="Script" path="res://scripts/GUI/menus/pause.gd" id="1_7q3xl"]
+[ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="2_7bjhc"]
+
+[node name="pause" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_7q3xl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1281.0
+offset_bottom = 720.0
+color = Color(0.0392157, 0.0392157, 0.0392157, 0.419608)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 387.0
+offset_top = 71.0
+offset_right = 891.0
+offset_bottom = 205.0
+theme_override_fonts/normal_font = ExtResource("2_7bjhc")
+theme_override_font_sizes/normal_font_size = 128
+text = "Paused"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 467.0
+offset_top = 268.0
+offset_right = 538.0
+offset_bottom = 299.0
+scale = Vector2(5, 5)
+theme_override_fonts/font = ExtResource("2_7bjhc")
+text = "Resume"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 467.0
+offset_top = 453.0
+offset_right = 538.0
+offset_bottom = 484.0
+scale = Vector2(5, 5)
+theme_override_fonts/font = ExtResource("2_7bjhc")
+text = "Quit"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
