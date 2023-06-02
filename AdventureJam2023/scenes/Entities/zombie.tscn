@@ -1,7 +1,8 @@
-[gd_scene load_steps=74 format=3 uid="uid://dptnmpga3vup3"]
+[gd_scene load_steps=77 format=3 uid="uid://b2wp0wgdbcmhf"]
 
 [ext_resource type="Script" path="res://scripts/Entities/zombie.gd" id="1_yr3k5"]
 [ext_resource type="Texture2D" uid="uid://jld775x4pifr" path="res://sprites/Entities/Zombie/Death.png" id="2_2ut1g"]
+[ext_resource type="Material" uid="uid://di3sahwexe7ba" path="res://resources/blinking_material.tres" id="2_r346j"]
 [ext_resource type="Texture2D" uid="uid://brixg843i7iea" path="res://sprites/Entities/Zombie/Idle.png" id="3_epda5"]
 [ext_resource type="Texture2D" uid="uid://cv5epkvp8u6pl" path="res://sprites/Entities/Zombie/Walk.png" id="4_h0v0s"]
 
@@ -522,14 +523,48 @@ height = 24.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1gsqh"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_5urlg"]
+resource_name = "take_damage"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_r346j")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eimmd"]
+_data = {
+"take_damage": SubResource("Animation_5urlg")
+}
+
 [node name="Zombie" type="CharacterBody2D"]
+material = ExtResource("2_r346j")
 position = Vector2(1.04082e-12, 1.04082e-12)
+rotation = 0.00334244
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_yr3k5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_clb0t")
 animation = &"walk_side"
 autoplay = "idle_side"
@@ -544,3 +579,8 @@ shape = SubResource("CapsuleShape2D_02opy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_1gsqh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eimmd")
+}

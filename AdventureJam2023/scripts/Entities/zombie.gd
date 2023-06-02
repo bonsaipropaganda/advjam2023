@@ -2,9 +2,14 @@ extends CharacterBody2D
 
 class_name Zombie
 
-@onready var player: Object = get_tree().get_nodes_in_group("Player")[0]
+@export var max_hp = 3
 
+@onready var player: Object = get_tree().get_nodes_in_group("Player")[0]
 @onready var alive = true
+@onready var hp: int = max_hp
+@onready var anim: AnimationPlayer = $AnimationPlayer
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var speed: float = 400
 var direction: Vector2 = Vector2(-0.5, 0.0)
@@ -62,9 +67,20 @@ func walk_animation() -> void:
 
 
 #for all the death stuff!!!
-func take_damage(_damage: int) -> void:
+func take_damage(damage: int) -> void:
 	if not alive:
 		return
+	blink()
+	hp = clamp(damage, 0, hp - damage)
+	if hp == 0:
+		die()
+
+func blink() -> void:
+	material.set_shader_parameter("is_blinking", true)
+	await get_tree().create_timer(0.7).timeout
+	material.set_shader_parameter("is_blinking", false)
+
+func die() -> void:
 	alive = false
 	is_chasing = false
 	match $AnimatedSprite2D.animation:
