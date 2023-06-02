@@ -756,7 +756,6 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="Shape" type="CollisionShape2D" parent="HealthChecker"]
-position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_65n6a")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
@@ -786,11 +785,11 @@ stream = ExtResource("11_ba2qx")
 [node name="HealthBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
 self_modulate = Color(0.972549, 0.407843, 0, 1)
-offset_left = -14.0
-offset_top = -20.0
-offset_right = 134.0
-offset_bottom = 7.0
-scale = Vector2(0.2, 0.2)
+anchors_preset = -1
+offset_left = 544.0
+offset_top = 256.0
+offset_right = 736.0
+offset_bottom = 288.0
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]

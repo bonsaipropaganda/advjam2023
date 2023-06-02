@@ -116,7 +116,7 @@ func slash_animation(is_slashing: bool) -> void:
 func update_health():
 	var healthBar = %HealthBar
 	healthBar.value = health
-
+	
 	if health >= 100:
 		healthBar.visible = false
 	else:

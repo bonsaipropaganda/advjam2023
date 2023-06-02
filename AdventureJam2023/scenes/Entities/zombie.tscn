@@ -569,9 +569,8 @@ coin_scene = ExtResource("3_xpe6n")
 y_sort_enabled = true
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_clb0t")
-animation = &"walk_side"
+animation = &"walk_up"
 autoplay = "idle_side"
-frame_progress = 0.260448
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
