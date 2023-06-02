@@ -12,6 +12,9 @@ extends CharacterBody2D
 @onready var deathScreen = owner.get_node("GUI/DeathScreen")
 @export var slash_sound: AudioStreamPlayer
 
+@onready var default_zoom: Vector2 = $Camera2D.zoom
+
+var camera_tween: Tween
 var input_direction: Vector2
 var is_slashing: bool
 var health: int = 100
@@ -64,15 +67,22 @@ func slash(is_slashing: bool) -> void:
 
 
 func _on_qte_done(is_success: bool):
-	#yayy!!!, is the QTE is successful, reset it. and animate the knife
+	#yayy!!!, is the QTE is successful, reset it. and animate stuffs
 	slash_sound.play()
-	if is_success:
+
+	# zoom out to default zoom position
+	if camera_tween and camera_tween.is_valid():
+		camera_tween.kill()
+	camera_tween = create_tween()
+	camera_tween.tween_property($Camera2D, "zoom", default_zoom, 0.2)
+
+	if is_success:  # show slash animation on qte success, aoe attack
 		swordSlash.visible = true
 		swordSlash.attack_all()
 		qte.reset()
 		await animationTree.animation_finished
 		swordSlash.visible = false
-	else:
+	else:  # hide slash animation on qte fail, single target attack
 		swordSlash.visible = false
 		swordSlash.attack_nearest()
 		playback.travel("Idle", false)
@@ -88,6 +98,12 @@ func walk_animation(_input_direction) -> void:
 
 func slash_animation(is_slashing: bool) -> void:
 	if is_slashing:
+		# slowly zoom in during qte, a bit exciting ?
+		if camera_tween and camera_tween.is_valid():
+			camera_tween.kill()
+		camera_tween = create_tween()
+		camera_tween.tween_property($Camera2D, "zoom", default_zoom * 3.0, qte.qte_timer)
+		# start slash animation
 		playback.travel("Mele")
 	# attack direction is the latest move direction that is not zero,
 	# and player can't change attack direction while attacking
