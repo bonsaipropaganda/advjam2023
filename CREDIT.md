@@ -1,25 +1,22 @@
+# Game developers who worked on this project:
 
-=====================================================================================================
-Game developers who worked on this project:
-	Day 1 - Brandloose
-	Day 2 - Iso-veli
-	Day 3 - Timmy Soup
-	Day 4 - A98K
-	Day 5 - DreamnSkull
+Day 1 - Brandloose  
+Day 2 - Iso-veli  
+Day 3 - Timmy Soup  
+Day 4 - A98K  
+Day 5 - DreamnSkull  
+Day 6 - Mondaley  
+Day 7 - Geazas
 
-=====================================================================================================
+# People whose work we used:
 
-People whose work we used:
-
-
-	Pixel Character Pack: 			
-	https://masalimov-ilnur.itch.io/pixel-characters
-	Apocalypse Character Pack: 		
-	https://cuddle-bug.itch.io/apocalypse
-	Summerville Forest Asset: 		https://hakatales.itch.io/summerville-forest-asset-pack
-	Pixel Art GUI Elements 			https://mounirtohami.itch.io/pixel-art-gui-elements
-	8x8 Gold Coin Spinning Animation https://evercrazy.itch.io/gold-coin-spinning-animation
-	Pixel Art Effect Slashing		https://nyknck.itch.io/fx084
-	Sound effects pixabay			https://pixabay.com/sound-effects/search/portal/
-
-=====================================================================================================
+| Assets                           | Link                                                    |
+| -------------------------------- | ------------------------------------------------------- |
+| Pixel Character Pack             | https://masalimov-ilnur.itch.io/pixel-characters        |
+| Apocalypse Character Pack        | https://masalimov-ilnur.itch.io/pixel-characters        |
+| Apocalypse Character Pack        | https://cuddle-bug.itch.io/apocalypse                   |
+| Summerville Forest Asset         | https://hakatales.itch.io/summerville-forest-asset-pack |
+| Pixel Art GUI Elements           | https://mounirtohami.itch.io/pixel-art-gui-elements     |
+| 8x8 Gold Coin Spinning Animation | https://evercrazy.itch.io/gold-coin-spinning-animation  |
+| Pixel Art Effect Slashing        | https://nyknck.itch.io/fx084                            |
+| Sound effects pixabay            | https://pixabay.com/sound-effects/search/portal/        |
