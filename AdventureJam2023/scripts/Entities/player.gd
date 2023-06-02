@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var playback: AnimationNodeStateMachinePlayback = animationTree.get("parameters/playback")
 
 @onready var deathScreen = owner.get_node("GUI/DeathScreen")
+@export var slash_sound: AudioStreamPlayer
 
 var input_direction: Vector2
 var is_slashing: bool
@@ -64,6 +65,7 @@ func slash(is_slashing: bool) -> void:
 
 func _on_qte_done(is_success: bool):
 	#yayy!!!, is the QTE is successful, reset it. and animate the knife
+	slash_sound.play()
 	if is_success:
 		swordSlash.visible = true
 		swordSlash.attack_all()
