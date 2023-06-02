@@ -17,6 +17,8 @@ var success: bool = false
 
 ##############################################.
 
+signal qte_done(is_success: bool)
+
 
 #this is where the whole code starts
 func init_qte(
@@ -113,9 +115,12 @@ func qte_iter(input: int) -> void:
 		if qte_counter == qte_sequence.size():  #if you'er at the end of the sequence, exitttt, and sucess is truee
 			is_qte = false
 			success = true
+			qte_done.emit(true)
+
 		sprite_shift()
 	else:  # if you have failed, then just quit
 		is_qte = false
+		qte_done.emit(false)
 
 
 func sprite_shift():  #for moving the sprite around after every input
@@ -137,6 +142,7 @@ func qte_time_out() -> void:  #timedd out
 	if qte_timer < 0:
 		qte_timer = qte_reset_timer
 		is_qte = false
+		qte_done.emit(false)
 	qte_timer -= qte_delta_time
 
 

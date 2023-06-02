@@ -30,8 +30,8 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rpq0h"]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vusr"]
+size = Vector2(30, 16)
 
 [node name="Sword" type="Area2D" groups=["attack"]]
 y_sort_enabled = true
@@ -44,6 +44,6 @@ autoplay = "default"
 frame_progress = 0.336454
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_rpq0h")
+shape = SubResource("RectangleShape2D_5vusr")
 
 [connection signal="animation_looped" from="Animation" to="." method="_on_animation_animation_looped"]

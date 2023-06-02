@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var swinging := false
 @onready var qte = $qte
 @onready var animationTree := $AnimatorTree
-@onready var animationsprite := $AnimationSprite
+@onready var slashSprite = $SwordSlash/Animation as AnimatedSprite2D
 @onready var playback: AnimationNodeStateMachinePlayback = animationTree.get("parameters/playback")
 
 @onready var deathScreen = owner.get_node("GUI/DeathScreen")
@@ -16,8 +16,8 @@ var is_slashing: bool
 var health: int = 100
 
 
-func _ready():
-	animationsprite.set_visible(false)  #sets the knife as invisible. duh. don't wanna see it.
+func _ready() -> void:
+	qte.qte_done.connect(_on_qte_done)
 
 
 func _input(event):
@@ -49,7 +49,7 @@ func _physics_process(delta):
 
 
 func move(_input_direction: Vector2, _delta: float, _is_slashing: bool) -> void:
-	if _is_slashing:
+	if qte.is_qte:
 		return  #is the player slashing?. then don't move.
 	velocity = _input_direction.normalized() * speed
 	move_and_slide()
@@ -61,29 +61,24 @@ func slash(is_slashing: bool) -> void:
 	if is_slashing and qte.is_qte == false:
 		qte.init_qte()
 
+
+func _on_qte_done(is_success: bool):
 	#yayy!!!, is the QTE is successful, reset it. and animate the knife
-	if qte.is_success():
-		animationsprite.set_visible(true)
-		if animationTree.get("parameters/Mele/blend_position").y < 0:
-			animationsprite.flip_v = true
-			animationsprite.z_index = -1
-			animationsprite.play("default")
-		else:
-			animationsprite.flip_v = false
-			animationsprite.z_index = 0
-			animationsprite.play("default")
+	if is_success:
+		slashSprite.visible = true
 		qte.reset()
-		await animationsprite.animation_finished
-		animationsprite.set_visible(false)
+	else:
+		slashSprite.visible = false
+		playback.travel("Idle", false)
+
 
 
 func walk_animation(_input_direction) -> void:
-	if _input_direction.x != 0 || _input_direction.y != 0:
+	if qte.is_qte or is_slashing:
+		return
+	if _input_direction.x != 0 or _input_direction.y != 0:
 		animationTree.set("parameters/Walk/blend_position", _input_direction.normalized())
 		animationTree.set("parameters/Idle/blend_position", _input_direction.normalized())
-		playback.travel("Walk")
-	else:
-		playback.travel("Idle")
 
 
 func slash_animation(is_slashing: bool) -> void:

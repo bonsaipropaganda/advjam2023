@@ -531,8 +531,9 @@ script = ExtResource("1_yr3k5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_clb0t")
-animation = &"walk_up"
+animation = &"walk_side"
 autoplay = "idle_side"
+frame_progress = 0.260448
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
