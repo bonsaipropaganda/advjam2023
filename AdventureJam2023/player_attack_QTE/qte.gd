@@ -36,7 +36,7 @@ func init_qte(
 	spawn_qte_sprites()
 
 	#stop the time
-	Engine.time_scale = 0.0
+	Engine.time_scale = 0.1
 
 	#hey, da QTE timer!!!. AHHH!!!!, TODO: make some sorta weird shader that'll slowly make the screen go grayscale to indicate that the time's gonna run out
 	qte_timer = qte_reset_timer
