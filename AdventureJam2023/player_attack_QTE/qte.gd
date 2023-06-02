@@ -5,14 +5,14 @@ extends Node2D
 var called: bool = false
 
 @export var qte_sequence: Array[int]
+# how many correct characters the player has ah. done.
 @export var qte_counter: int = 0
 var is_qte: bool = false
 
 @export var qte_reset_timer: float = 1.5
 @export var qte_timer: float = 1.5
-@export var qte_previous_time: float = 0
-@export var qte_delta_time: float = 0
-
+var qte_previous_time: float = 0
+var qte_delta_time: float = 0
 var success: bool = false
 
 ##############################################.
@@ -38,7 +38,7 @@ func init_qte(
 
 	#hey, da QTE timer!!!. AHHH!!!!, TODO: make some sorta weird shader that'll slowly make the screen go grayscale to indicate that the time's gonna run out
 	qte_timer = qte_reset_timer
-	qte_counter = 0  #how many correct characters the player has ah. done.
+	qte_counter = 0
 
 
 #get the random sequence of characetsrs
@@ -90,7 +90,6 @@ func reset() -> void:
 
 ##############################################
 func fetch_input() -> int:
-	var ret_val: int = -1
 	if Input.is_action_just_pressed("keyboard_up"):
 		return 0
 	if Input.is_action_just_pressed("keyboard_right"):
@@ -99,7 +98,7 @@ func fetch_input() -> int:
 		return 2
 	if Input.is_action_just_pressed("keyboard_down"):
 		return 3
-	return ret_val
+	return -1
 
 
 func qte_iter(input: int) -> void:
