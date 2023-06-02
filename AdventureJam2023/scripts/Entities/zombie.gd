@@ -63,7 +63,6 @@ func walk_animation() -> void:
 
 #for all the death stuff!!!
 func take_damage(_damage: int) -> void:
-	print("OUCH")
 	if not alive:
 		return
 	alive = false
