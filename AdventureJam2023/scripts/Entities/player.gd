@@ -18,6 +18,7 @@ var camera_tween: Tween
 var input_direction: Vector2
 var is_slashing: bool
 var health: int = 100
+var coins: int = 0
 
 
 func _ready() -> void:
@@ -50,6 +51,7 @@ func _physics_process(delta):
 	slash_animation(is_slashing)  #this one's for the slash animations
 
 	update_health()
+	update_coins()
 
 
 func move(_input_direction: Vector2, _delta: float, _is_slashing: bool) -> void:
@@ -112,7 +114,7 @@ func slash_animation(is_slashing: bool) -> void:
 
 
 func update_health():
-	var healthBar = $HealthBar
+	var healthBar = %HealthBar
 	healthBar.value = health
 
 	if health >= 100:
@@ -121,6 +123,10 @@ func update_health():
 		healthBar.visible = true
 	if health == 0:
 		die()
+
+
+func update_coins():
+	%CoinLabel.text = "x %s" % coins
 
 
 func _on_regen_timer_timeout():
@@ -140,3 +146,7 @@ func die():
 
 func _on_area_2d_body_entered(body):
 	health -= 10
+
+
+func get_coin(amount: int):
+	coins += amount

@@ -1,9 +1,10 @@
-[gd_scene load_steps=77 format=3 uid="uid://b2wp0wgdbcmhf"]
+[gd_scene load_steps=78 format=3 uid="uid://b2wp0wgdbcmhf"]
 
 [ext_resource type="Script" path="res://scripts/Entities/zombie.gd" id="1_yr3k5"]
 [ext_resource type="Texture2D" uid="uid://jld775x4pifr" path="res://sprites/Entities/Zombie/Death.png" id="2_2ut1g"]
 [ext_resource type="Material" uid="uid://di3sahwexe7ba" path="res://resources/blinking_material.tres" id="2_r346j"]
 [ext_resource type="Texture2D" uid="uid://brixg843i7iea" path="res://sprites/Entities/Zombie/Idle.png" id="3_epda5"]
+[ext_resource type="PackedScene" uid="uid://cxu80qqu2idf5" path="res://scenes/coin.tscn" id="3_xpe6n"]
 [ext_resource type="Texture2D" uid="uid://cv5epkvp8u6pl" path="res://sprites/Entities/Zombie/Walk.png" id="4_h0v0s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7xxn"]
@@ -561,6 +562,8 @@ rotation = 0.00334244
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_yr3k5")
+drop_chance = 1.0
+coin_scene = ExtResource("3_xpe6n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

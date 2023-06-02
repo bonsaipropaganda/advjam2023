@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxu80qqu2idf5"]
+[gd_scene load_steps=32 format=3 uid="uid://cxu80qqu2idf5"]
 
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_7sdkw"]
 [ext_resource type="Texture2D" uid="uid://d4agdq56wc6bj" path="res://sprites/Coin/GoldCoinSpinning.png" id="1_12ise"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pub0"]
@@ -183,7 +184,8 @@ length = 0.001
 
 [sub_resource type="Animation" id="Animation_4w5w5"]
 resource_name = "float"
-length = 2.0
+length = 1.5
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -191,10 +193,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, -4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pip0s"]
@@ -203,16 +205,29 @@ _data = {
 "float": SubResource("Animation_4w5w5")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1bp5"]
+radius = 7.0
+
 [node name="coin" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("1_7sdkw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_g6fsb")
+frame_progress = 0.510607
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "float"
 libraries = {
 "": SubResource("AnimationLibrary_pip0s")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h1bp5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -11,6 +11,9 @@ class_name Zombie
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@export_range(0.0, 1.0) var drop_chance: float = 0.3
+@export var coin_scene: PackedScene
+
 var speed: float = 400
 var direction: Vector2 = Vector2(-0.5, 0.0)
 
@@ -75,10 +78,12 @@ func take_damage(damage: int) -> void:
 	if hp == 0:
 		die()
 
+
 func blink() -> void:
 	material.set_shader_parameter("is_blinking", true)
 	await get_tree().create_timer(0.7).timeout
 	material.set_shader_parameter("is_blinking", false)
+
 
 func die() -> void:
 	alive = false
@@ -94,3 +99,12 @@ func die() -> void:
 			$AnimatedSprite2D.set_animation("death_side")
 	collision_layer = 0
 	set_process(false)
+
+	if randf() < drop_chance:
+		drop_coin()
+
+
+func drop_coin():
+	var coin = coin_scene.instantiate()
+	coin.global_position = global_position
+	get_tree().current_scene.add_child(coin)

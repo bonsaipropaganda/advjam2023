@@ -26,6 +26,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom_font="res://sprites/GUI/CooperBits.ttf"
+
 [input]
 
 keyboard_right={

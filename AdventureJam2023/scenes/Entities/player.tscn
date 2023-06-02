@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ctftvg83q0ap5"]
+[gd_scene load_steps=56 format=3 uid="uid://ctftvg83q0ap5"]
 
 [ext_resource type="Script" path="res://scripts/Entities/player.gd" id="1_r2lvk"]
 [ext_resource type="Script" path="res://scripts/sword_slash.gd" id="2_x0ei6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cscu53v68f4m3" path="res://sprites/Swipe Effect/green_slash/SP301_01.png" id="9_ls5bf"]
 [ext_resource type="PackedScene" uid="uid://cnht5wav7xc1s" path="res://scenes/sword_slash.tscn" id="10_183k2"]
 [ext_resource type="AudioStream" uid="uid://5s5ctkskxmnq" path="res://sounds/sfx/slash.ogg" id="11_ba2qx"]
+[ext_resource type="Texture2D" uid="uid://d4agdq56wc6bj" path="res://sprites/Coin/GoldCoinSpinning.png" id="12_lhmwi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ek2va"]
 animations = [{
@@ -709,6 +710,9 @@ graph_offset = Vector2(-15, -12)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6h6sv"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_r8v2f"]
+font_size = 32
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("slash_sound") groups=["Player"]]
 z_index = 3
 y_sort_enabled = true
@@ -755,15 +759,6 @@ collision_mask = 4
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_65n6a")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-self_modulate = Color(0.972549, 0.407843, 0, 1)
-offset_left = -15.0
-offset_top = -16.0
-offset_right = 133.0
-offset_bottom = 11.0
-scale = Vector2(0.2, 0.2)
-metadata/_edit_use_anchors_ = true
-
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sr10y")
@@ -785,6 +780,56 @@ autostart = true
 
 [node name="SlashSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ba2qx")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+self_modulate = Color(0.972549, 0.407843, 0, 1)
+offset_left = -14.0
+offset_top = -20.0
+offset_right = 134.0
+offset_bottom = 7.0
+scale = Vector2(0.2, 0.2)
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="UI/MarginContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(32, 8)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 751.0
+grow_vertical = 2
+texture = ExtResource("12_lhmwi")
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x 1"
+label_settings = SubResource("LabelSettings_r8v2f")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="HealthChecker" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
