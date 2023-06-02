@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var swinging := false
 @onready var qte = $qte
 @onready var animationTree := $AnimatorTree
-@onready var slashSprite = $SwordSlash/Animation as AnimatedSprite2D
+@onready var swordSlash = $SwordSlash
 @onready var playback: AnimationNodeStateMachinePlayback = animationTree.get("parameters/playback")
 
 @onready var deathScreen = owner.get_node("GUI/DeathScreen")
@@ -65,12 +65,15 @@ func slash(is_slashing: bool) -> void:
 func _on_qte_done(is_success: bool):
 	#yayy!!!, is the QTE is successful, reset it. and animate the knife
 	if is_success:
-		slashSprite.visible = true
+		swordSlash.visible = true
+		swordSlash.attack_all()
 		qte.reset()
+		await animationTree.animation_finished
+		swordSlash.visible = false
 	else:
-		slashSprite.visible = false
+		swordSlash.visible = false
+		swordSlash.attack_nearest()
 		playback.travel("Idle", false)
-
 
 
 func walk_animation(_input_direction) -> void:

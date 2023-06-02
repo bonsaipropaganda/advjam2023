@@ -62,23 +62,20 @@ func walk_animation() -> void:
 
 
 #for all the death stuff!!!
-func _on_area_2d_area_entered(area):
-	if "SwordSlash" in area.name and alive:
-		print("OUCH")
-		alive = false
-		is_chasing = false
-		match $AnimatedSprite2D.animation:
-			"idle_down", "walk_down":
-				$AnimatedSprite2D.set_animation("death_down")
+func take_damage(_damage: int) -> void:
+	print("OUCH")
+	if not alive:
+		return
+	alive = false
+	is_chasing = false
+	match $AnimatedSprite2D.animation:
+		"idle_down", "walk_down":
+			$AnimatedSprite2D.set_animation("death_down")
 
-			"idle_up", "walk_up":
-				$AnimatedSprite2D.set_animation("death_up")
+		"idle_up", "walk_up":
+			$AnimatedSprite2D.set_animation("death_up")
 
-			"idle_side", "walk_side":
-				$AnimatedSprite2D.set_animation("death_side")
-		collision_layer = 0
-		set_process(false)
-
-#
-#func _on_animated_sprite_2d_animation_finished():
-#	$AnimatedSprite2D.pause()
+		"idle_side", "walk_side":
+			$AnimatedSprite2D.set_animation("death_side")
+	collision_layer = 0
+	set_process(false)
