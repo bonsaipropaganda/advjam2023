@@ -9,6 +9,7 @@ var spawn_pos = null
 func _ready():
 	randomize()
 	spawn_pos = $Spawner.get_children()
+	
 
 
 func _on_timer_timeout():

@@ -26,6 +26,7 @@ animations = [{
 }]
 
 [node name="SwordShop" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_yql0t")
 small_sword = ExtResource("2_un5ur")
 figure_name = "Sword Shop"
@@ -42,6 +43,7 @@ collision_mask = 2
 shape = SubResource("CapsuleShape2D_72733")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_askmc")
 
 [node name="Key" parent="." instance=ExtResource("3_nca8x")]

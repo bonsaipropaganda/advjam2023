@@ -557,6 +557,7 @@ _data = {
 }
 
 [node name="Zombie" type="CharacterBody2D"]
+y_sort_enabled = true
 material = ExtResource("2_r346j")
 position = Vector2(1.04082e-12, 1.04082e-12)
 rotation = 0.00334244

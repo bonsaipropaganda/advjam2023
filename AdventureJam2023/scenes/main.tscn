@@ -268,13 +268,15 @@ z_index = -1
 position = Vector2(-359, 220)
 
 [node name="DarkFigure" parent="NPCs" instance=ExtResource("8_fynes")]
+y_sort_enabled = false
 position = Vector2(-328, 264)
 
 [node name="Judgement" parent="NPCs" instance=ExtResource("12_lrhnj")]
+y_sort_enabled = false
 position = Vector2(-400, -192)
 
 [node name="SwordShop" parent="NPCs" instance=ExtResource("10_2vi4q")]
-position = Vector2(488, 32)
+position = Vector2(208, 440)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

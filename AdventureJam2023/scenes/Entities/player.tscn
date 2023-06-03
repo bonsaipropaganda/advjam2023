@@ -728,7 +728,6 @@ slash_sound = NodePath("SlashSound")
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
-frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

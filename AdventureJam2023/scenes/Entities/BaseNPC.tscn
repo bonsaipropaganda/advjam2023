@@ -29,6 +29,7 @@ animations = [{
 }]
 
 [node name="BaseEntity" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_pmyxb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
