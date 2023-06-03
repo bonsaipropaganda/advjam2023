@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dw8ojbnh16lk4" path="res://scenes/ground_tiles.tscn" id="3_dh5yo"]
 [ext_resource type="Texture2D" uid="uid://drpfncyw350o6" path="res://sprites/SUMMERVILLE - Forest/Tileset/Trees.png" id="6_fbp6y"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_054k3"]
-[ext_resource type="PackedScene" uid="uid://d0ihjitc5roe5" path="res://scenes/Entities/DarkFigure/DarkFigure.tscn" id="7_uesmw"]
+[ext_resource type="PackedScene" uid="uid://nu5b3rqou2kv" path="res://scenes/Entities/DarkFigure.tscn" id="8_fynes"]
 [ext_resource type="PackedScene" uid="uid://ce64hr3ek1ewn" path="res://scenes/Entities/DarkFigure/force_field.tscn" id="8_w6glo"]
 [ext_resource type="PackedScene" uid="uid://dc3a7wo5qwamg" path="res://scenes/GUI/menus/death_screen.tscn" id="9_0dbki"]
 [ext_resource type="PackedScene" uid="uid://68qt82behmuc" path="res://scenes/GUI/TextBox.tscn" id="9_r185j"]
 [ext_resource type="PackedScene" uid="uid://b8ug0vdknyyuo" path="res://scenes/GUI/menus/pause.tscn" id="9_trjc5"]
-[ext_resource type="PackedScene" uid="uid://3o8fydhxk8ke" path="res://scenes/Entities/Judgement.tscn" id="12_lrhnj"]
+[ext_resource type="PackedScene" uid="uid://dolfh6hsub1iy" path="res://scenes/Entities/Judgement.tscn" id="12_lrhnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw6n3"]
 texture = ExtResource("6_fbp6y")
@@ -265,11 +265,11 @@ autostart = true
 z_index = -1
 position = Vector2(-359, 220)
 
-[node name="DarkFigure" parent="NPCs" instance=ExtResource("7_uesmw")]
-position = Vector2(-327, 257)
+[node name="DarkFigure" parent="NPCs" instance=ExtResource("8_fynes")]
+position = Vector2(-328, 264)
 
 [node name="Judgement" parent="NPCs" instance=ExtResource("12_lrhnj")]
-position = Vector2(-368, -176)
+position = Vector2(-352, -216)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

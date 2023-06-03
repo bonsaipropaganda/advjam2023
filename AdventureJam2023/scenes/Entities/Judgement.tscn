@@ -1,17 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://3o8fydhxk8ke"]
+[gd_scene load_steps=17 format=3 uid="uid://dolfh6hsub1iy"]
 
+[ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_arvno"]
 [ext_resource type="Script" path="res://scripts/Entities/Judgement.gd" id="1_xux6s"]
 [ext_resource type="Texture2D" uid="uid://djdylbl00vh36" path="res://sprites/Entities/NPCs/Judgement.png" id="2_ckyrd"]
-[ext_resource type="PackedScene" uid="uid://dba6xhqwhvjva" path="res://scenes/GUI/Key.tscn" id="3_vden4"]
-[ext_resource type="AudioStream" uid="uid://ct7ipiagm5604" path="res://sounds/sfx/Dark_Figure_Disappear.wav" id="4_vc3pj"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_puakk"]
-radius = 8.0
-height = 28.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72733"]
-radius = 19.0
-height = 52.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wvdh"]
 atlas = ExtResource("2_ckyrd")
@@ -115,31 +106,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Judgement" type="StaticBody2D"]
+[node name="Judgement" instance=ExtResource("1_arvno")]
 script = ExtResource("1_xux6s")
-figure_name = "Judgement"
-dialogue_path = "res://scripts/Entities/dialogue/Judgement.json"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_puakk")
-
-[node name="InteractionRange" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
-shape = SubResource("CapsuleShape2D_72733")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_askmc")
-frame_progress = 0.973705
-
-[node name="Key" parent="." instance=ExtResource("3_vden4")]
-visible = false
-position = Vector2(16, -18)
-frame = 20
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_vc3pj")
-
-[connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
-[connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]
