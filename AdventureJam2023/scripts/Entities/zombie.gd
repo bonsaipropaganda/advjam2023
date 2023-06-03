@@ -74,7 +74,7 @@ func take_damage(damage: int) -> void:
 	if not alive:
 		return
 	blink()
-	hp = clamp(damage, 0, hp - damage)
+	hp = clamp(hp-damage, 0, max_hp)
 	if hp == 0:
 		die()
 

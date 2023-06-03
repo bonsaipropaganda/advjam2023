@@ -726,7 +726,6 @@ slash_sound = NodePath("SlashSound")
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
-frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -786,7 +785,6 @@ stream = ExtResource("11_ba2qx")
 [node name="HealthBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
 self_modulate = Color(0.972549, 0.407843, 0, 1)
-anchors_preset = -1
 offset_left = 544.0
 offset_top = 256.0
 offset_right = 736.0
