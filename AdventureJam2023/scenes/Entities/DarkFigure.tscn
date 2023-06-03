@@ -76,7 +76,7 @@ animations = [{
 [node name="DarkFigure" instance=ExtResource("1_lqjko")]
 script = ExtResource("2_2sbk7")
 figure_name = "Dark Figure"
-dialogue_paths = Array[String](["res://scripts/Entities/dialogue/Dark_Figure_Dialogue.json"])
+dialogue_paths = Array[String](["res://resources/dialogue/Dark_Figure.json"])
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_askmc")

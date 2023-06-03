@@ -1,6 +1,7 @@
-[gd_scene load_steps=56 format=3 uid="uid://ctftvg83q0ap5"]
+[gd_scene load_steps=57 format=3 uid="uid://ctftvg83q0ap5"]
 
 [ext_resource type="Script" path="res://scripts/Entities/player.gd" id="1_r2lvk"]
+[ext_resource type="Resource" uid="uid://3pg4iv58lgb5" path="res://resources/weapons/knife.tres" id="2_6wrh6"]
 [ext_resource type="Script" path="res://scripts/sword_slash.gd" id="2_x0ei6"]
 [ext_resource type="Texture2D" uid="uid://dtev2q5avpadb" path="res://sprites/Entities/Player/player.png" id="3_w1x57"]
 [ext_resource type="Texture2D" uid="uid://cmmftfvhacngw" path="res://sprites/Swipe Effect/green_slash/SP301_05.png" id="5_ex26q"]
@@ -719,6 +720,7 @@ y_sort_enabled = true
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_r2lvk")
+weapon = ExtResource("2_6wrh6")
 swing_animation = SubResource("PackedScene_4amne")
 slash_sound = NodePath("SlashSound")
 
@@ -726,6 +728,7 @@ slash_sound = NodePath("SlashSound")
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

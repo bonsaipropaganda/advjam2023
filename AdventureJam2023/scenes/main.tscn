@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=16 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dc3a7wo5qwamg" path="res://scenes/GUI/menus/death_screen.tscn" id="9_0dbki"]
 [ext_resource type="PackedScene" uid="uid://68qt82behmuc" path="res://scenes/GUI/TextBox.tscn" id="9_r185j"]
 [ext_resource type="PackedScene" uid="uid://b8ug0vdknyyuo" path="res://scenes/GUI/menus/pause.tscn" id="9_trjc5"]
+[ext_resource type="PackedScene" uid="uid://defejqrdkoqd1" path="res://scenes/Entities/SwordShop.tscn" id="10_2vi4q"]
 [ext_resource type="PackedScene" uid="uid://dolfh6hsub1iy" path="res://scenes/Entities/Judgement.tscn" id="12_lrhnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw6n3"]
@@ -270,6 +271,10 @@ position = Vector2(-328, 264)
 
 [node name="Judgement" parent="NPCs" instance=ExtResource("12_lrhnj")]
 position = Vector2(-352, -216)
+figure_name = "Judgement"
+
+[node name="SwordShop" parent="NPCs" instance=ExtResource("10_2vi4q")]
+position = Vector2(480, 40)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

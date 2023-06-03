@@ -1,37 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ijdff06gv51"]
+[gd_scene load_steps=9 format=3 uid="uid://defejqrdkoqd1"]
 
-[ext_resource type="Script" path="res://scripts/Entities/BaseNPC.gd" id="1_pmyxb"]
-[ext_resource type="Texture2D" uid="uid://dwffkkynsq4kd" path="res://sprites/Entities/NPCs/Figure Outline.png" id="2_mkqgy"]
-[ext_resource type="PackedScene" uid="uid://dba6xhqwhvjva" path="res://scenes/GUI/Key.tscn" id="3_d3rug"]
-[ext_resource type="AudioStream" uid="uid://ct7ipiagm5604" path="res://sounds/sfx/Dark_Figure_Disappear.wav" id="4_ovf4m"]
+[ext_resource type="Script" path="res://scripts/Entities/SwordShop.gd" id="1_yql0t"]
+[ext_resource type="Texture2D" uid="uid://bmevo6iorgsjt" path="res://sprites/sword_in_the_dirt.png" id="2_l2i08"]
+[ext_resource type="Resource" uid="uid://cexxpi3opd086" path="res://resources/weapons/small_sword.tres" id="2_un5ur"]
+[ext_resource type="PackedScene" uid="uid://dba6xhqwhvjva" path="res://scenes/GUI/Key.tscn" id="3_nca8x"]
+[ext_resource type="AudioStream" uid="uid://ct7ipiagm5604" path="res://sounds/sfx/Dark_Figure_Disappear.wav" id="4_oxu3c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_puakk"]
 radius = 8.0
-height = 28.0
+height = 16.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72733"]
 radius = 19.0
 height = 52.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfs4v"]
-atlas = ExtResource("2_mkqgy")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_askmc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qfs4v")
+"texture": ExtResource("2_l2i08")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="BaseEntity" type="StaticBody2D"]
-script = ExtResource("1_pmyxb")
+[node name="SwordShop" type="StaticBody2D"]
+script = ExtResource("1_yql0t")
+small_sword = ExtResource("2_un5ur")
+figure_name = "Sword Shop"
+dialogue_paths = Array[String](["res://resources/dialogue/SwordShop1.json", "res://resources/dialogue/SwordShop2.json"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_puakk")
 
 [node name="InteractionRange" type="Area2D" parent="."]
@@ -43,13 +44,13 @@ shape = SubResource("CapsuleShape2D_72733")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_askmc")
 
-[node name="Key" parent="." instance=ExtResource("3_d3rug")]
+[node name="Key" parent="." instance=ExtResource("3_nca8x")]
 visible = false
 position = Vector2(16, -18)
 frame = 20
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_ovf4m")
+stream = ExtResource("4_oxu3c")
 
 [connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]

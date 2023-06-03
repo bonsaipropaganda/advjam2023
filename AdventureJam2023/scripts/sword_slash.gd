@@ -8,7 +8,7 @@ func _on_animation_animation_looped():  #after a loop, stop the animation
 
 
 # attack nearest enemy, this is triggered when qte fails
-func attack_nearest():
+func attack_nearest(damage):
 	# the variable containing nearest enemy to the attack direction
 	var nearest_attackable = null
 	for body in get_overlapping_bodies():
@@ -24,11 +24,11 @@ func attack_nearest():
 				# set the nearest_attackable to the current body
 				nearest_attackable = body
 	if nearest_attackable != null:
-		nearest_attackable.take_damage(1)
+		nearest_attackable.take_damage(damage)
 
 
 # attack all enemy in the area, this is triggered when qte success
-func attack_all():
+func attack_all(damage):
 	for body in get_overlapping_bodies():
 		if body.has_method("take_damage"):
-			body.take_damage(1)
+			body.take_damage(damage)

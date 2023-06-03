@@ -13,6 +13,8 @@ var textBox
 var index : int = 0			# The index of the current line of dialogue
 var can_interact := false
 
+var player_reference = null
+
 var json_as_dict = {}		# dictionary of the current dialogue
 var action_on_dialogue = {}	# dictionary of actions to take upon reaching certain dialogue indexes
 
@@ -58,6 +60,7 @@ func _on_interaction_range_body_entered(body):
 	if body.name == "Player":
 		if key:	key.visible = true
 		can_interact = true
+		player_reference = body
 
 # this is to exit the interaction
 func _on_interaction_range_body_exited(body):
@@ -65,6 +68,7 @@ func _on_interaction_range_body_exited(body):
 		if key:	key.visible = false
 		if textBox: textBox.visible = false
 		can_interact = false
+		player_reference = null
 
 # Get the json file and use it to fill a dict
 func set_json(file_path):
