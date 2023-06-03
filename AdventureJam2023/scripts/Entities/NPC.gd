@@ -18,7 +18,7 @@ var player_reference = null
 var json_as_dict = {}		# dictionary of the current dialogue
 var action_on_dialogue = {}	# dictionary of actions to take upon reaching certain dialogue indexes
 
-signal dialogue_finished(dialogue_index)
+signal dialogue_finished(dialogue_index : int, flag_bool : bool)
 
 func _ready():
 	key = $Key
@@ -41,12 +41,12 @@ func _input(event):
 			else:
 				dialogue(index, index+1)		# If this is not a special case, conitnue as usual
 
-func close_dialogue():
+func close_dialogue(flag : bool = false):
 	index = 0
 	key.visible = false
 	textBox.visible = false
 	can_interact = false
-	dialogue_finished.emit(dialogue_index)
+	dialogue_finished.emit(dialogue_index, flag)
 
 # Function to overwrite in children classes. Did this to not overwrite the _ready method
 func set_action_index():

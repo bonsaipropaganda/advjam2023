@@ -14,3 +14,7 @@ func set_action_index():
 		await(SpriteAnimator.animation_finished)
 		SpriteAnimator.play("default")
 	)
+
+func _on_sword_shop_dialogue_finished(dialogue_index, bool_flag):
+	if bool_flag:
+		queue_free()
