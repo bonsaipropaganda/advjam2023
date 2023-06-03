@@ -108,7 +108,8 @@ animations = [{
 
 [node name="Judgement" instance=ExtResource("1_arvno")]
 script = ExtResource("1_xux6s")
-dialogue_paths = Array[String](["res://resources/dialogue/Judgement1.json", "res://resources/dialogue/Judgement2.json"])
+figure_name = "Judgement"
+dialogue_paths = Array[String](["res://resources/dialogue/Judgement/(0)Meeting.json", "res://resources/dialogue/Judgement/(1)WaitOnSword.json"])
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_askmc")

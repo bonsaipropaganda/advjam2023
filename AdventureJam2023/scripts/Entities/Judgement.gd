@@ -10,7 +10,7 @@ func set_action_index():
 		# Character animation
 		SpriteAnimator.play("look_down")
 		switch_dialogue_option(1)
+		clear_action_index()
 		await(SpriteAnimator.animation_finished)
 		SpriteAnimator.play("default")
-		clear_action_index()
 	)

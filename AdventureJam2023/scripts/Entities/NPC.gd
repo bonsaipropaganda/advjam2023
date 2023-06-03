@@ -18,6 +18,8 @@ var player_reference = null
 var json_as_dict = {}		# dictionary of the current dialogue
 var action_on_dialogue = {}	# dictionary of actions to take upon reaching certain dialogue indexes
 
+signal dialogue_finished(dialogue_index)
+
 func _ready():
 	key = $Key
 	SpriteAnimator = $AnimatedSprite2D
@@ -35,18 +37,27 @@ func _input(event):
 			if index in action_on_dialogue:		# If there is a special action associated with this index, do it
 				action_on_dialogue[index].call()
 			elif index >= json_as_dict.size():	# If the dialogue is over, reset the index and hide the dialogue box
-				index = 0
-				textBox.visible = false
+				close_dialogue()
 			else:
 				dialogue(index, index+1)		# If this is not a special case, conitnue as usual
+
+func close_dialogue():
+	index = 0
+	key.visible = false
+	textBox.visible = false
+	can_interact = false
+	dialogue_finished.emit(dialogue_index)
 
 # Function to overwrite in children classes. Did this to not overwrite the _ready method
 func set_action_index():
 	pass
 
 # Function to reset the action_on_dialogue dictionary
-func clear_action_index():
-	action_on_dialogue = {}
+func clear_action_index(_new_action_index: Dictionary = {}):
+	# Wait for the signal to fire to ensure every line of code in action_on_dialogue is finished first.
+	await(self.dialogue_finished)
+	
+	action_on_dialogue = _new_action_index
 
 func add_action_to_index(idx : int, actions):
 	action_on_dialogue[idx] = actions

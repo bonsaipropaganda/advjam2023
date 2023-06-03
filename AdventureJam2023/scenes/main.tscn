@@ -258,6 +258,7 @@ position = Vector2(109, 159)
 position = Vector2(148, 43)
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 3.0
 autostart = true
 
 [node name="NPCs" type="Node" parent="."]
@@ -270,11 +271,10 @@ position = Vector2(-359, 220)
 position = Vector2(-328, 264)
 
 [node name="Judgement" parent="NPCs" instance=ExtResource("12_lrhnj")]
-position = Vector2(-352, -216)
-figure_name = "Judgement"
+position = Vector2(-392, -192)
 
 [node name="SwordShop" parent="NPCs" instance=ExtResource("10_2vi4q")]
-position = Vector2(480, 40)
+position = Vector2(488, 32)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

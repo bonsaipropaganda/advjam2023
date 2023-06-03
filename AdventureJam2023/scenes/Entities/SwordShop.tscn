@@ -29,7 +29,7 @@ animations = [{
 script = ExtResource("1_yql0t")
 small_sword = ExtResource("2_un5ur")
 figure_name = "Sword Shop"
-dialogue_paths = Array[String](["res://resources/dialogue/SwordShop1.json", "res://resources/dialogue/SwordShop2.json"])
+dialogue_paths = Array[String](["res://resources/dialogue/Sword_Shop/(0)Meeting.json", "res://resources/dialogue/Sword_Shop/(1)CheckingIn.json", "res://resources/dialogue/Sword_Shop/(2)Silent.json"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

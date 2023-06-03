@@ -83,13 +83,13 @@ func _on_qte_done(is_success: bool):
 
 	if is_success:  # show slash animation on qte success, aoe attack
 		swordSlash.visible = true
-		swordSlash.attack_all(weapon.single_damage)
+		swordSlash.attack_all(weapon.group_damage)
 		qte.reset()
 		await animationTree.animation_finished
 		swordSlash.visible = false
 	else:  # hide slash animation on qte fail, single target attack
 		swordSlash.visible = false
-		swordSlash.attack_nearest(weapon.group_damage)
+		swordSlash.attack_nearest(weapon.single_damage)
 		playback.travel("Idle", false)
 
 
