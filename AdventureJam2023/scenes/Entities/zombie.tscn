@@ -559,8 +559,6 @@ _data = {
 [node name="Zombie" type="CharacterBody2D"]
 y_sort_enabled = true
 material = ExtResource("2_r346j")
-position = Vector2(1.04082e-12, 1.04082e-12)
-rotation = 0.00334244
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_yr3k5")
@@ -568,20 +566,21 @@ drop_chance = 1.0
 coin_scene = ExtResource("3_xpe6n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-y_sort_enabled = true
 use_parent_material = true
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_clb0t")
 animation = &"walk_up"
 autoplay = "idle_side"
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -10)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_02opy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.00668486, 1.99999)
+position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_1gsqh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

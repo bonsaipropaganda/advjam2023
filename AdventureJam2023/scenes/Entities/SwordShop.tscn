@@ -26,6 +26,7 @@ animations = [{
 }]
 
 [node name="SwordShop" type="StaticBody2D"]
+z_index = 3
 y_sort_enabled = true
 script = ExtResource("1_yql0t")
 small_sword = ExtResource("2_un5ur")
@@ -48,6 +49,7 @@ sprite_frames = SubResource("SpriteFrames_askmc")
 
 [node name="Key" parent="." instance=ExtResource("3_nca8x")]
 visible = false
+z_index = 1
 position = Vector2(16, -18)
 frame = 20
 

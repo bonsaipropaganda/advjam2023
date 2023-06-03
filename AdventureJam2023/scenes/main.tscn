@@ -234,7 +234,9 @@ layer_0/tile_data = PackedInt32Array(917471, 1245184, 1, 1572824, 1245184, 1, 19
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
 position = Vector2(608, 568)
 
-[node name="EnemySpawner" type="Node" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
 script = ExtResource("7_054k3")
 
 [node name="Spawner" type="Node" parent="EnemySpawner"]
@@ -261,7 +263,11 @@ position = Vector2(148, 43)
 wait_time = 3.0
 autostart = true
 
-[node name="NPCs" type="Node" parent="."]
+[node name="NPCs" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SwordShop" parent="NPCs" instance=ExtResource("10_2vi4q")]
+position = Vector2(488, 40)
 
 [node name="ForceField" parent="NPCs" instance=ExtResource("8_w6glo")]
 z_index = -1
@@ -274,9 +280,6 @@ position = Vector2(-328, 264)
 [node name="Judgement" parent="NPCs" instance=ExtResource("12_lrhnj")]
 y_sort_enabled = false
 position = Vector2(-400, -192)
-
-[node name="SwordShop" parent="NPCs" instance=ExtResource("10_2vi4q")]
-position = Vector2(208, 440)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
