@@ -271,7 +271,7 @@ position = Vector2(-359, 220)
 position = Vector2(-328, 264)
 
 [node name="Judgement" parent="NPCs" instance=ExtResource("12_lrhnj")]
-position = Vector2(-392, -192)
+position = Vector2(-400, -192)
 
 [node name="SwordShop" parent="NPCs" instance=ExtResource("10_2vi4q")]
 position = Vector2(488, 32)
