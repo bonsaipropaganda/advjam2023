@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dba6xhqwhvjva"]
-
-[ext_resource type="Texture2D" uid="uid://dd5h6aeq0q6l7" path="res://sprites/GUI/KeyMap.png" id="1_s0u4w"]
-
-[node name="Key" type="Sprite2D"]
-texture = ExtResource("1_s0u4w")
-hframes = 8
-vframes = 7

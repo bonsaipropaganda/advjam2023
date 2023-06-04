@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7mapias0bamy"]
+
+[ext_resource type="AudioStream" uid="uid://cu846cl0ameih" path="res://sounds/tracks/QuaffTune-AdventureJamMusicThingThatTookMeLikeTwoMinutesToMakeAndIsKindaBadButOhWell.mp3" id="1_fjqlb"]
+
+[node name="music" type="AudioStreamPlayer"]
+stream = ExtResource("1_fjqlb")
+autoplay = true

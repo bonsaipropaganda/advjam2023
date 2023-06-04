@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://68qt82behmuc"]
+
+[ext_resource type="Texture2D" uid="uid://bw1sx21vq4rhy" path="res://sprites/GUI/GUI.png" id="1_5l8ym"]
+
+[node name="TextureRect" type="NinePatchRect"]
+offset_right = 80.0
+offset_bottom = 64.0
+scale = Vector2(3.16, 3.16)
+texture = ExtResource("1_5l8ym")
+region_rect = Rect2(0, 32, 48, 48)
+patch_margin_left = 40
+patch_margin_top = 8
+patch_margin_right = 40
+patch_margin_bottom = 8
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 1
+offset_left = 15.1899
+offset_top = 15.1899
+offset_right = 63.1899
+offset_bottom = 47.1899
+scale = Vector2(0.386436, 0.386436)
+text = "Text"
+
+[node name="CharacterNameBox" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_top = -16.0
+offset_right = 60.0
+offset_bottom = 8.0
+texture = ExtResource("1_5l8ym")
+region_rect = Rect2(0, 32, 48, 48)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CharacterName" type="Label" parent="CharacterNameBox"]
+layout_mode = 0
+offset_left = 7.59494
+offset_top = 7.13924
+offset_right = 63.5949
+offset_bottom = 33.1392
+scale = Vector2(0.40074, 0.394433)
+text = "Name"

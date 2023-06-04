@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnht5wav7xc1s"]
+
+[ext_resource type="Script" path="res://scripts/sword_slash.gd" id="1_xxay3"]
+[ext_resource type="Texture2D" uid="uid://cscu53v68f4m3" path="res://sprites/Swipe Effect/green_slash/SP301_01.png" id="2_6ihk2"]
+[ext_resource type="Texture2D" uid="uid://q34c8jgx517r" path="res://sprites/Swipe Effect/green_slash/SP301_02.png" id="3_meuki"]
+[ext_resource type="Texture2D" uid="uid://ci5wjtj0lktui" path="res://sprites/Swipe Effect/green_slash/SP301_03.png" id="4_vpspk"]
+[ext_resource type="Texture2D" uid="uid://dxymgv3fjwoq6" path="res://sprites/Swipe Effect/green_slash/SP301_04.png" id="5_wesu0"]
+[ext_resource type="Texture2D" uid="uid://cmmftfvhacngw" path="res://sprites/Swipe Effect/green_slash/SP301_05.png" id="6_kv82b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ek2va"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kv82b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wesu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vpspk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_meuki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6ihk2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vusr"]
+size = Vector2(30, 26)
+
+[node name="SwordSlash" type="Area2D" groups=["attack"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_xxay3")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ek2va")
+autoplay = "default"
+frame_progress = 0.336454
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5vusr")
+
+[connection signal="animation_looped" from="Animation" to="." method="_on_animation_animation_looped"]

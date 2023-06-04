@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://di3sahwexe7ba"]
-
-[ext_resource type="Shader" uid="uid://h06hufwqu4l3" path="res://resources/blinking_shader.tres" id="1_8g6rj"]
-
-[resource]
-resource_local_to_scene = true
-shader = ExtResource("1_8g6rj")
-shader_parameter/is_blinking = false
