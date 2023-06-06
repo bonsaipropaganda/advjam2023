@@ -21,35 +21,38 @@ offset_top = -16.0
 offset_right = 1318.0
 offset_bottom = 742.0
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="TextureButton2" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 137.0
-offset_top = 150.0
-offset_right = 473.0
-offset_bottom = 416.0
-texture_normal = ExtResource("2_yfckd")
+offset_left = 150.0
+offset_top = 550.0
+offset_right = 463.0
+offset_bottom = 754.0
+texture_normal = ExtResource("5_f8kof")
 texture_pressed = ExtResource("3_78qe2")
-stretch_mode = 0
+ignore_texture_size = true
+stretch_mode = 6
 
 [node name="TextureButton3" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 322.0
-offset_right = 468.0
-offset_bottom = 580.0
+offset_left = 157.0
+offset_top = 355.0
+offset_right = 451.0
+offset_bottom = 567.0
 texture_normal = ExtResource("4_2efbp")
 texture_pressed = ExtResource("3_78qe2")
-stretch_mode = 0
+ignore_texture_size = true
+stretch_mode = 6
 
-[node name="TextureButton2" type="TextureButton" parent="Control"]
+[node name="TextureButton" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 137.0
-offset_top = 483.0
-offset_right = 473.0
-offset_bottom = 749.0
-texture_normal = ExtResource("5_f8kof")
+offset_left = 145.0
+offset_top = 170.0
+offset_right = 458.0
+offset_bottom = 374.0
+texture_normal = ExtResource("2_yfckd")
 texture_pressed = ExtResource("3_78qe2")
-stretch_mode = 0
+ignore_texture_size = true
+stretch_mode = 6
 
 [node name="MusicVolume" type="HSlider" parent="Control"]
 layout_mode = 1
@@ -146,8 +149,8 @@ theme_override_font_sizes/normal_font_size = 182
 text = "Rumbo"
 scroll_active = false
 
-[connection signal="button_down" from="Control/TextureButton" to="." method="_on_texture_button_button_down"]
-[connection signal="button_down" from="Control/TextureButton3" to="." method="_on_texture_button_3_button_down"]
 [connection signal="button_down" from="Control/TextureButton2" to="." method="_on_texture_button_2_button_down"]
+[connection signal="button_down" from="Control/TextureButton3" to="." method="_on_texture_button_3_button_down"]
+[connection signal="button_down" from="Control/TextureButton" to="." method="_on_texture_button_button_down"]
 [connection signal="value_changed" from="Control/MusicVolume" to="." method="_on_music_volume_value_changed"]
 [connection signal="value_changed" from="Control/SoundVolume" to="." method="_on_sound_volume_value_changed"]
