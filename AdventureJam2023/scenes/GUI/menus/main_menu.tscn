@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4yryo7pvhbuy"]
+[gd_scene load_steps=11 format=3 uid="uid://c4yryo7pvhbuy"]
 
 [ext_resource type="Script" path="res://scripts/GUI/menus/main_menu.gd" id="1_kvkg4"]
 [ext_resource type="Texture2D" uid="uid://bgwqq515ybq8e" path="res://sprites/GUI/Play.png" id="2_yfckd"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dw8ojbnh16lk4" path="res://scenes/ground_tiles.tscn" id="6_ufea3"]
 [ext_resource type="Texture2D" uid="uid://dtev2q5avpadb" path="res://sprites/Entities/Player/player.png" id="7_a6v6t"]
 [ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="12_8amj3"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_78hyb"]
+color = Color(0.4, 0.223529, 0.192157, 1)
+thickness = 8
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_kvkg4")
@@ -69,7 +73,8 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-max_value = 1.5
+theme_override_styles/slider = SubResource("StyleBoxLine_78hyb")
+max_value = 1.0
 step = 0.01
 value = 0.7
 
@@ -96,9 +101,10 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-max_value = 2.0
+theme_override_styles/slider = SubResource("StyleBoxLine_78hyb")
+max_value = 1.25
 step = 0.01
-value = 0.85
+value = 0.88
 
 [node name="Label" type="Label" parent="Control/SoundVolume"]
 layout_mode = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=20 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b8ug0vdknyyuo" path="res://scenes/GUI/menus/pause.tscn" id="9_trjc5"]
 [ext_resource type="PackedScene" uid="uid://defejqrdkoqd1" path="res://scenes/Entities/SwordShop.tscn" id="10_2vi4q"]
 [ext_resource type="PackedScene" uid="uid://dolfh6hsub1iy" path="res://scenes/Entities/Judgement.tscn" id="12_lrhnj"]
+[ext_resource type="PackedScene" uid="uid://dcmey1uiv53qi" path="res://scenes/Tent.tscn" id="13_ul51i"]
 [ext_resource type="PackedScene" uid="uid://bwyyc3byn3kh4" path="res://scenes/Entities/TownGuard.tscn" id="14_44h01"]
+[ext_resource type="PackedScene" uid="uid://y21y6t4nxldl" path="res://scenes/Entities/Boat.tscn" id="15_8g45w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw6n3"]
 texture = ExtResource("6_fbp6y")
@@ -287,8 +289,51 @@ position = Vector2(-400, -192)
 
 [node name="TownGuard" parent="NPCs" instance=ExtResource("14_44h01")]
 position = Vector2(-525, -256)
-figure_name = "Town Guard"
-dialogue_paths = Array[String](["res://resources/dialogue/TownGuard/(0)Meeting.json"])
+figure_name = "Camp Guard"
+dialogue_paths = Array[String](["res://resources/dialogue/CampGuard/(0)Meeting.json"])
+
+[node name="Pier" type="StaticBody2D" parent="."]
+position = Vector2(-414, -472)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pier"]
+position = Vector2(9, -17)
+shape = SubResource("RectangleShape2D_f2yro")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pier"]
+position = Vector2(13, 17)
+shape = SubResource("RectangleShape2D_f2yro")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Pier"]
+position = Vector2(102, -1)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_f2yro")
+
+[node name="Boat" parent="." instance=ExtResource("15_8g45w")]
+position = Vector2(-288, -470)
+
+[node name="Tent" parent="." instance=ExtResource("13_ul51i")]
+z_index = 3
+position = Vector2(-632, -522)
+
+[node name="Tent2" parent="." instance=ExtResource("13_ul51i")]
+z_index = 3
+position = Vector2(-744, -454)
+
+[node name="Tent3" parent="." instance=ExtResource("13_ul51i")]
+z_index = 3
+position = Vector2(-838, -345)
+
+[node name="Tent4" parent="." instance=ExtResource("13_ul51i")]
+z_index = 3
+position = Vector2(-822, -192)
+
+[node name="Tent5" parent="." instance=ExtResource("13_ul51i")]
+z_index = 3
+position = Vector2(-668, -243)
+
+[node name="Tent6" parent="." instance=ExtResource("13_ul51i")]
+z_index = 3
+position = Vector2(-561, -354)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -311,22 +356,6 @@ offset_right = -164.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-414, -472)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(9, -17)
-shape = SubResource("RectangleShape2D_f2yro")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(13, 17)
-shape = SubResource("RectangleShape2D_f2yro")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(102, -1)
-rotation = -1.57079
-shape = SubResource("RectangleShape2D_f2yro")
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
 [connection signal="dialogue_finished" from="NPCs/SwordShop" to="NPCs/Judgement" method="_on_sword_shop_dialogue_finished"]
