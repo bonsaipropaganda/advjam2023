@@ -16,6 +16,7 @@ extends CharacterBody2D
 @export var slash_sound: AudioStreamPlayer
 
 @onready var default_zoom: Vector2 = $Camera2D.zoom
+@onready var color_rect = $Camera2D/ColorRect
 
 var camera_tween: Tween
 var input_direction: Vector2
@@ -25,6 +26,7 @@ var coins: int = 0
 
 
 func _ready() -> void:
+	color_rect.modulate = Color(0,0,0,1)
 	qte.qte_done.connect(_on_qte_done)
 
 

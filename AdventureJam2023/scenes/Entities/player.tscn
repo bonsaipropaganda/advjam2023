@@ -729,7 +729,6 @@ slash_sound = NodePath("SlashSound")
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
-frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 4096
@@ -738,11 +737,13 @@ zoom = Vector2(4, 4)
 script = ExtResource("10_mdlvt")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0)
 offset_left = -170.0
 offset_top = -101.0
 offset_right = 172.0
 offset_bottom = 98.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
 z_index = 1
