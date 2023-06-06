@@ -44,14 +44,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Boat/target:position")
+tracks/3/path = NodePath("Boat/BestBoat/target:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.6, 4.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-74, 5), Vector2(0, 5), Vector2(0, 5), Vector2(-74, 5)]
+"values": [Vector2(-24, 5), Vector2(0, 5), Vector2(0, 5), Vector2(-24, 5)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -83,11 +83,16 @@ libraries = {
 }
 
 [node name="Boat" type="Node2D" parent="."]
-z_index = 10
+z_index = 4096
+z_as_relative = false
 
 [node name="BestBoat" type="Sprite2D" parent="Boat"]
 scale = Vector2(3, 3)
 texture = ExtResource("1_nxbo1")
+
+[node name="target" type="Node2D" parent="Boat/BestBoat"]
+position = Vector2(-24, 5)
+scale = Vector2(0.333333, 0.333333)
 
 [node name="ColorRect" type="ColorRect" parent="Boat"]
 offset_left = -36.0
@@ -95,9 +100,6 @@ offset_top = 36.0
 offset_right = 32.0
 offset_bottom = 63.0
 color = Color(0.376471, 0.65098, 0.756863, 1)
-
-[node name="target" type="Node2D" parent="Boat"]
-position = Vector2(-74, 5)
 
 [node name="InteractionRange" type="Area2D" parent="Boat"]
 position = Vector2(-75, 0)

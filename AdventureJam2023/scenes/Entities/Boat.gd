@@ -3,7 +3,7 @@ extends Node2D
 var timer :float = 0
 @onready var best_boat = $Boat
 @onready var boat_sprite = $Boat/BestBoat
-@onready var target = $Boat/target
+@onready var target = $Boat/BestBoat/target
 @onready var key = $Boat/InteractionRange/Key
 @onready var animation_player = $AnimationPlayer
 @onready var color_rect = $Boat/ColorRect
@@ -23,8 +23,10 @@ func _physics_process(delta):
 		flipped = !flipped
 		player.get_node("HitBox").disabled = true
 		player.get_parent().remove_child(player)
-		best_boat.add_child(player)
+		boat_sprite.add_child(player)
+		player.scale = Vector2(0.3,0.3)
 		player.global_position = target.global_position
+		player.show_behind_parent = true
 
 func _process(delta):	# Animates the boat movement using sin waves
 	timer += delta/2
@@ -53,8 +55,10 @@ func _on_interaction_range_body_exited(body):
 
 # HORRIBLE way to move the player and return him
 func _on_animation_player_animation_finished(anim_name):
-	best_boat.remove_child(player)
+	boat_sprite.remove_child(player)
 	get_parent().get_parent().add_child(player)
 	player.global_position = target.global_position
 	is_travelling = false
 	player.get_node("HitBox").disabled = false
+	player.show_behind_parent = false
+	player.scale = Vector2(1,1)
