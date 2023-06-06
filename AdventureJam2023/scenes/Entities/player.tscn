@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ctftvg83q0ap5"]
+[gd_scene load_steps=58 format=3 uid="uid://ctftvg83q0ap5"]
 
 [ext_resource type="Script" path="res://scripts/Entities/player.gd" id="1_r2lvk"]
 [ext_resource type="Resource" uid="uid://3pg4iv58lgb5" path="res://resources/weapons/knife.tres" id="2_6wrh6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://q34c8jgx517r" path="res://sprites/Swipe Effect/green_slash/SP301_02.png" id="8_lk5uo"]
 [ext_resource type="Texture2D" uid="uid://cscu53v68f4m3" path="res://sprites/Swipe Effect/green_slash/SP301_01.png" id="9_ls5bf"]
 [ext_resource type="PackedScene" uid="uid://cnht5wav7xc1s" path="res://scenes/sword_slash.tscn" id="10_183k2"]
+[ext_resource type="Script" path="res://scripts/FollowCamera.gd" id="10_mdlvt"]
 [ext_resource type="AudioStream" uid="uid://5s5ctkskxmnq" path="res://sounds/sfx/slash.ogg" id="11_ba2qx"]
 [ext_resource type="Texture2D" uid="uid://d4agdq56wc6bj" path="res://sprites/Coin/GoldCoinSpinning.png" id="12_lhmwi"]
 
@@ -732,7 +733,7 @@ frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-position_smoothing_enabled = true
+script = ExtResource("10_mdlvt")
 
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
 z_index = 1
