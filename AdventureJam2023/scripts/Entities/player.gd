@@ -13,10 +13,12 @@ extends CharacterBody2D
 @onready var playback: AnimationNodeStateMachinePlayback = animationTree.get("parameters/playback")
 
 @onready var deathScreen = owner.get_node("GUI/DeathScreen")
+@onready var hud = owner.get_node("GUI/HUD")
 @export var slash_sound: AudioStreamPlayer
 
 @onready var default_zoom: Vector2 = $Camera2D.zoom
 @onready var color_rect = $Camera2D/ColorRect
+
 
 var camera_tween: Tween
 var input_direction: Vector2
@@ -24,7 +26,8 @@ var is_slashing: bool
 var health: int = 100
 var coins: int = 0
 
-var paused :bool = false
+var paused: bool = false
+
 
 func _ready() -> void:
 	color_rect.modulate = Color(0,0,0,1)
@@ -113,19 +116,13 @@ func slash_animation(is_slashing: bool) -> void:
 
 
 func update_health():
-	var healthBar = %HealthBar
-	healthBar.value = health
-	
-	if health >= 100:
-		healthBar.visible = false
-	else:
-		healthBar.visible = true
+	hud.set_health(health, 100.0)
 	if health == 0:
 		die()
 
 
 func update_coins():
-	%CoinLabel.text = "x %s" % coins
+	hud.set_coin_count(coins)
 
 
 func _on_regen_timer_timeout():
