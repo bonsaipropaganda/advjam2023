@@ -724,7 +724,6 @@ slash_sound = NodePath("SlashSound")
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
-frame = 1
 
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
 z_index = 1

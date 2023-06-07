@@ -243,6 +243,7 @@ layer_0/tile_data = PackedInt32Array(917471, 1245184, 1, 1572824, 1245184, 1, 19
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
 position = Vector2(655, 579)
+
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
 
 [node name="Map" type="Node2D" parent="."]

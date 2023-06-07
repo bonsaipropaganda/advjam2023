@@ -76,6 +76,7 @@ func _on_qte_done(is_success: bool):
 	hud.set_qte_timer(1, 1) # Reset qte timer
 	
 	if is_success:  # show slash animation on qte success, aoe attack
+		camera.start_shaking(2, 0.018, 0.15)
 		swordSlash.visible = true
 		swordSlash.attack_all(weapon.group_damage)
 		qte.reset()
