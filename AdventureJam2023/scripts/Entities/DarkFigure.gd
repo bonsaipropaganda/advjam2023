@@ -11,5 +11,5 @@ func set_action_index():
 		await SpriteAnimator.animation_finished
 		get_parent().get_node("ForceField").queue_free()
 		await $AudioStreamPlayer2D.finished
-		queue_free()
+		queue_free() # FIXME: idk why, this is never called
 	)
