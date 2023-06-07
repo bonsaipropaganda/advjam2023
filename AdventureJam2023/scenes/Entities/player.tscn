@@ -603,7 +603,7 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0om2p"]
-graph_offset = Vector2(-181.333, 18.6667)
+graph_offset = Vector2(-575.45, -118.104)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u5xgq"]
 animation = &"Idle_up"
@@ -706,7 +706,7 @@ states/Start/position = Vector2(459, 129)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_bhoof")
 states/Walk/position = Vector2(784, 129.667)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_gpoy3"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_1e4oc"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_x1cyv"), "Mele", "Idle", SubResource("AnimationNodeStateMachineTransition_sdehg"), "Mele", "Walk", SubResource("AnimationNodeStateMachineTransition_latho")]
-graph_offset = Vector2(-15, -12)
+graph_offset = Vector2(96, 85)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_6h6sv"]
 
@@ -724,6 +724,7 @@ slash_sound = NodePath("SlashSound")
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
+frame = 6
 
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
 z_index = 1
@@ -740,9 +741,8 @@ position = Vector2(0, 10)
 monitorable = false
 
 [node name="Animation" parent="SwordSlash" index="0"]
+animation = &"small_sword"
 autoplay = ""
-frame = 4
-frame_progress = 0.0
 flip_v = true
 
 [node name="HealthChecker" type="Area2D" parent="."]
@@ -764,7 +764,7 @@ advance_expression_base_node = NodePath("..")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6h6sv")
 parameters/Idle/blend_position = Vector2(0.00417709, 0.0133333)
-parameters/Mele/blend_position = Vector2(-0.000825107, -1.00447)
+parameters/Mele/blend_position = Vector2(0.745484, 0.0480349)
 parameters/Walk/blend_position = Vector2(-0.00250626, 0.00666666)
 
 [node name="RegenTimer" type="Timer" parent="."]
