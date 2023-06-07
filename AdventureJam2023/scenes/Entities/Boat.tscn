@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://y21y6t4nxldl"]
 
+[ext_resource type="Script" path="res://scripts/Entities/Boat.gd" id="1_cxy4p"]
 [ext_resource type="Texture2D" uid="uid://bn4oppscot64y" path="res://sprites/best_boat.png" id="1_nxbo1"]
-[ext_resource type="Script" path="res://scenes/Entities/Boat.gd" id="1_romcc"]
 [ext_resource type="PackedScene" uid="uid://dba6xhqwhvjva" path="res://scenes/GUI/Key.tscn" id="3_pvwxq"]
 
 [sub_resource type="Animation" id="Animation_3ohjl"]
@@ -75,7 +75,7 @@ radius = 39.0
 height = 78.0
 
 [node name="Boat" type="Node2D"]
-script = ExtResource("1_romcc")
+script = ExtResource("1_cxy4p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
