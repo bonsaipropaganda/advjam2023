@@ -14,7 +14,7 @@ var is_travelling :bool = false
 var can_interact :bool = false
 @onready var player = get_tree().get_nodes_in_group("Player")[0]
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if can_interact and Input.is_action_just_pressed("Interact") and not is_travelling:
 		start_travel()
 
@@ -61,7 +61,7 @@ func start_travel() -> void:
 
 # HORRIBLE way to move the player and return him
 # Edit: I think I made it a bit better !
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	remote_transform.remote_path = ""
 	player.global_position = target.global_position
 	is_travelling = false

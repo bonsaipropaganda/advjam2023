@@ -15,7 +15,7 @@ func _ready() -> void:
 	zoom = Vector2(default_zoom, default_zoom)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if shaking && !shake_tween.is_running():
 		_shake()
 
