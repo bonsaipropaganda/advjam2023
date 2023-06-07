@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8ug0vdknyyuo"]
 
-[ext_resource type="Script" path="res://scripts/GUI/menus/pause.gd" id="1_7q3xl"]
+[ext_resource type="Script" path="res://scripts/GUI/menus/Pause.gd" id="1_g58g1"]
 [ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="2_7bjhc"]
 
-[node name="pause" type="Node2D"]
+[node name="PauseScreen" type="Control"]
 process_mode = 3
-script = ExtResource("1_7q3xl")
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_g58g1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1281.0
@@ -21,7 +23,7 @@ theme_override_fonts/normal_font = ExtResource("2_7bjhc")
 theme_override_font_sizes/normal_font_size = 128
 text = "Paused"
 
-[node name="Button" type="Button" parent="."]
+[node name="Resume" type="Button" parent="."]
 offset_left = 467.0
 offset_top = 268.0
 offset_right = 538.0
@@ -30,7 +32,7 @@ scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("2_7bjhc")
 text = "Resume"
 
-[node name="Button2" type="Button" parent="."]
+[node name="Quit" type="Button" parent="."]
 offset_left = 467.0
 offset_top = 453.0
 offset_right = 538.0
@@ -39,5 +41,5 @@ scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("2_7bjhc")
 text = "Quit"
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Resume" to="." method="_on_resume"]
+[connection signal="button_down" from="Quit" to="." method="_on_quit"]

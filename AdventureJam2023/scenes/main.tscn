@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ce64hr3ek1ewn" path="res://scenes/Entities/DarkFigure/force_field.tscn" id="8_w6glo"]
 [ext_resource type="PackedScene" uid="uid://dc3a7wo5qwamg" path="res://scenes/GUI/menus/death_screen.tscn" id="9_0dbki"]
 [ext_resource type="PackedScene" uid="uid://68qt82behmuc" path="res://scenes/GUI/TextBox.tscn" id="9_r185j"]
-[ext_resource type="PackedScene" uid="uid://b8ug0vdknyyuo" path="res://scenes/GUI/menus/pause.tscn" id="9_trjc5"]
+[ext_resource type="PackedScene" uid="uid://b8ug0vdknyyuo" path="res://scenes/GUI/menus/Pause.tscn" id="9_trjc5"]
 [ext_resource type="PackedScene" uid="uid://defejqrdkoqd1" path="res://scenes/Entities/SwordShop.tscn" id="10_2vi4q"]
 [ext_resource type="PackedScene" uid="uid://dolfh6hsub1iy" path="res://scenes/Entities/Judgement.tscn" id="12_lrhnj"]
 [ext_resource type="PackedScene" uid="uid://dcmey1uiv53qi" path="res://scenes/Tent.tscn" id="13_ul51i"]
@@ -336,7 +336,7 @@ position = Vector2(-561, -354)
 [node name="DeathScreen" parent="GUI" instance=ExtResource("9_0dbki")]
 visible = false
 
-[node name="pause" parent="GUI" instance=ExtResource("9_trjc5")]
+[node name="PauseScreen" parent="GUI" instance=ExtResource("9_trjc5")]
 visible = false
 
 [node name="TextureRect" parent="GUI" instance=ExtResource("9_r185j")]

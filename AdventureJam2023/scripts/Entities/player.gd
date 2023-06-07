@@ -31,13 +31,6 @@ func _ready() -> void:
 	qte.qte_done.connect(_on_qte_done)
 
 
-func _input(event):
-#	pause menu
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().paused = true
-		owner.get_node("GUI/pause").visible = true
-
-
 ######################################################################################
 #---------------------------------the main stuff--------------------------------------
 ######################################################################################
