@@ -145,5 +145,5 @@ func get_coin(amount: int):
 
 
 func respawn(checkpoint: Node2D) -> void:
-	health = 100.0
+	health = 100
 	global_position = checkpoint.global_position
