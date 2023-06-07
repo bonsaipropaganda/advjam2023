@@ -6,6 +6,8 @@ var qte_timer_tween: Tween
 
 
 func _ready() -> void:
+	visible = true
+	
 	set_coin_count(0)
 	set_health(1, 1)
 	set_qte_timer(1, 1)
