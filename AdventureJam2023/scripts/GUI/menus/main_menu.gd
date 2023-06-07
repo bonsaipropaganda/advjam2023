@@ -7,15 +7,15 @@ func _ready(): # Setup default sound values
 	_on_sound_volume_value_changed($Control/SoundVolume.value)
 
 
-func _on_texture_button_button_down():#Play
+func _on_play_button_down():#Play
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
-func _on_texture_button_3_button_down():#credits
+func _on_credits_button_down():#credits
 	get_tree().change_scene_to_file("res://scenes/GUI/menus/credits.tscn")
 
 
-func _on_texture_button_2_button_down():# quit
+func _on_quit_button_down():# quit
 	get_tree().quit()
 
 

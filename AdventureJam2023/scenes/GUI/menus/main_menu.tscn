@@ -25,18 +25,18 @@ offset_top = -16.0
 offset_right = 1318.0
 offset_bottom = 742.0
 
-[node name="TextureButton2" type="TextureButton" parent="Control"]
+[node name="Play" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 146.0
-offset_top = 512.0
-offset_right = 426.0
-offset_bottom = 716.0
-texture_normal = ExtResource("5_f8kof")
+offset_left = 147.0
+offset_top = 176.0
+offset_right = 427.0
+offset_bottom = 380.0
+texture_normal = ExtResource("2_yfckd")
 texture_pressed = ExtResource("3_78qe2")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="TextureButton3" type="TextureButton" parent="Control"]
+[node name="Credits" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 158.0
 offset_top = 341.0
@@ -47,13 +47,13 @@ texture_pressed = ExtResource("3_78qe2")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="Quit" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 147.0
-offset_top = 176.0
-offset_right = 427.0
-offset_bottom = 380.0
-texture_normal = ExtResource("2_yfckd")
+offset_left = 146.0
+offset_top = 512.0
+offset_right = 426.0
+offset_bottom = 716.0
+texture_normal = ExtResource("5_f8kof")
 texture_pressed = ExtResource("3_78qe2")
 ignore_texture_size = true
 stretch_mode = 6
@@ -155,8 +155,8 @@ theme_override_font_sizes/normal_font_size = 182
 text = "Rumbo"
 scroll_active = false
 
-[connection signal="button_down" from="Control/TextureButton2" to="." method="_on_texture_button_2_button_down"]
-[connection signal="button_down" from="Control/TextureButton3" to="." method="_on_texture_button_3_button_down"]
-[connection signal="button_down" from="Control/TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="button_down" from="Control/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="Control/Credits" to="." method="_on_credits_button_down"]
+[connection signal="button_down" from="Control/Quit" to="." method="_on_quit_button_down"]
 [connection signal="value_changed" from="Control/MusicVolume" to="." method="_on_music_volume_value_changed"]
 [connection signal="value_changed" from="Control/SoundVolume" to="." method="_on_sound_volume_value_changed"]
