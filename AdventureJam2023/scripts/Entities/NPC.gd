@@ -24,7 +24,7 @@ func _ready():
 	key = $Key
 	SpriteAnimator = $AnimatedSprite2D
 	SpriteAnimator.play("default")
-	textBox = owner.get_node("GUI/TextureRect")
+	textBox = owner.get_node("GUI/DialogBox")
 	set_json(dialogue_paths[dialogue_index])
 	set_action_index()
 

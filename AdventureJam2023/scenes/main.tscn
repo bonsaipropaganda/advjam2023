@@ -339,7 +339,7 @@ visible = false
 [node name="PauseScreen" parent="GUI" instance=ExtResource("9_trjc5")]
 visible = false
 
-[node name="TextureRect" parent="GUI" instance=ExtResource("9_r185j")]
+[node name="DialogBox" parent="GUI" instance=ExtResource("9_r185j")]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
