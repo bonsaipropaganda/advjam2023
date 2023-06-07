@@ -10,11 +10,13 @@ anchors_preset = 0
 script = ExtResource("1_g58g1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1281.0
 offset_bottom = 720.0
 color = Color(0.0392157, 0.0392157, 0.0392157, 0.419608)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 387.0
 offset_top = 71.0
 offset_right = 891.0
@@ -24,6 +26,7 @@ theme_override_font_sizes/normal_font_size = 128
 text = "Paused"
 
 [node name="Resume" type="Button" parent="."]
+layout_mode = 0
 offset_left = 467.0
 offset_top = 268.0
 offset_right = 538.0
@@ -33,6 +36,7 @@ theme_override_fonts/font = ExtResource("2_7bjhc")
 text = "Resume"
 
 [node name="Quit" type="Button" parent="."]
+layout_mode = 0
 offset_left = 467.0
 offset_top = 453.0
 offset_right = 538.0

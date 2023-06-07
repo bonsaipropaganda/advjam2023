@@ -341,10 +341,10 @@ position = Vector2(148, 43)
 [node name="DeathScreen" parent="GUI" instance=ExtResource("9_0dbki")]
 visible = false
 
+[node name="HUD" parent="GUI" instance=ExtResource("16_fngjq")]
+
 [node name="PauseScreen" parent="GUI" instance=ExtResource("9_trjc5")]
 visible = false
-
-[node name="HUD" parent="GUI" instance=ExtResource("16_fngjq")]
 
 [node name="DialogBox" parent="GUI" instance=ExtResource("9_r185j")]
 visible = false
