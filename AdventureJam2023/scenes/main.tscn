@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dcmey1uiv53qi" path="res://scenes/Tent.tscn" id="13_ul51i"]
 [ext_resource type="PackedScene" uid="uid://bwyyc3byn3kh4" path="res://scenes/Entities/NPCs/TownGuard.tscn" id="14_44h01"]
 [ext_resource type="PackedScene" uid="uid://y21y6t4nxldl" path="res://scenes/Entities/Boat.tscn" id="15_8g45w"]
-[ext_resource type="Script" path="res://scripts/ActivationArea.gd" id="15_u8lfp"]
+[ext_resource type="PackedScene" uid="uid://bi18eh0el5fdh" path="res://scenes/ActivationArea.tscn" id="15_cqb0l"]
 [ext_resource type="PackedScene" uid="uid://ctid3jy7wisu" path="res://scenes/GUI/HeadUpDisplay.tscn" id="16_fngjq"]
 [ext_resource type="PackedScene" uid="uid://blaqutbpswj6r" path="res://scenes/Checkpoint.tscn" id="16_orn1j"]
 [ext_resource type="PackedScene" uid="uid://d0pmg0vfcpwhj" path="res://scenes/VEffects/PostProcessing/PostProcessing.tscn" id="17_0hk3p"]
@@ -340,15 +340,18 @@ position = Vector2(-414, -472)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Pier1"]
 position = Vector2(4.5, -11.25)
 shape = SubResource("RectangleShape2D_drooy")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Pier1"]
 position = Vector2(4, 12.75)
 shape = SubResource("RectangleShape2D_3m7u1")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Pier1"]
 position = Vector2(97.25, 1.49997)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_vyefh")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Pier2" type="StaticBody2D" parent="Map"]
 position = Vector2(228, -473)
@@ -356,25 +359,30 @@ position = Vector2(228, -473)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Pier2"]
 position = Vector2(67, -12.25)
 shape = SubResource("RectangleShape2D_yj7wr")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Pier2"]
 position = Vector2(67, 26)
 shape = SubResource("RectangleShape2D_8cjl8")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Pier2"]
 position = Vector2(39.9999, 6.5)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_gfy1i")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Bridge" type="StaticBody2D" parent="Map"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Bridge"]
 position = Vector2(256, 12)
 shape = SubResource("RectangleShape2D_7lseo")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Bridge"]
 position = Vector2(256, 34)
 shape = SubResource("RectangleShape2D_7lseo")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Boat" parent="Map" instance=ExtResource("15_8g45w")]
 position = Vector2(-273, -486)
@@ -404,8 +412,7 @@ position = Vector2(109, 159)
 [node name="position7" type="Marker2D" parent="Map/Spawners/MainIslandZombieSpawner"]
 position = Vector2(148, 43)
 
-[node name="ActivationArea" type="Area2D" parent="Map/Spawners/MainIslandZombieSpawner"]
-script = ExtResource("15_u8lfp")
+[node name="ActivationArea" parent="Map/Spawners/MainIslandZombieSpawner" instance=ExtResource("15_cqb0l")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Spawners/MainIslandZombieSpawner/ActivationArea"]
 position = Vector2(-78, -42)
@@ -434,8 +441,7 @@ position = Vector2(433, -1830)
 [node name="Marker2D6" type="Marker2D" parent="Map/Spawners/SecondIslandZombieSpawner"]
 position = Vector2(50, -967)
 
-[node name="ActivationArea" type="Area2D" parent="Map/Spawners/SecondIslandZombieSpawner"]
-script = ExtResource("15_u8lfp")
+[node name="ActivationArea" parent="Map/Spawners/SecondIslandZombieSpawner" instance=ExtResource("15_cqb0l")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Spawners/SecondIslandZombieSpawner/ActivationArea"]
 polygon = PackedVector2Array(941, -2358, 441, -2358, 203, -1749, 377, -1323, -482, -1437, -479, -1195, -39, -819, 448, -716, 1024, -716, 1064, -1696, 1059, -2141)
@@ -448,6 +454,7 @@ position = Vector2(-360, 291)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Checkpoints/Checkpoint"]
 position = Vector2(2.5, -10)
 shape = SubResource("RectangleShape2D_qvaor")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Checkpoint2" parent="Map/Checkpoints" instance=ExtResource("16_orn1j")]
 position = Vector2(-518, -472)
@@ -455,6 +462,7 @@ position = Vector2(-518, -472)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Checkpoints/Checkpoint2"]
 position = Vector2(7.5, 3.5)
 shape = SubResource("RectangleShape2D_nmke6")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Checkpoint3" parent="Map/Checkpoints" instance=ExtResource("16_orn1j")]
 position = Vector2(322, -468)
@@ -462,6 +470,7 @@ position = Vector2(322, -468)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Checkpoints/Checkpoint3"]
 position = Vector2(7.5, 2.5)
 shape = SubResource("RectangleShape2D_hftfb")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

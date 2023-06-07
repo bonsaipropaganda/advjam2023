@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi18eh0el5fdh"]
+
+[ext_resource type="Script" path="res://scripts/ActivationArea.gd" id="1_onnnu"]
+
+[node name="ActivationArea" type="Area2D"]
+modulate = Color(0.615686, 0.0431373, 0.054902, 0.784314)
+script = ExtResource("1_onnnu")
