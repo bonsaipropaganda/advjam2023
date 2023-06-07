@@ -80,3 +80,5 @@ dialogue_file = "res://resources/dialogue/DarkFigure.json"
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_askmc")
+
+[connection signal="dialogue_finished" from="." to="." method="_on_dialogue_finished"]
