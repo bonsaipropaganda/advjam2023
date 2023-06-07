@@ -1,9 +1,17 @@
 extends Node2D
 
+
 func _on_button_button_down():
 	get_tree().paused = false
-	owner.get_node("GUI/DeathScreen").visible = false
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	visible = false
+	
+	var checkpoint: Node2D = get_tree().get_first_node_in_group(&"CurrentCheckpoint")
+	if checkpoint:
+		var player: Node2D = get_tree().get_first_node_in_group(&"Player")
+		player.respawn(checkpoint)
+	else:
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+
 
 func _on_button_2_button_down():
 	get_tree().quit()

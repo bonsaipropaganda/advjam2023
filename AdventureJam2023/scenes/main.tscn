@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=36 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://y21y6t4nxldl" path="res://scenes/Entities/Boat.tscn" id="15_8g45w"]
 [ext_resource type="Script" path="res://scripts/ActivationArea.gd" id="15_u8lfp"]
 [ext_resource type="PackedScene" uid="uid://ctid3jy7wisu" path="res://scenes/GUI/HeadUpDisplay.tscn" id="16_fngjq"]
+[ext_resource type="PackedScene" uid="uid://blaqutbpswj6r" path="res://scenes/Checkpoint.tscn" id="16_orn1j"]
 [ext_resource type="PackedScene" uid="uid://d0pmg0vfcpwhj" path="res://scenes/VEffects/PostProcessing/PostProcessing.tscn" id="17_0hk3p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw6n3"]
@@ -243,6 +244,15 @@ size = Vector2(166, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3vsp"]
 size = Vector2(1154, 520)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvaor"]
+size = Vector2(97, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmke6"]
+size = Vector2(45, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hftfb"]
+size = Vector2(20, 45)
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(0, 1)
@@ -429,6 +439,29 @@ script = ExtResource("15_u8lfp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Spawners/SecondIslandZombieSpawner/ActivationArea"]
 polygon = PackedVector2Array(941, -2358, 441, -2358, 203, -1749, 377, -1323, -482, -1437, -479, -1195, -39, -819, 448, -716, 1024, -716, 1064, -1696, 1059, -2141)
+
+[node name="Checkpoints" type="Node" parent="Map"]
+
+[node name="Checkpoint" parent="Map/Checkpoints" instance=ExtResource("16_orn1j")]
+position = Vector2(-360, 291)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Checkpoints/Checkpoint"]
+position = Vector2(2.5, -10)
+shape = SubResource("RectangleShape2D_qvaor")
+
+[node name="Checkpoint2" parent="Map/Checkpoints" instance=ExtResource("16_orn1j")]
+position = Vector2(-518, -472)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Checkpoints/Checkpoint2"]
+position = Vector2(7.5, 3.5)
+shape = SubResource("RectangleShape2D_nmke6")
+
+[node name="Checkpoint3" parent="Map/Checkpoints" instance=ExtResource("16_orn1j")]
+position = Vector2(322, -468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Checkpoints/Checkpoint3"]
+position = Vector2(7.5, 2.5)
+shape = SubResource("RectangleShape2D_hftfb")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

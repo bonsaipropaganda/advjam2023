@@ -142,3 +142,8 @@ func _on_area_2d_body_entered(_body):
 
 func get_coin(amount: int):
 	coins += amount
+
+
+func respawn(checkpoint: Node2D) -> void:
+	health = 100.0
+	global_position = checkpoint.global_position

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://blaqutbpswj6r"]
+
+[ext_resource type="Script" path="res://scripts/Checkpoint.gd" id="1_cr1ep"]
+
+[node name="Checkpoint" type="Area2D"]
+modulate = Color(0.2, 0.776471, 0, 1)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_cr1ep")
+
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
