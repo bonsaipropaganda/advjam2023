@@ -27,6 +27,7 @@ func _physics_process(delta):
 		player.scale = Vector2(0.3,0.3)
 		player.global_position = target.global_position
 		player.show_behind_parent = true
+		player.paused = true
 
 func _process(delta):	# Animates the boat movement using sin waves
 	timer += delta/2
@@ -62,3 +63,4 @@ func _on_animation_player_animation_finished(anim_name):
 	player.get_node("HitBox").disabled = false
 	player.show_behind_parent = false
 	player.scale = Vector2(1,1)
+	player.paused = false

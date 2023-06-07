@@ -24,6 +24,7 @@ var is_slashing: bool
 var health: int = 100
 var coins: int = 0
 
+var paused :bool = false
 
 func _ready() -> void:
 	color_rect.modulate = Color(0,0,0,1)
@@ -60,7 +61,7 @@ func _physics_process(delta):
 
 
 func move(_input_direction: Vector2, _delta: float, _is_slashing: bool) -> void:
-	if qte.is_qte:
+	if qte.is_qte or paused:
 		return  #is the player slashing?. then don't move.
 	velocity = _input_direction.normalized() * speed
 	move_and_slide()
