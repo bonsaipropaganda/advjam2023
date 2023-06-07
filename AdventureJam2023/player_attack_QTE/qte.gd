@@ -64,7 +64,6 @@ func create_random_sequence(max_len: int) -> Array[int]:
 #spawn the sprites
 func spawn_qte_sprites():
 	var counter: int = 0
-	var player: Object = get_parent()
 
 	for i in sequence:
 		var sprite: Sprite2D = Sprite2D.new()
