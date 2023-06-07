@@ -19,6 +19,7 @@ var active: bool = false:
 
 
 func _ready() -> void:
+	collision_layer = 0
 	collision_mask = 0
 	set_collision_mask_value(2, true)
 	
