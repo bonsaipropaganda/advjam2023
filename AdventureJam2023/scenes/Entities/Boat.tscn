@@ -86,6 +86,12 @@ libraries = {
 z_index = 4096
 z_as_relative = false
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Boat"]
+position = Vector2(0, 19)
+scale = Vector2(3, 3)
+update_rotation = false
+update_scale = false
+
 [node name="BestBoat" type="Sprite2D" parent="Boat"]
 scale = Vector2(3, 3)
 texture = ExtResource("1_nxbo1")
