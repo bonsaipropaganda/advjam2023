@@ -72,6 +72,9 @@ func _on_qte_done(is_success: bool):
 	# zoom out to default zoom position
 	var camera: PlayerCamera = get_viewport().get_camera_2d()
 	camera.reset_zoom()
+	
+	hud.set_qte_timer(1, 1) # Reset qte timer
+	
 	if is_success:  # show slash animation on qte success, aoe attack
 		swordSlash.visible = true
 		swordSlash.attack_all(weapon.group_damage)
@@ -96,6 +99,7 @@ func slash_animation(is_slashing: bool) -> void:
 	if is_slashing:
 		var camera: PlayerCamera = get_viewport().get_camera_2d()
 		camera.change_zoom(camera.default_zoom * 3.0, qte.qte_timer)
+		hud.set_qte_timer(0, 1, qte.qte_timer * 0.1) # Hardcoded speedup = bad, but no time...
 		# start slash animation
 		playback.travel("Mele")
 	# attack direction is the latest move direction that is not zero,

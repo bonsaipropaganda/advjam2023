@@ -10,6 +10,7 @@ var called: bool = false
 var is_qte: bool = false
 
 @export var qte_reset_timer: float = 1.5
+@export var qte_max_time: float = 1.5
 @export var qte_timer: float = 1.5
 var qte_previous_time: float = 0
 var qte_delta_time: float = 0
@@ -40,6 +41,7 @@ func init_qte(
 
 	#hey, da QTE timer!!!. AHHH!!!!, TODO: make some sorta weird shader that'll slowly make the screen go grayscale to indicate that the time's gonna run out
 	qte_timer = qte_reset_timer
+	qte_max_time = qte_timer
 	qte_counter = 0
 
 
