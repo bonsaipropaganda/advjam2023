@@ -17,10 +17,10 @@ class_name Zombie
 var speed: float = 400
 var direction: Vector2 = Vector2(-0.5, 0.0)
 
-#wander stuff
+# Wander stuff
 var wander_timer: float = 3
 
-#chase stuff
+# Chase stuff
 var chase_distance: float = 80
 var is_chasing: bool = false
 
@@ -69,13 +69,13 @@ func walk_animation() -> void:
 		$AnimatedSprite2D.set_animation("walk_side")
 
 
-#for all the death stuff!!!
+# For all the death stuff!!!
 func take_damage(damage: int) -> void:
 	if not alive:
 		return
 	blink()
 	hp = clamp(hp-damage, 0, max_hp)
-	if hp == 0:
+	if hp <= 0:
 		die()
 
 
@@ -98,7 +98,9 @@ func die() -> void:
 		"idle_side", "walk_side":
 			$AnimatedSprite2D.set_animation("death_side")
 	collision_layer = 0
-	set_process(false)
+	
+	var despawn_timer := get_tree().create_timer(4.0) # Despawn dead zombies
+	despawn_timer.timeout.connect(queue_free)
 
 	if randf() < drop_chance:
 		drop_coin()

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/INSERT CREDITS HERE.gd" id="2_xi8ne"]
 [ext_resource type="PackedScene" uid="uid://dw8ojbnh16lk4" path="res://scenes/ground_tiles.tscn" id="3_dh5yo"]
 [ext_resource type="Texture2D" uid="uid://drpfncyw350o6" path="res://sprites/SUMMERVILLE - Forest/Tileset/Trees.png" id="6_fbp6y"]
-[ext_resource type="Script" path="res://scripts/Spawner.gd" id="7_054k3"]
+[ext_resource type="PackedScene" uid="uid://t2j0ptamd8kv" path="res://scenes/Entities/EntitySpawner.tscn" id="6_soa44"]
 [ext_resource type="PackedScene" uid="uid://nu5b3rqou2kv" path="res://scenes/Entities/DarkFigure.tscn" id="8_fynes"]
 [ext_resource type="PackedScene" uid="uid://ce64hr3ek1ewn" path="res://scenes/Entities/DarkFigure/force_field.tscn" id="8_w6glo"]
 [ext_resource type="PackedScene" uid="uid://dc3a7wo5qwamg" path="res://scenes/GUI/menus/death_screen.tscn" id="9_0dbki"]
@@ -240,34 +240,30 @@ layer_0/tile_data = PackedInt32Array(917471, 1245184, 1, 1572824, 1245184, 1, 19
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
 position = Vector2(655, 579)
 
-[node name="EnemySpawner" type="Node2D" parent="."]
-z_index = 3
-y_sort_enabled = true
-script = ExtResource("7_054k3")
+[node name="Spawners" type="Node" parent="."]
 
-[node name="Spawner" type="Node" parent="EnemySpawner"]
+[node name="IslandZombieSpawner" parent="Spawners" instance=ExtResource("6_soa44")]
+spawn_time = 3.0
+entity = "res://scenes/Entities/Zombie.tscn"
+max_entity_count = 10
 
-[node name="position2" type="Marker2D" parent="EnemySpawner/Spawner"]
+[node name="position2" type="Marker2D" parent="Spawners/IslandZombieSpawner"]
 position = Vector2(130, -88)
 
-[node name="position3" type="Marker2D" parent="EnemySpawner/Spawner"]
+[node name="position3" type="Marker2D" parent="Spawners/IslandZombieSpawner"]
 position = Vector2(-197, -51)
 
-[node name="position4" type="Marker2D" parent="EnemySpawner/Spawner"]
+[node name="position4" type="Marker2D" parent="Spawners/IslandZombieSpawner"]
 position = Vector2(-186, 83)
 
-[node name="position5" type="Marker2D" parent="EnemySpawner/Spawner"]
+[node name="position5" type="Marker2D" parent="Spawners/IslandZombieSpawner"]
 position = Vector2(-9, 161)
 
-[node name="position6" type="Marker2D" parent="EnemySpawner/Spawner"]
+[node name="position6" type="Marker2D" parent="Spawners/IslandZombieSpawner"]
 position = Vector2(109, 159)
 
-[node name="position7" type="Marker2D" parent="EnemySpawner/Spawner"]
+[node name="position7" type="Marker2D" parent="Spawners/IslandZombieSpawner"]
 position = Vector2(148, 43)
-
-[node name="Timer" type="Timer" parent="EnemySpawner"]
-wait_time = 3.0
-autostart = true
 
 [node name="NPCs" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -357,5 +353,4 @@ offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
 [connection signal="dialogue_finished" from="NPCs/SwordShop" to="NPCs/Judgement" method="_on_sword_shop_dialogue_finished"]

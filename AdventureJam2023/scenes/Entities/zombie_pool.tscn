@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://dkco16setj375"]
 
 [ext_resource type="Script" path="res://scripts/Entities/zombie_pool.gd" id="1_csd0s"]
-[ext_resource type="PackedScene" uid="uid://b2wp0wgdbcmhf" path="res://scenes/Entities/zombie.tscn" id="2_44mmo"]
+[ext_resource type="PackedScene" uid="uid://b2wp0wgdbcmhf" path="res://scenes/Entities/Zombie.tscn" id="2_44mmo"]
 [ext_resource type="Shader" uid="uid://h06hufwqu4l3" path="res://resources/blinking_shader.tres" id="3_qj6m1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eslcm"]
