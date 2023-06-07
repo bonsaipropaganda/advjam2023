@@ -16,11 +16,7 @@ extends CharacterBody2D
 @onready var hud = owner.get_node("GUI/HUD")
 @export var slash_sound: AudioStreamPlayer
 
-@onready var default_zoom: Vector2 = $Camera2D.zoom
-@onready var color_rect = $Camera2D/ColorRect
 
-
-var camera_tween: Tween
 var input_direction: Vector2
 var is_slashing: bool
 var health: int = 100
@@ -30,7 +26,6 @@ var paused: bool = false
 
 
 func _ready() -> void:
-	color_rect.modulate = Color(0,0,0,1)
 	qte.qte_done.connect(_on_qte_done)
 
 
@@ -75,11 +70,8 @@ func _on_qte_done(is_success: bool):
 	slash_sound.play()
 
 	# zoom out to default zoom position
-	if camera_tween and camera_tween.is_valid():
-		camera_tween.kill()
-	camera_tween = create_tween()
-	camera_tween.tween_property($Camera2D, "zoom", default_zoom, 0.2)
-
+	var camera: PlayerCamera = get_viewport().get_camera_2d()
+	camera.reset_zoom()
 	if is_success:  # show slash animation on qte success, aoe attack
 		swordSlash.visible = true
 		swordSlash.attack_all(weapon.group_damage)
@@ -102,11 +94,8 @@ func walk_animation(_input_direction) -> void:
 
 func slash_animation(is_slashing: bool) -> void:
 	if is_slashing:
-		# slowly zoom in during qte, a bit exciting ?
-		if camera_tween and camera_tween.is_valid():
-			camera_tween.kill()
-		camera_tween = create_tween()
-		camera_tween.tween_property($Camera2D, "zoom", default_zoom * 3.0, qte.qte_timer)
+		var camera: PlayerCamera = get_viewport().get_camera_2d()
+		camera.change_zoom(camera.default_zoom * 3.0, qte.qte_timer)
 		# start slash animation
 		playback.travel("Mele")
 	# attack direction is the latest move direction that is not zero,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ctftvg83q0ap5"]
+[gd_scene load_steps=55 format=3 uid="uid://ctftvg83q0ap5"]
 
 [ext_resource type="Script" path="res://scripts/Entities/player.gd" id="1_r2lvk"]
 [ext_resource type="Resource" uid="uid://3pg4iv58lgb5" path="res://resources/weapons/knife.tres" id="2_6wrh6"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://q34c8jgx517r" path="res://sprites/Swipe Effect/green_slash/SP301_02.png" id="8_lk5uo"]
 [ext_resource type="Texture2D" uid="uid://cscu53v68f4m3" path="res://sprites/Swipe Effect/green_slash/SP301_01.png" id="9_ls5bf"]
 [ext_resource type="PackedScene" uid="uid://cnht5wav7xc1s" path="res://scenes/sword_slash.tscn" id="10_183k2"]
-[ext_resource type="Script" path="res://scripts/FollowCamera.gd" id="10_mdlvt"]
 [ext_resource type="AudioStream" uid="uid://5s5ctkskxmnq" path="res://sounds/sfx/slash.ogg" id="11_ba2qx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ek2va"]
@@ -727,25 +726,10 @@ hframes = 16
 vframes = 14
 frame = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-z_index = 4096
-z_as_relative = false
-zoom = Vector2(4, 4)
-script = ExtResource("10_mdlvt")
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -170.0
-offset_top = -101.0
-offset_right = 172.0
-offset_bottom = 98.0
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
-
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
 z_index = 1
 qte_reset_timer = 5.0
-qte_timer = 5.0
+qte_timer = 1.5
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)

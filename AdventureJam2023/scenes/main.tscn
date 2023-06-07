@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=23 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
 [ext_resource type="Script" path="res://scripts/INSERT CREDITS HERE.gd" id="2_xi8ne"]
 [ext_resource type="PackedScene" uid="uid://dw8ojbnh16lk4" path="res://scenes/ground_tiles.tscn" id="3_dh5yo"]
+[ext_resource type="PackedScene" uid="uid://bxa2cworr7nmj" path="res://scenes/PlayerCamera.tscn" id="6_ejmhg"]
 [ext_resource type="Texture2D" uid="uid://drpfncyw350o6" path="res://sprites/SUMMERVILLE - Forest/Tileset/Trees.png" id="6_fbp6y"]
 [ext_resource type="PackedScene" uid="uid://t2j0ptamd8kv" path="res://scenes/Entities/EntitySpawner.tscn" id="6_soa44"]
 [ext_resource type="PackedScene" uid="uid://nu5b3rqou2kv" path="res://scenes/Entities/DarkFigure.tscn" id="8_fynes"]
@@ -242,6 +243,7 @@ layer_0/tile_data = PackedInt32Array(917471, 1245184, 1, 1572824, 1245184, 1, 19
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
 position = Vector2(655, 579)
+[node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
 
 [node name="Map" type="Node2D" parent="."]
 
