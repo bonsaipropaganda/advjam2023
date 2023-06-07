@@ -41,7 +41,7 @@ func _physics_process(delta):
 
 	#a tiny function to make the player move!!!
 	move(input_direction, delta, is_slashing)
-	slash(is_slashing)  #a tiny function that communicates with the QTE stuff, and do the QTE game
+	is_slashing = slash(is_slashing)  #a tiny function that communicates with the QTE stuff, and do the QTE game
 
 	#ANIMATION FUNCIONS
 	walk_animation(input_direction)  #this function makes does all of the player "Walk animation"
@@ -52,17 +52,19 @@ func _physics_process(delta):
 
 
 func move(_input_direction: Vector2, _delta: float, _is_slashing: bool) -> void:
-	if qte.is_qte or paused:
+	if qte.is_in_progress() or paused:
 		return  #is the player slashing?. then don't move.
 	velocity = _input_direction.normalized() * speed
 	move_and_slide()
 
 
 #is da player slashing???. bring the slash thingy from the edge of the map and make it visible
-func slash(is_slashing: bool) -> void:
+func slash(is_slashing: bool) -> bool:
 	#is the player slashing?. and the qte is not being used?. use it!!!
-	if is_slashing and qte.is_qte == false:
+	if is_slashing && !qte.is_in_progress() && !qte.is_on_cooldown():
 		qte.init_qte()
+		return true
+	return false
 
 
 func _on_qte_done(is_success: bool):
@@ -73,7 +75,7 @@ func _on_qte_done(is_success: bool):
 	var camera: PlayerCamera = get_viewport().get_camera_2d()
 	camera.reset_zoom()
 	
-	hud.set_qte_timer(1, 1) # Reset qte timer
+	hud.regen_qte(qte.cooldown_time) # Reset qte timer
 	
 	if is_success:  # show slash animation on qte success, aoe attack
 		camera.start_shaking(2, 0.018, 0.15)
@@ -89,7 +91,7 @@ func _on_qte_done(is_success: bool):
 
 
 func walk_animation(_input_direction) -> void:
-	if qte.is_qte or is_slashing:
+	if qte.is_in_progress() or is_slashing:
 		return
 	if _input_direction.x != 0 or _input_direction.y != 0:
 		animationTree.set("parameters/Walk/blend_position", _input_direction.normalized())
@@ -99,8 +101,8 @@ func walk_animation(_input_direction) -> void:
 func slash_animation(is_slashing: bool) -> void:
 	if is_slashing:
 		var camera: PlayerCamera = get_viewport().get_camera_2d()
-		camera.change_zoom(camera.default_zoom * 3.0, qte.qte_timer)
-		hud.set_qte_timer(0, 1, qte.qte_timer * 0.1) # Hardcoded speedup = bad, but no time...
+		camera.change_zoom(camera.default_zoom * 3.0, qte.time)
+		hud.use_qte(qte.time * qte.time_factor)
 		# start slash animation
 		playback.travel("Mele")
 	# attack direction is the latest move direction that is not zero,
