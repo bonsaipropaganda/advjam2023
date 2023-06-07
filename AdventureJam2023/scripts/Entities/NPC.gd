@@ -28,6 +28,7 @@ func _ready():
 	set_json(dialogue_paths[dialogue_index])
 	set_action_index()
 
+
 func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("Interact") and can_interact:
@@ -41,6 +42,7 @@ func _input(event):
 			else:
 				dialogue(index, index+1)		# If this is not a special case, conitnue as usual
 
+
 func close_dialogue(flag : bool = false):
 	index = 0
 	key.visible = false
@@ -48,9 +50,11 @@ func close_dialogue(flag : bool = false):
 	can_interact = false
 	dialogue_finished.emit(dialogue_index, flag)
 
+
 # Function to overwrite in children classes. Did this to not overwrite the _ready method
 func set_action_index():
 	pass
+
 
 # Function to reset the action_on_dialogue dictionary
 func clear_action_index(_new_action_index: Dictionary = {}):
@@ -59,12 +63,15 @@ func clear_action_index(_new_action_index: Dictionary = {}):
 	
 	action_on_dialogue = _new_action_index
 
+
 func add_action_to_index(idx : int, actions):
 	action_on_dialogue[idx] = actions
+
 
 func switch_dialogue_option(new_index):
 	dialogue_index = new_index
 	set_json(dialogue_paths[dialogue_index])
+
 
 # this is to interact from nearby
 func _on_interaction_range_body_entered(body):
@@ -72,6 +79,7 @@ func _on_interaction_range_body_entered(body):
 		if key:	key.visible = true
 		can_interact = true
 		player_reference = body
+
 
 # this is to exit the interaction
 func _on_interaction_range_body_exited(body):
@@ -81,10 +89,12 @@ func _on_interaction_range_body_exited(body):
 		can_interact = false
 		player_reference = null
 
+
 # Get the json file and use it to fill a dict
 func set_json(file_path):
 	var _json_as_text = FileAccess.get_file_as_string(file_path)
 	json_as_dict = JSON.parse_string(_json_as_text)
+
 
 # a dialogue function that uses a json file which has all the dialogue for this character
 func dialogue(_index := 0, _next_index := 0, _the_name := figure_name, _file_path := dialogue_paths[dialogue_index]):
