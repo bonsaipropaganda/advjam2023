@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=21 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dcmey1uiv53qi" path="res://scenes/Tent.tscn" id="13_ul51i"]
 [ext_resource type="PackedScene" uid="uid://bwyyc3byn3kh4" path="res://scenes/Entities/TownGuard.tscn" id="14_44h01"]
 [ext_resource type="PackedScene" uid="uid://y21y6t4nxldl" path="res://scenes/Entities/Boat.tscn" id="15_8g45w"]
+[ext_resource type="PackedScene" uid="uid://d0pmg0vfcpwhj" path="res://scenes/VEffects/PostProcessing/PostProcessing.tscn" id="17_0hk3p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw6n3"]
 texture = ExtResource("6_fbp6y")
@@ -352,5 +353,7 @@ offset_right = -164.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PostProcessing" parent="." instance=ExtResource("17_0hk3p")]
 
 [connection signal="dialogue_finished" from="NPCs/SwordShop" to="NPCs/Judgement" method="_on_sword_shop_dialogue_finished"]
