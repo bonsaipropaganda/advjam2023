@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://68qt82behmuc"]
+[gd_scene load_steps=3 format=3 uid="uid://68qt82behmuc"]
 
 [ext_resource type="Texture2D" uid="uid://bw1sx21vq4rhy" path="res://sprites/GUI/GUI.png" id="1_5l8ym"]
+[ext_resource type="Script" path="res://scripts/GUI/DialogueBox.gd" id="2_lofa5"]
 
-[node name="TextureRect" type="NinePatchRect"]
+[node name="DialogueBox" type="NinePatchRect"]
 offset_right = 80.0
 offset_bottom = 64.0
 scale = Vector2(3.16, 3.16)
@@ -12,8 +13,10 @@ patch_margin_left = 40
 patch_margin_top = 8
 patch_margin_right = 40
 patch_margin_bottom = 8
+script = ExtResource("2_lofa5")
 
-[node name="Text" type="Label" parent="."]
+[node name="DialogueLine" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 15.1899
 offset_top = 15.1899
@@ -35,6 +38,7 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="CharacterName" type="Label" parent="CharacterNameBox"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 7.59494
 offset_top = 7.13924

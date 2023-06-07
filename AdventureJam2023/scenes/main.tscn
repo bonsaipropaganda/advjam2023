@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=32 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bxa2cworr7nmj" path="res://scenes/PlayerCamera.tscn" id="6_ejmhg"]
 [ext_resource type="Texture2D" uid="uid://drpfncyw350o6" path="res://sprites/SUMMERVILLE - Forest/Tileset/Trees.png" id="6_fbp6y"]
 [ext_resource type="PackedScene" uid="uid://t2j0ptamd8kv" path="res://scenes/Entities/EntitySpawner.tscn" id="6_soa44"]
-[ext_resource type="PackedScene" uid="uid://nu5b3rqou2kv" path="res://scenes/Entities/DarkFigure/DarkFigure.tscn" id="8_fynes"]
-[ext_resource type="PackedScene" uid="uid://ce64hr3ek1ewn" path="res://scenes/Entities/DarkFigure/force_field.tscn" id="8_w6glo"]
+[ext_resource type="PackedScene" uid="uid://nu5b3rqou2kv" path="res://scenes/Entities/NPCs/DarkFigure/DarkFigure.tscn" id="8_fynes"]
+[ext_resource type="PackedScene" uid="uid://ce64hr3ek1ewn" path="res://scenes/Entities/NPCs/DarkFigure/force_field.tscn" id="8_w6glo"]
 [ext_resource type="PackedScene" uid="uid://dc3a7wo5qwamg" path="res://scenes/GUI/menus/death_screen.tscn" id="9_0dbki"]
-[ext_resource type="PackedScene" uid="uid://68qt82behmuc" path="res://scenes/GUI/TextBox.tscn" id="9_r185j"]
+[ext_resource type="PackedScene" uid="uid://68qt82behmuc" path="res://scenes/GUI/DialogueBox.tscn" id="9_r185j"]
 [ext_resource type="PackedScene" uid="uid://b8ug0vdknyyuo" path="res://scenes/GUI/menus/Pause.tscn" id="9_trjc5"]
 [ext_resource type="PackedScene" uid="uid://defejqrdkoqd1" path="res://scenes/Entities/NPCs/SwordShop.tscn" id="10_2vi4q"]
 [ext_resource type="PackedScene" uid="uid://dolfh6hsub1iy" path="res://scenes/Entities/NPCs/Judgement.tscn" id="12_lrhnj"]
@@ -215,6 +215,10 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_dw6n3")
 
+[sub_resource type="GDScript" id="GDScript_y5m1c"]
+script/source = "extends NPC
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drooy"]
 size = Vector2(181, 5.5)
 
@@ -317,8 +321,8 @@ position = Vector2(-400, -192)
 
 [node name="TownGuard" parent="Map/NPCs" instance=ExtResource("14_44h01")]
 position = Vector2(-525, -256)
+script = SubResource("GDScript_y5m1c")
 figure_name = "Camp Guard"
-dialogue_paths = Array[String](["res://resources/dialogue/CampGuard/(0)Meeting.json"])
 
 [node name="Pier1" type="StaticBody2D" parent="Map"]
 position = Vector2(-414, -472)
@@ -453,4 +457,4 @@ grow_vertical = 2
 
 [node name="PostProcessing" parent="." instance=ExtResource("17_0hk3p")]
 
-[connection signal="dialogue_finished" from="Map/NPCs/SwordShop" to="Map/NPCs/Judgement" method="_on_sword_shop_dialogue_finished"]
+[connection signal="sold" from="Map/NPCs/SwordShop" to="Map/NPCs/Judgement" method="_on_sword_sold"]

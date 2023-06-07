@@ -1,0 +1,43 @@
+{
+	"Meeting": [
+		{"text": "Hey, HEY! What do you think you are doing?"},
+		{"text": "I'm not just going to let ANYONE pull me up!"},
+		{"text": "You got to be special, ya know?"},
+		{"text": "Or rich, that would work too."},
+		{"text": "Ya got some coin? If you have 10 coins, I can get you a deal."},
+		{
+			"text": "...",
+			"actions": [
+				"check_in",
+			]
+		},
+	],
+	"CheckIn": [
+		{"text": "Welcome back!"},
+		{"text": "You got the coins?"},
+		{
+			"text": "...",
+			"actions": [
+				"check_in",
+			]
+		},
+	],
+	"Bought": [
+		{"text": "Oh ho! 10 coins!"},
+		{
+			"text": "Well done!",
+			"next": "Silent",
+		},
+	],
+	"NotEnoughMoney": [
+		{"text": "Oh, not quite enough in your pocket."},
+		{"text": "That's a shame."},
+		{
+			"text": "Come back with 10 coins",
+			"next": "CheckIn"
+		},
+	],
+	"Silent": [
+		{"text": "(The sword remains silent)"},
+	],
+}

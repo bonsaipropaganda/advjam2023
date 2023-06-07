@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwyyc3byn3kh4"]
+[gd_scene load_steps=3 format=3 uid="uid://bwyyc3byn3kh4"]
 
 [ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_byf34"]
+[ext_resource type="Script" path="res://scripts/Entities/NPC.gd" id="2_1qjg0"]
 
 [node name="BaseEntity" instance=ExtResource("1_byf34")]
+script = ExtResource("2_1qjg0")
+figure_name = "Town Guard"
+dialogue_file = "res://resources/dialogue/TownGuard.json"

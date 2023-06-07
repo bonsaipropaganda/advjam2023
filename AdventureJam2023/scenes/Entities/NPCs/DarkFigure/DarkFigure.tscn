@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://nu5b3rqou2kv"]
 
 [ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_lqjko"]
-[ext_resource type="Script" path="res://scripts/Entities/DarkFigure.gd" id="2_2sbk7"]
+[ext_resource type="Script" path="res://scripts/Entities/NPCs/DarkFigure.gd" id="2_2sbk7"]
 [ext_resource type="Texture2D" uid="uid://bqntpniabhw5w" path="res://sprites/Entities/NPCs/Dark Figure.png" id="2_hlm5w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evopc"]
@@ -76,7 +76,7 @@ animations = [{
 [node name="DarkFigure" instance=ExtResource("1_lqjko")]
 script = ExtResource("2_2sbk7")
 figure_name = "Dark Figure"
-dialogue_paths = Array[String](["res://resources/dialogue/Dark_Figure/(0)Meeting.json"])
+dialogue_file = "res://resources/dialogue/DarkFigure.json"
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_askmc")

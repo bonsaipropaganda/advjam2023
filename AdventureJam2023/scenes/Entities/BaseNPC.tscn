@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ijdff06gv51"]
+[gd_scene load_steps=8 format=3 uid="uid://4ijdff06gv51"]
 
-[ext_resource type="Script" path="res://scripts/Entities/BaseNPC.gd" id="1_pmyxb"]
 [ext_resource type="Texture2D" uid="uid://dwffkkynsq4kd" path="res://sprites/Entities/NPCs/Figure Outline.png" id="2_mkqgy"]
 [ext_resource type="PackedScene" uid="uid://dba6xhqwhvjva" path="res://scenes/GUI/Key.tscn" id="3_d3rug"]
 [ext_resource type="AudioStream" uid="uid://ct7ipiagm5604" path="res://sounds/sfx/Dark_Figure_Disappear.wav" id="4_ovf4m"]
@@ -30,7 +29,6 @@ animations = [{
 
 [node name="BaseEntity" type="StaticBody2D"]
 y_sort_enabled = true
-script = ExtResource("1_pmyxb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_puakk")

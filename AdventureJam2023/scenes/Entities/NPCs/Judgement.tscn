@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dolfh6hsub1iy"]
 
 [ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_arvno"]
-[ext_resource type="Script" path="res://scripts/Entities/Judgement.gd" id="1_xux6s"]
+[ext_resource type="Script" path="res://scripts/Entities/NPCs/Judgement.gd" id="1_xux6s"]
 [ext_resource type="Texture2D" uid="uid://djdylbl00vh36" path="res://sprites/Entities/NPCs/Judgement.png" id="2_ckyrd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wvdh"]
@@ -109,7 +109,7 @@ animations = [{
 [node name="Judgement" instance=ExtResource("1_arvno")]
 script = ExtResource("1_xux6s")
 figure_name = "Judgement"
-dialogue_paths = Array[String](["res://resources/dialogue/Judgement/(0)Meeting.json", "res://resources/dialogue/Judgement/(1)WaitOnSword.json"])
+dialogue_file = "res://resources/dialogue/Judgement.json"
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_askmc")

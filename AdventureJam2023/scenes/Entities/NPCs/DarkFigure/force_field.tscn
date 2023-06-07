@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ce64hr3ek1ewn"]
 
 [ext_resource type="Texture2D" uid="uid://bqntpniabhw5w" path="res://sprites/Entities/NPCs/Dark Figure.png" id="1_euaj0"]
-[ext_resource type="Script" path="res://scenes/Entities/DarkFigure/force_field.gd" id="1_fct3w"]
+[ext_resource type="Script" path="res://scenes/Entities/NPCs/DarkFigure/force_field.gd" id="1_fct3w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w00ql"]
 radius = 17.0
