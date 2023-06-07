@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://3pg4iv58lgb5"]
+[gd_resource type="Resource" script_class="WeaponRes" load_steps=2 format=3 uid="uid://3pg4iv58lgb5"]
 
 [ext_resource type="Script" path="res://resources/weapons/weapon.gd" id="1_v5dir"]
 
 [resource]
 script = ExtResource("1_v5dir")
-single_target_damage = 1
-group_damage = 1
+single_damage = 1
+group_damage = 2

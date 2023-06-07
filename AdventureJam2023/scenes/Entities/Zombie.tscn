@@ -562,6 +562,7 @@ material = ExtResource("1_3ajjx")
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("2_im01h")
+max_hp = 4
 drop_chance = 1.0
 coin_scene = ExtResource("3_76bd1")
 

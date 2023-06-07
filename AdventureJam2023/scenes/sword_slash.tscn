@@ -1,14 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnht5wav7xc1s"]
+[gd_scene load_steps=15 format=3 uid="uid://cnht5wav7xc1s"]
 
 [ext_resource type="Script" path="res://scripts/sword_slash.gd" id="1_xxay3"]
 [ext_resource type="Texture2D" uid="uid://cscu53v68f4m3" path="res://sprites/Swipe Effect/green_slash/SP301_01.png" id="2_6ihk2"]
+[ext_resource type="Texture2D" uid="uid://c1pr3qebolhh4" path="res://sprites/Swipe Effect/SP203_02.png" id="2_oa50m"]
+[ext_resource type="Texture2D" uid="uid://i8hh5w1kwasi" path="res://sprites/Swipe Effect/SP203_03.png" id="3_c81q8"]
 [ext_resource type="Texture2D" uid="uid://q34c8jgx517r" path="res://sprites/Swipe Effect/green_slash/SP301_02.png" id="3_meuki"]
 [ext_resource type="Texture2D" uid="uid://ci5wjtj0lktui" path="res://sprites/Swipe Effect/green_slash/SP301_03.png" id="4_vpspk"]
+[ext_resource type="Texture2D" uid="uid://bmkgk83pcm2j0" path="res://sprites/Swipe Effect/SP203_04.png" id="4_x6vlb"]
 [ext_resource type="Texture2D" uid="uid://dxymgv3fjwoq6" path="res://sprites/Swipe Effect/green_slash/SP301_04.png" id="5_wesu0"]
+[ext_resource type="Texture2D" uid="uid://3r1ck17bthur" path="res://sprites/Swipe Effect/SP203_05.png" id="5_ycj2n"]
+[ext_resource type="Texture2D" uid="uid://dugimvx58xqtb" path="res://sprites/Swipe Effect/SP203_06.png" id="6_7kc4p"]
 [ext_resource type="Texture2D" uid="uid://cmmftfvhacngw" path="res://sprites/Swipe Effect/green_slash/SP301_05.png" id="6_kv82b"]
+[ext_resource type="Texture2D" uid="uid://byjlfttvgolr0" path="res://sprites/Swipe Effect/SP203_07.png" id="7_u73j7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ek2va"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oa50m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c81q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x6vlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ycj2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7kc4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u73j7")
+}],
+"loop": true,
+"name": &"knife",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_kv82b")
@@ -26,12 +55,12 @@ animations = [{
 "texture": ExtResource("2_6ihk2")
 }],
 "loop": true,
-"name": &"default",
+"name": &"small_sword",
 "speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vusr"]
-size = Vector2(30, 26)
+size = Vector2(56, 31)
 
 [node name="SwordSlash" type="Area2D" groups=["attack"]]
 y_sort_enabled = true
@@ -41,10 +70,11 @@ script = ExtResource("1_xxay3")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ek2va")
-autoplay = "default"
-frame_progress = 0.336454
+animation = &"knife"
+autoplay = "knife"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_5vusr")
 
 [connection signal="animation_looped" from="Animation" to="." method="_on_animation_animation_looped"]

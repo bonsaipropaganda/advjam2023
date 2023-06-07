@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_3widn")
 single_damage = 1
-group_damage = 2
+group_damage = 4
