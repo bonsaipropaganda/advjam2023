@@ -30,17 +30,19 @@ func set_health(health: float, max_health: float, anim_time: float = 0.2) -> voi
 
 func use_qte(time: float) -> void:
 	%QteTimer.value = 0.0
+	%QteTimerUnder.value = 100.0
 	
 	if qte_timer_tween:
 		qte_timer_tween.kill()
 	qte_timer_tween = create_tween()
-	qte_timer_tween.tween_property(%QteTimerUnder, ^"value", 100.0, time)
+	qte_timer_tween.tween_property(%QteTimerUnder, ^"value", 0.0, time)
 
 
 # Yes there are other (waaaay better) ways to write this
 func regen_qte(time: float = 0.0) -> void:
 	# mhh with twines it could get desync with real value if more mechanics are added... (unlikely)
 	%QteTimerUnder.value = 0.0
+	%QteTimer.value = 0.0
 	
 	if qte_timer_tween:
 		qte_timer_tween.kill()
