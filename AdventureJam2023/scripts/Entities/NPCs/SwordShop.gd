@@ -21,3 +21,7 @@ func _action(act_name: String) -> void:
 func _on_dialogue_finished(dialogue: String) -> void:
 	if dialogue == "Bought":
 		queue_free()
+
+
+func _on_sold() -> void:
+	%GotSword.play()

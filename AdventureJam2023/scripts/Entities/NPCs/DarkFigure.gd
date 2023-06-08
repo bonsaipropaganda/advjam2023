@@ -1,6 +1,5 @@
 extends NPC
 
-
 func _on_dialogue_finished(dialogue_name: String) -> void:
 	if dialogue_name == "Meeting":
 		key.visible = false

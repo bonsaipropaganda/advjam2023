@@ -1,5 +1,6 @@
 extends Control
 
+@onready var sword = %Sword
 
 var health_tween: Tween
 var qte_timer_tween: Tween
@@ -49,3 +50,11 @@ func regen_qte(time: float = 0.0) -> void:
 	qte_timer_tween = create_tween()
 	qte_timer_tween.tween_property(%QteTimer, ^"value", 100.0, time)
 	
+
+
+func _on_sword_shop_sold() -> void:
+	sword.show()
+
+
+func _on_button_button_down() -> void:
+	set_coin_count(0)

@@ -25,5 +25,5 @@ func _on_resume() -> void:
 
 
 func _on_quit() -> void:
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/GUI/menus/main_menu.tscn")
 

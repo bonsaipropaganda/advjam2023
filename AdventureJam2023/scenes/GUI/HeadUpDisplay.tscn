@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctid3jy7wisu"]
+[gd_scene load_steps=9 format=3 uid="uid://ctid3jy7wisu"]
 
 [ext_resource type="Script" path="res://scripts/GUI/HeadUpDisplay.gd" id="1_xcm3r"]
 [ext_resource type="Texture2D" uid="uid://bvj5u8cmsp3y" path="res://sprites/GUI/HealthBar/health_under.png" id="2_2ft15"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cfm2ofqfve50h" path="res://sprites/GUI/HealthBar/health_progress.png" id="3_1w3jj"]
 [ext_resource type="Texture2D" uid="uid://5xmc6t4kjwf4" path="res://sprites/GUI/QteTimer/timer_under.png" id="4_pj6m4"]
 [ext_resource type="Texture2D" uid="uid://c2h8u3ndis22g" path="res://sprites/GUI/QteTimer/timer_progress.png" id="5_x3vjt"]
+[ext_resource type="Texture2D" uid="uid://bmevo6iorgsjt" path="res://sprites/sword_in_the_dirt.png" id="7_srb8r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o1vcf"]
 font_size = 32
@@ -156,3 +157,15 @@ text = "x 1"
 label_settings = SubResource("LabelSettings_o1vcf")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sword" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+y_sort_enabled = true
+layout_mode = 1
+offset_left = 161.0
+offset_top = -7.0
+offset_right = 193.0
+offset_bottom = 25.0
+scale = Vector2(5, 5)
+texture = ExtResource("7_srb8r")

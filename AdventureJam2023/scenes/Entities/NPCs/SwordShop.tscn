@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bmevo6iorgsjt" path="res://sprites/sword_in_the_dirt.png" id="2_l2i08"]
 [ext_resource type="Resource" uid="uid://cexxpi3opd086" path="res://resources/weapons/small_sword.tres" id="2_un5ur"]
 [ext_resource type="PackedScene" uid="uid://dba6xhqwhvjva" path="res://scenes/GUI/Key.tscn" id="3_nca8x"]
-[ext_resource type="AudioStream" uid="uid://ct7ipiagm5604" path="res://sounds/sfx/Dark_Figure_Disappear.wav" id="4_oxu3c"]
+[ext_resource type="AudioStream" uid="uid://c2fysqjecfjwh" path="res://sounds/sfx/GotSword.wav" id="5_2b87h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_puakk"]
 radius = 8.0
@@ -54,9 +54,12 @@ z_index = 1
 position = Vector2(16, -18)
 frame = 20
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_oxu3c")
+[node name="GotSword" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_2b87h")
+volume_db = 5.0
 
 [connection signal="dialogue_finished" from="." to="." method="_on_dialogue_finished"]
+[connection signal="sold" from="." to="." method="_on_sold"]
 [connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]

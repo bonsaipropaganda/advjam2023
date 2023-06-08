@@ -10,6 +10,20 @@
 [node name="qte" type="Node2D"]
 script = ExtResource("1_yjpc1")
 images = Array[Texture]([ExtResource("2_4cukj"), ExtResource("3_76j53"), ExtResource("4_gvexl"), ExtResource("5_cldjd"), ExtResource("6_ob7w8")])
-qte_counter = 3
-qte_reset_timer = 4.0
-qte_timer = 4.0
+
+[node name="Panel" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("6_ob7w8")

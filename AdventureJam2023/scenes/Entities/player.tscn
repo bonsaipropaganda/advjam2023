@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ctftvg83q0ap5"]
+[gd_scene load_steps=73 format=3 uid="uid://ctftvg83q0ap5"]
 
 [ext_resource type="Script" path="res://scripts/Entities/player.gd" id="1_r2lvk"]
 [ext_resource type="Resource" uid="uid://3pg4iv58lgb5" path="res://resources/weapons/knife.tres" id="2_6wrh6"]
@@ -11,7 +11,78 @@
 [ext_resource type="Texture2D" uid="uid://q34c8jgx517r" path="res://sprites/Swipe Effect/green_slash/SP301_02.png" id="8_lk5uo"]
 [ext_resource type="Texture2D" uid="uid://cscu53v68f4m3" path="res://sprites/Swipe Effect/green_slash/SP301_01.png" id="9_ls5bf"]
 [ext_resource type="PackedScene" uid="uid://cnht5wav7xc1s" path="res://scenes/sword_slash.tscn" id="10_183k2"]
-[ext_resource type="AudioStream" uid="uid://5s5ctkskxmnq" path="res://sounds/sfx/slash.ogg" id="11_ba2qx"]
+[ext_resource type="AudioStream" uid="uid://bmwmovrlxupqx" path="res://sounds/sfx/slash.wav" id="12_3jg52"]
+[ext_resource type="AudioStream" uid="uid://bwep3xpkb320i" path="res://sounds/sfx/footstep.wav" id="13_i6q5h"]
+[ext_resource type="AudioStream" uid="uid://djmb7ba5qj3o2" path="res://sounds/sfx/preslash.wav" id="13_m7jtc"]
+[ext_resource type="AudioStream" uid="uid://dt1asa3oui14t" path="res://sounds/sfx/playerdamaged.wav" id="15_x6w2r"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_02ee7"]
+default_input_values = [0, 0.0, 1, 20.0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ys1fu"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_m6bew"]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_ybg65"]
+parameter_name = "is_blinking"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_6a8f4"]
+function = 31
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_t5h5w"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_iqe4n"]
+function = 0
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_x4x8u"]
+
+[sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_wdwon"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_kjcdp"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShader" id="VisualShader_yibf3"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+graph_offset = Vector2(-205.411, 80.1337)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1460, 420)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_t5h5w")
+nodes/fragment/2/position = Vector2(-600, 280)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatFunc_iqe4n")
+nodes/fragment/3/position = Vector2(240, 280)
+nodes/fragment/4/node = SubResource("VisualShaderNodeStep_x4x8u")
+nodes/fragment/4/position = Vector2(580, 160)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorOp_wdwon")
+nodes/fragment/6/position = Vector2(1180, 340)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorOp_kjcdp")
+nodes/fragment/9/position = Vector2(920, 200)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_02ee7")
+nodes/fragment/10/position = Vector2(-60, 240)
+nodes/fragment/11/node = SubResource("VisualShaderNodeInput_ys1fu")
+nodes/fragment/11/position = Vector2(-600, 720)
+nodes/fragment/15/node = SubResource("VisualShaderNodeColorConstant_m6bew")
+nodes/fragment/15/position = Vector2(-440, 560)
+nodes/fragment/16/node = SubResource("VisualShaderNodeBooleanParameter_ybg65")
+nodes/fragment/16/position = Vector2(-580, -20)
+nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_6a8f4")
+nodes/fragment/17/position = Vector2(40, 60)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n5uq6"]
+resource_local_to_scene = true
+shader = SubResource("VisualShader_yibf3")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ek2va"]
 animations = [{
@@ -57,6 +128,44 @@ radius = 5.0
 height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65n6a"]
+
+[sub_resource type="Animation" id="Animation_li7sn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m6u04"]
+resource_name = "Refresh"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtu6w"]
+_data = {
+"RESET": SubResource("Animation_li7sn"),
+"Refresh": SubResource("Animation_m6u04")
+}
 
 [sub_resource type="Animation" id="Animation_0itb2"]
 resource_name = "Idle_down"
@@ -155,6 +264,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FootstepSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_5321q"]
@@ -530,6 +651,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [3, 4, 5, 6]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootstepSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_xlug0"]
 resource_name = "move_left"
@@ -547,6 +680,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [51, 52, 53, 54]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootstepSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_5kmmo"]
@@ -566,6 +711,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [35, 36, 37, 38]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootstepSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_3u5sc"]
 resource_name = "move_up"
@@ -583,6 +740,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [19, 20, 21, 22]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootstepSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sr10y"]
@@ -713,18 +882,22 @@ graph_offset = Vector2(96, 85)
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("slash_sound") groups=["Player"]]
 z_index = 3
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_n5uq6")
 collision_layer = 2
-collision_mask = 9
+collision_mask = 13
 script = ExtResource("1_r2lvk")
 weapon = ExtResource("2_6wrh6")
 swing_animation = SubResource("PackedScene_4amne")
 slash_sound = NodePath("SlashSound")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
-frame = 1
 
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
 z_index = 1
@@ -741,6 +914,8 @@ monitorable = false
 [node name="Animation" parent="SwordSlash" index="0"]
 animation = &"small_sword"
 autoplay = ""
+frame = 4
+frame_progress = 0.0
 flip_v = true
 
 [node name="HealthChecker" type="Area2D" parent="."]
@@ -749,6 +924,12 @@ collision_mask = 4
 
 [node name="Shape" type="CollisionShape2D" parent="HealthChecker"]
 shape = SubResource("CapsuleShape2D_65n6a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthChecker"]
+autoplay = "Refresh"
+libraries = {
+"": SubResource("AnimationLibrary_dtu6w")
+}
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
@@ -770,10 +951,28 @@ wait_time = 2.5
 autostart = true
 
 [node name="SlashSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_ba2qx")
+stream = ExtResource("12_3jg52")
+volume_db = -10.0
 bus = &"Sounds"
 
-[connection signal="body_entered" from="HealthChecker" to="." method="_on_area_2d_body_entered"]
+[node name="PreSlashSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_m7jtc")
+volume_db = -10.0
+bus = &"Sounds"
+
+[node name="FootstepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_i6q5h")
+volume_db = -12.0
+bus = &"Sounds"
+
+[node name="TakeDamageSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_x6w2r")
+bus = &"Sounds"
+
+[connection signal="area_entered" from="HealthChecker" to="." method="_on_health_checker_area_entered"]
+[connection signal="body_entered" from="HealthChecker" to="." method="_on_health_checker_body_entered"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 
 [editable path="SwordSlash"]

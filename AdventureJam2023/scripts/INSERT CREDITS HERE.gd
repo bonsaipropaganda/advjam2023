@@ -11,6 +11,7 @@ CREDITS & LINKS:
 	Pixel Art GUI Elements 				https://mounirtohami.itch.io/pixel-art-gui-elements
 	8x8 Gold Coin Spinning Animation	https://evercrazy.itch.io/gold-coin-spinning-animation
 	Pixel Art Effect Slashing			https://nyknck.itch.io/fx084
+	Tiny Slime Character				https://yvodlynpaul.itch.io/tiny-slim-character
 	Sound effects pixabay				https://pixabay.com/sound-effects/search/portal/
 	
 """

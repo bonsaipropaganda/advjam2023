@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc3a7wo5qwamg"]
+[gd_scene load_steps=4 format=3 uid="uid://dc3a7wo5qwamg"]
 
 [ext_resource type="Script" path="res://scripts/GUI/menus/DeathScreen.gd" id="1_i88fm"]
 [ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="2_lp8i2"]
+[ext_resource type="AudioStream" uid="uid://cp2jlj2e1l0jq" path="res://sounds/sfx/dead.wav" id="3_fihpk"]
 
 [node name="DeathScreen" type="Node2D"]
 process_mode = 3
 z_index = 5
 script = ExtResource("1_i88fm")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fihpk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1280.0
@@ -16,29 +20,39 @@ color = Color(0.0392157, 0.0392157, 0.0392157, 0.419608)
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 68.0
 offset_top = 59.0
-offset_right = 1282.0
-offset_bottom = 193.0
+offset_right = 1206.0
+offset_bottom = 197.0
+pivot_offset = Vector2(569, 69)
 theme_override_fonts/normal_font = ExtResource("2_lp8i2")
 theme_override_font_sizes/normal_font_size = 128
 text = "You have fallen!"
 
 [node name="Button" type="Button" parent="."]
-offset_left = 467.0
-offset_top = 268.0
-offset_right = 538.0
-offset_bottom = 299.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 579.0
+offset_top = 357.0
+offset_right = 726.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(5, 5)
+pivot_offset = Vector2(73, 12)
 theme_override_fonts/font = ExtResource("2_lp8i2")
-text = "Retry"
+text = "Last checkpoint"
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 467.0
-offset_top = 453.0
-offset_right = 538.0
-offset_bottom = 484.0
+offset_left = 599.0
+offset_top = 542.0
+offset_right = 701.0
+offset_bottom = 566.0
 scale = Vector2(5, 5)
+pivot_offset = Vector2(51, 12)
 theme_override_fonts/font = ExtResource("2_lp8i2")
-text = "Quit"
+text = "Main menu"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]

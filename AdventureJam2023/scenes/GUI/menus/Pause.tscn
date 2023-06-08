@@ -37,13 +37,13 @@ text = "Resume"
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 467.0
-offset_top = 453.0
-offset_right = 538.0
-offset_bottom = 484.0
+offset_left = 398.0
+offset_top = 463.0
+offset_right = 500.0
+offset_bottom = 494.0
 scale = Vector2(5, 5)
 theme_override_fonts/font = ExtResource("2_7bjhc")
-text = "Quit"
+text = "Main Menu"
 
 [connection signal="button_down" from="Resume" to="." method="_on_resume"]
 [connection signal="button_down" from="Quit" to="." method="_on_quit"]

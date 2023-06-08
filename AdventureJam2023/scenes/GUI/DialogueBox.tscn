@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://68qt82behmuc"]
+[gd_scene load_steps=4 format=3 uid="uid://68qt82behmuc"]
 
 [ext_resource type="Texture2D" uid="uid://bw1sx21vq4rhy" path="res://sprites/GUI/GUI.png" id="1_5l8ym"]
 [ext_resource type="Script" path="res://scripts/GUI/DialogueBox.gd" id="2_lofa5"]
+[ext_resource type="AudioStream" uid="uid://tq12512120jv" path="res://sounds/sfx/click.wav" id="3_jq8bo"]
 
 [node name="DialogueBox" type="NinePatchRect"]
 offset_right = 80.0
@@ -46,3 +47,7 @@ offset_right = 63.5949
 offset_bottom = 33.1392
 scale = Vector2(0.40074, 0.394433)
 text = "Name"
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_jq8bo")

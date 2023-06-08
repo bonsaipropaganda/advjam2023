@@ -1,73 +1,180 @@
-[gd_scene load_steps=7 format=3 uid="uid://y21y6t4nxldl"]
+[gd_scene load_steps=10 format=3 uid="uid://y21y6t4nxldl"]
 
 [ext_resource type="Script" path="res://scripts/Entities/Boat.gd" id="1_cxy4p"]
 [ext_resource type="Texture2D" uid="uid://bn4oppscot64y" path="res://sprites/best_boat.png" id="1_nxbo1"]
+[ext_resource type="AudioStream" uid="uid://bd4512vserb1r" path="res://sounds/sfx/boatcame.wav" id="2_urhv1"]
 [ext_resource type="PackedScene" uid="uid://dba6xhqwhvjva" path="res://scenes/GUI/Key.tscn" id="3_pvwxq"]
 
-[sub_resource type="Animation" id="Animation_3ohjl"]
-resource_name = "new_animation"
-length = 5.0
-tracks/0/type = "bezier"
+[sub_resource type="Animation" id="Animation_oqtbf"]
+length = 0.001
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Boat:position:x")
+tracks/0/path = NodePath("AnimationPlayer/BoatCame:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0.25, 2, 1, 500, -2, 0, 0.25, 0),
-"times": PackedFloat32Array(0.6, 5)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Boat:position:y")
+tracks/1/path = NodePath("AnimationPlayer/BoatCame:pitch_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.75]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Boat:scale")
+tracks/2/path = NodePath("Boat:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3, 3.9, 5),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3ohjl"]
+resource_name = "Ride"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boat:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(-1, 1)]
+"values": [Vector2(-1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Boat/BestBoat/target:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6, 4.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-24, 5), Vector2(0, 5), Vector2(0, 5), Vector2(-24, 5)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/BoatCame:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/BoatCame:pitch_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.75]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boat:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(500, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hdiua"]
+resource_name = "RideFlipped"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boat:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(-1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/BoatCame:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/BoatCame:pitch_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.75]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boat:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(500, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e1cdo"]
 _data = {
-"new_animation": SubResource("Animation_3ohjl")
+"RESET": SubResource("Animation_oqtbf"),
+"Ride": SubResource("Animation_3ohjl"),
+"RideFlipped": SubResource("Animation_hdiua")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jg8ep"]
@@ -82,12 +189,17 @@ libraries = {
 "": SubResource("AnimationLibrary_e1cdo")
 }
 
+[node name="BoatCame" type="AudioStreamPlayer" parent="AnimationPlayer"]
+stream = ExtResource("2_urhv1")
+pitch_scale = 0.75
+
 [node name="Boat" type="Node2D" parent="."]
 z_index = 4096
 z_as_relative = false
+scale = Vector2(-1, 1)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Boat"]
-position = Vector2(0, 19)
+position = Vector2(17, 17)
 scale = Vector2(3, 3)
 update_rotation = false
 update_scale = false
@@ -97,23 +209,23 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_nxbo1")
 
 [node name="target" type="Node2D" parent="Boat/BestBoat"]
-position = Vector2(-24, 5)
+position = Vector2(19.667, 6)
 scale = Vector2(0.333333, 0.333333)
 
 [node name="ColorRect" type="ColorRect" parent="Boat"]
-offset_left = -36.0
+offset_left = -44.0
 offset_top = 36.0
-offset_right = 32.0
+offset_right = 40.0
 offset_bottom = 63.0
 color = Color(0.376471, 0.65098, 0.756863, 1)
 
 [node name="Key" parent="Boat" instance=ExtResource("3_pvwxq")]
-position = Vector2(-67, -15)
+position = Vector2(66.5, -15)
 frame = 20
 
 [node name="InteractionRange" type="Area2D" parent="Boat"]
 modulate = Color(0.592157, 0.00392157, 0.898039, 1)
-position = Vector2(-75, 0)
+position = Vector2(58.5, 0)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boat/InteractionRange"]

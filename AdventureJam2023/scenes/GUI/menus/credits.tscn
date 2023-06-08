@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjocw1vf1hxwh"]
+[gd_scene load_steps=5 format=3 uid="uid://cjocw1vf1hxwh"]
 
 [ext_resource type="FontFile" uid="uid://cnx4pqerxaf4" path="res://sprites/GUI/CooperBits.ttf" id="1_7tdg7"]
 [ext_resource type="Script" path="res://scenes/GUI/menus/credits.gd" id="1_7y88s"]
 [ext_resource type="Texture2D" uid="uid://cssvt4xtud1ua" path="res://player_attack_QTE/sprites/left.png" id="2_bf2e3"]
+[ext_resource type="AudioStream" uid="uid://tq12512120jv" path="res://sounds/sfx/click.wav" id="4_fbhtj"]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_7y88s")
@@ -42,5 +43,10 @@ offset_right = 115.0
 offset_bottom = 106.0
 texture_normal = ExtResource("2_bf2e3")
 stretch_mode = 0
+
+[node name="TestSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_fbhtj")
+bus = &"Sounds"
 
 [connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

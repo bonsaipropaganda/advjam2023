@@ -47,9 +47,9 @@ func _on_interaction_range_body_exited(body):
 func start_travel() -> void:
 	is_travelling = true
 	if flipped:
-		animation_player.play_backwards("new_animation")
+		animation_player.play("RideFlipped")
 	else:
-		animation_player.play("new_animation")
+		animation_player.play("Ride")
 	flipped = !flipped
 	player.get_node("HitBox").disabled = true
 	remote_transform.remote_path = player.get_path()

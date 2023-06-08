@@ -6,7 +6,7 @@ extends Node2D
 @export var time_factor: float = 0.1
 
 # Spacing between key indicators
-@export var key_spacing: float = 20
+@export var key_spacing: float = 30
 # The time it takes for a key to move to the left
 @export var key_mov_time: float = 0.08
 # The amount of time the player has to complete the QTE
@@ -63,6 +63,7 @@ func create_random_sequence(max_len: int) -> Array[int]:
 
 #spawn the sprites
 func spawn_qte_sprites():
+	%Panel.show()
 	var counter: int = 0
 
 	for i in sequence:
@@ -116,6 +117,7 @@ func get_event_index(event: InputEvent) -> int:
 
 
 func register_input(input: int) -> void:
+	play_sfx()
 	#yayyy!!, if the input is right, resert the qte timer. and iterate the qte_counter so you can check the next element in the sequence
 	if input == sequence[correct_key_count]:
 #		if qte_reset_timer > 0:
@@ -162,9 +164,30 @@ func reset() -> void:
 	time = cooldown_time
 	on_cooldown = true
 	in_progress = false
+	%Panel.hide()
 	
 	for child in get_children(): # Remove key sprites
 		if child is Sprite2D:
 			child.queue_free()
 	
-	Engine.time_scale = 1.0
+	create_tween().tween_property(Engine, "time_scale", 1, 0.05)
+	player_reset()
+
+
+func play_sfx():
+	var sfx = AudioStreamPlayer.new()
+	BgMusic.add_child(sfx)
+	sfx.stream = load("res://sounds/sfx/qtesound.wav")
+	sfx.play()
+	sfx.pitch_scale = randf_range(0.9, 1.1)
+	delete_sfx(sfx)
+
+
+func delete_sfx(sfx):
+	await sfx.finished
+	sfx.queue_free()
+
+
+func player_reset():
+	await get_tree().create_timer(0.25).timeout
+	owner.can_move = true

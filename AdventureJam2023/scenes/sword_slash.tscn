@@ -60,7 +60,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vusr"]
-size = Vector2(56, 31)
+size = Vector2(62, 57)
 
 [node name="SwordSlash" type="Area2D" groups=["attack"]]
 y_sort_enabled = true
@@ -72,6 +72,7 @@ script = ExtResource("1_xxay3")
 sprite_frames = SubResource("SpriteFrames_ek2va")
 animation = &"knife"
 autoplay = "knife"
+frame_progress = 0.853375
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)

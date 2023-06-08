@@ -12,10 +12,11 @@ position = Vector2(-677, -407)
 script = ExtResource("1_dvlmi")
 
 [node name="Tent0" type="Sprite2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -8)
 texture = ExtResource("1_kkmnv")
+offset = Vector2(0, -13.686)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 9)
+position = Vector2(-5, 1)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_l80vq")

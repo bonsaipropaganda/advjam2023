@@ -1,13 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://blr1imc52rgjx"]
+[gd_scene load_steps=5 format=3 uid="uid://blr1imc52rgjx"]
 
-[ext_resource type="AudioStream" uid="uid://cu846cl0ameih" path="res://sounds/tracks/QuaffTune-AdventureJamMusicThingThatTookMeLikeTwoMinutesToMakeAndIsKindaBadButOhWell.mp3" id="2_m2abe"]
+[ext_resource type="AudioStream" uid="uid://r4051s6lcpyt" path="res://advjam2023ostiguess.mp3" id="1_3d00g"]
+
+[sub_resource type="Animation" id="Animation_3nrk5"]
+resource_name = "Fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(0.378929, 1),
+"update": 0,
+"values": [-80.0, -12.0]
+}
+
+[sub_resource type="Animation" id="Animation_ln28r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-12.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6tbi7"]
+_data = {
+"Fade": SubResource("Animation_3nrk5"),
+"RESET": SubResource("Animation_ln28r")
+}
 
 [node name="BgMusic" type="Node2D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_m2abe")
+stream = ExtResource("1_3d00g")
 volume_db = -12.0
 autoplay = true
 bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Fade"
+libraries = {
+"": SubResource("AnimationLibrary_6tbi7")
+}
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

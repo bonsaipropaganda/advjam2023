@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var sfx = $sfx
 
 func _on_button_button_down():
 	get_tree().paused = false
@@ -14,4 +15,4 @@ func _on_button_button_down():
 
 
 func _on_button_2_button_down():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/GUI/menus/main_menu.tscn")
