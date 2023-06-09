@@ -403,6 +403,7 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="Label" type="Label" parent="Control/Fullscreen"]
+layout_mode = 0
 offset_left = -131.0
 offset_top = 5.0
 offset_right = -8.0
