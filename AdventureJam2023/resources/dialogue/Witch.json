@@ -4,7 +4,7 @@
 		{"text": "I understand folks like you are constantly getting beat up."},
 		{"text": "I've got a cure for that."},
 		{"text": "Health potions!"},
-		{"text": "Whether, you need the potion or not..\n..either way I'll take 5 coins from you. hehe.",
+		{"text": "They only cost 10 coins.",
 		"next": "CheckIn"
 		},
 	],
@@ -17,12 +17,18 @@
 		},
 	],
 	"Bought": [
-		{"text": "Thanks for the 5 coins! *wink*"},
-		{"text": "I hope you feel better!"},
+		{"text": "Thanks for the coins! I hope you feel better.",
+		"next": "CheckIn"}
 	],
 	"NotEnoughMoney": [
 		{"text": "Oh, not quite enough in your pocket."},
 		{"text": "That's a shame.",
+		"next": "CheckIn"
+		},
+	],
+	"AlreadyHealthy": [
+		{"text": "Oh, you're already healthy it seems."},
+		{"text": "You don't need a potion!",
 		"next": "CheckIn"
 		},
 	],

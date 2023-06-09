@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=78 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -30,6 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://bn4oppscot64y" path="res://sprites/best_boat.png" id="22_emfah"]
 [ext_resource type="Script" path="res://scenes/Entities/NPCs/witch.gd" id="22_y3ihy"]
 [ext_resource type="Script" path="res://scenes/StartBoat.gd" id="23_ibk78"]
+[ext_resource type="PackedScene" uid="uid://dott3yf8v0vr7" path="res://scenes/Entities/NPCs/witch_2.tscn" id="23_quhya"]
+[ext_resource type="PackedScene" uid="uid://coskt3cg4m0ek" path="res://scenes/Entities/NPCs/witch_3.tscn" id="24_aao2a"]
+[ext_resource type="Script" path="res://scenes/Entities/NPCs/witch_2.gd" id="24_xhf1r"]
+[ext_resource type="Script" path="res://scenes/Entities/NPCs/witch_3.gd" id="26_tocl1"]
 [ext_resource type="PackedScene" uid="uid://cd205urxt86y8" path="res://scenes/Entities/Enemies/Boss.tscn" id="26_uvxo7"]
 [ext_resource type="PackedScene" uid="uid://cxu80qqu2idf5" path="res://scenes/coin.tscn" id="27_27o8m"]
 
@@ -374,7 +378,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_5w7u2")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_igb00"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45ux5"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_7stf8")
 
@@ -672,7 +676,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_r7lk4")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ftyy7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_506f1"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_vfcnq")
 
@@ -680,13 +684,6 @@ shader = SubResource("VisualShader_vfcnq")
 y_sort_enabled = true
 position = Vector2(0, 1)
 script = ExtResource("1_tv3gc")
-
-[node name="Easter egg bruh" type="Label" parent="."]
-offset_left = -133.0
-offset_top = -1207.0
-offset_right = 143.0
-offset_bottom = -1187.0
-text = "We need ending thats it, i think"
 
 [node name="Intro" type="Node2D" parent="."]
 position = Vector2(731, 587)
@@ -737,7 +734,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_xi8ne")
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
-material = SubResource("ShaderMaterial_igb00")
+material = SubResource("ShaderMaterial_45ux5")
 position = Vector2(783, 589)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
@@ -833,9 +830,20 @@ figure_name = "Guard"
 dialogue_file = "res://resources/dialogue/TownGuard.json"
 
 [node name="Witch" parent="Map/NPCs" instance=ExtResource("21_5mtnj")]
-position = Vector2(432, 563)
+position = Vector2(-782, -241)
 script = ExtResource("22_y3ihy")
 figure_name = "Witch"
+dialogue_file = "res://resources/dialogue/Witch.json"
+
+[node name="Witch2" parent="Map/NPCs" instance=ExtResource("23_quhya")]
+position = Vector2(1026, -445)
+script = ExtResource("24_xhf1r")
+figure_name = "Witch"
+dialogue_file = "res://resources/dialogue/Witch.json"
+
+[node name="Witch3" parent="Map/NPCs" instance=ExtResource("24_aao2a")]
+position = Vector2(81, -1169)
+script = ExtResource("26_tocl1")
 dialogue_file = "res://resources/dialogue/Witch.json"
 
 [node name="Pier1" type="StaticBody2D" parent="Map"]
@@ -1022,7 +1030,7 @@ position = Vector2(9.00003, -1)
 shape = SubResource("RectangleShape2D_kilk4")
 
 [node name="Boss" parent="." instance=ExtResource("26_uvxo7")]
-material = SubResource("ShaderMaterial_ftyy7")
+material = SubResource("ShaderMaterial_506f1")
 position = Vector2(825, -2107)
 coin_scene = ExtResource("27_27o8m")
 
@@ -1036,6 +1044,8 @@ coin_scene = ExtResource("27_27o8m")
 [connection signal="dialogue_finished" from="Map/NPCs/Witch" to="Player" method="_on_potion_seller_dialogue_finished"]
 [connection signal="dialogue_finished" from="Map/NPCs/Witch" to="Map/NPCs/Witch" method="_on_dialogue_finished"]
 [connection signal="do_action" from="Map/NPCs/Witch" to="Map/NPCs/Witch" method="_on_do_action"]
+[connection signal="dialogue_finished" from="Map/NPCs/Witch2" to="Player" method="_on_witch_2_dialogue_finished"]
+[connection signal="dialogue_finished" from="Map/NPCs/Witch3" to="Player" method="_on_witch_3_dialogue_finished"]
 [connection signal="button_down" from="GUI/DeathScreen/Button" to="Player" method="_on_button_button_down"]
 [connection signal="button_down" from="GUI/DeathScreen/Button" to="GUI/HUD" method="_on_button_button_down"]
 [connection signal="boss_defeated" from="Boss" to="Map/NPCs/VillageElder" method="_on_boss_boss_defeated"]
