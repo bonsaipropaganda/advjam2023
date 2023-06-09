@@ -26,3 +26,4 @@ Day 12 - Souchet Ferdinand (@khusheete)
 | Pixel Art Effect Slashing        | https://nyknck.itch.io/fx084                            |
 | Sound effects pixabay            | https://pixabay.com/sound-effects/search/portal/        |
 | Skeleton Sprite Pack             | https://jesse-m.itch.io/skeleton-pack                   |
+| Pepper & Carrot Characters       | https://opengameart.org/content/24x32-peppercarrot-characters|
