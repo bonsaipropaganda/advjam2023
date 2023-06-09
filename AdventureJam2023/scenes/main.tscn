@@ -378,7 +378,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_5w7u2")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_45ux5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvfyl"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_7stf8")
 
@@ -676,7 +676,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_r7lk4")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_506f1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbde1"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_vfcnq")
 
@@ -704,9 +704,11 @@ stream = ExtResource("2_i7k6c")
 
 [node name="liljump" type="AudioStreamPlayer" parent="Intro"]
 stream = ExtResource("3_3lb7g")
+volume_db = -5.0
 
 [node name="CameraGetCloser" type="AudioStreamPlayer" parent="Intro"]
 stream = ExtResource("4_5jrgp")
+volume_db = -15.0
 
 [node name="StartBoat" type="Node2D" parent="."]
 z_index = 5
@@ -734,7 +736,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_xi8ne")
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
-material = SubResource("ShaderMaterial_45ux5")
+material = SubResource("ShaderMaterial_rvfyl")
 position = Vector2(783, 589)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
@@ -770,10 +772,20 @@ z_index = 3
 y_sort_enabled = true
 position = Vector2(-632, -522)
 
+[node name="Tent7" parent="Map/Village" instance=ExtResource("13_ul51i")]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(128, -1192)
+
 [node name="Tent2" parent="Map/Village" instance=ExtResource("13_ul51i")]
 z_index = 3
 y_sort_enabled = true
 position = Vector2(-744, -454)
+
+[node name="Tent8" parent="Map/Village" instance=ExtResource("13_ul51i")]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(1105, -400)
 
 [node name="Tent3" parent="Map/Village" instance=ExtResource("13_ul51i")]
 z_index = 3
@@ -1030,7 +1042,7 @@ position = Vector2(9.00003, -1)
 shape = SubResource("RectangleShape2D_kilk4")
 
 [node name="Boss" parent="." instance=ExtResource("26_uvxo7")]
-material = SubResource("ShaderMaterial_506f1")
+material = SubResource("ShaderMaterial_kbde1")
 position = Vector2(825, -2107)
 coin_scene = ExtResource("27_27o8m")
 
@@ -1050,6 +1062,9 @@ coin_scene = ExtResource("27_27o8m")
 [connection signal="button_down" from="GUI/DeathScreen/Button" to="GUI/HUD" method="_on_button_button_down"]
 [connection signal="boss_defeated" from="Boss" to="Map/NPCs/VillageElder" method="_on_boss_boss_defeated"]
 [connection signal="boss_defeated" from="Boss" to="Map/NPCs/TownGuard2" method="_on_boss_boss_defeated"]
+[connection signal="boss_defeated" from="Boss" to="Map/NPCs/Witch" method="_on_boss_boss_defeated"]
+[connection signal="boss_defeated" from="Boss" to="Map/NPCs/Witch2" method="_on_boss_boss_defeated"]
+[connection signal="boss_defeated" from="Boss" to="Map/NPCs/Witch3" method="_on_boss_boss_defeated"]
 
 [editable path="Map/NPCs/SwordShop"]
 [editable path="Map/NPCs/ForceField"]

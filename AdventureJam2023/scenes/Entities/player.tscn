@@ -898,6 +898,7 @@ unique_name_in_owner = true
 texture = ExtResource("3_w1x57")
 hframes = 16
 vframes = 14
+frame = 1
 
 [node name="qte" parent="." instance=ExtResource("8_iuh4x")]
 z_index = 1
@@ -951,13 +952,13 @@ wait_time = 2.5
 
 [node name="SlashSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_3jg52")
-volume_db = -10.0
+volume_db = -15.0
 bus = &"Sounds"
 
 [node name="PreSlashSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("13_m7jtc")
-volume_db = -10.0
+volume_db = -20.0
 bus = &"Sounds"
 
 [node name="FootstepSound" type="AudioStreamPlayer" parent="."]
@@ -968,6 +969,7 @@ bus = &"Sounds"
 [node name="TakeDamageSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("15_x6w2r")
+volume_db = -15.0
 bus = &"Sounds"
 
 [connection signal="area_entered" from="HealthChecker" to="." method="_on_health_checker_area_entered"]

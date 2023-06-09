@@ -57,7 +57,7 @@ frame = 20
 [node name="GotSword" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_2b87h")
-volume_db = 5.0
+volume_db = -5.0
 
 [connection signal="dialogue_finished" from="." to="." method="_on_dialogue_finished"]
 [connection signal="sold" from="." to="." method="_on_sold"]

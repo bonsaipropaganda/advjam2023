@@ -314,5 +314,6 @@ shape = SubResource("CircleShape2D_h1bp5")
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_iffam")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

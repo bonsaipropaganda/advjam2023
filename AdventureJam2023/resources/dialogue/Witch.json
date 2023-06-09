@@ -32,4 +32,9 @@
 		"next": "CheckIn"
 		},
 	],
+	"YouWin": [
+		{"text": "You have beaten the Queen of Slimes!"},
+		{"text": "By ridding our land of her evil presence,\nyou have redeemed yourself."},
+		{"text": "Thank you, traveler. You are welcome here."},
+	],
 }

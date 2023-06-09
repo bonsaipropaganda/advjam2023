@@ -191,6 +191,7 @@ libraries = {
 
 [node name="BoatCame" type="AudioStreamPlayer" parent="AnimationPlayer"]
 stream = ExtResource("2_urhv1")
+volume_db = -5.0
 pitch_scale = 0.75
 
 [node name="Boat" type="Node2D" parent="."]

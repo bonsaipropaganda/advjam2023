@@ -95,5 +95,4 @@ position = Vector2(4, -5)
 sprite_frames = SubResource("SpriteFrames_btgib")
 
 [node name="Key" parent="." index="3"]
-visible = true
 position = Vector2(24, -27)

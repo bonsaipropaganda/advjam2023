@@ -351,7 +351,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_styles/slider = SubResource("StyleBoxLine_78hyb")
 step = 10.0
-value = 20.0
+value = 50.0
 
 [node name="Label" type="Label" parent="Control/MusicVolume"]
 layout_mode = 0

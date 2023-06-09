@@ -319,12 +319,10 @@ shape = SubResource("CircleShape2D_fbfyc")
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_s12mi")
-volume_db = 5.0
 
 [node name="diesfx" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_i7qsx")
-volume_db = 5.0
 
 [node name="FootstepSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

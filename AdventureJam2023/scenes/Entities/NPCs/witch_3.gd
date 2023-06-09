@@ -23,3 +23,7 @@ func _action(act_name: String) -> void:
 				continue_dialogue("AlreadyHealthy")
 			else:
 				continue_dialogue("NotEnoughMoney")
+
+
+func _on_boss_boss_defeated() -> void:
+	self.current_dialogue = "YouWin"

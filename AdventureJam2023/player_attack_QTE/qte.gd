@@ -178,6 +178,7 @@ func play_sfx():
 	var sfx = AudioStreamPlayer.new()
 	BgMusic.add_child(sfx)
 	sfx.stream = load("res://sounds/sfx/qtesound.wav")
+	sfx.volume_db = -15
 	sfx.play()
 	sfx.pitch_scale = randf_range(0.9, 1.1)
 	delete_sfx(sfx)

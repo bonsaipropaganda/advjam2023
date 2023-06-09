@@ -337,12 +337,11 @@ shape = SubResource("CapsuleShape2D_pq7vg")
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_6voh4")
-volume_db = 7.0
 
 [node name="diesfx" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_du7lx")
-volume_db = 5.0
+volume_db = -7.0
 
 [node name="FootstepSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

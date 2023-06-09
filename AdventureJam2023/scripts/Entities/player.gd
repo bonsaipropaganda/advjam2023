@@ -97,7 +97,7 @@ func _on_qte_done(is_success: bool):
 	if is_success:  # show slash animation on qte success, aoe attack
 		slash_sound.play()
 		slash_sound.pitch_scale = randf_range(0.9, 1.1)
-		slash_sound.volume_db = -10
+		slash_sound.volume_db = -18
 		camera.start_shaking(2, 0.018, 0.15)
 		swordSlash.visible = true
 		swordSlash.attack_all(weapon.group_damage)
@@ -157,6 +157,7 @@ func die():
 	self.hide()
 	get_tree().paused = true
 	deathScreen.visible = true
+	deathScreen.sfx.volume_db -15
 	deathScreen.sfx.play()
 
 
