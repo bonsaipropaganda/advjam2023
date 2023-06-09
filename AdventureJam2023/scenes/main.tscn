@@ -1082,8 +1082,8 @@ coin_scene = ExtResource("27_27o8m")
 
 [node name="EndingCanvas" type="CanvasLayer" parent="."]
 visible = false
-scale = Vector2(0, 0)
-transform = Transform2D(0, 0, 0, 0, 0, 0)
+scale = Vector2(0.01, 0.01)
+transform = Transform2D(0.01, 0, 0, 0.01, 0, 0)
 script = ExtResource("37_ka65n")
 
 [node name="Ending" parent="EndingCanvas" instance=ExtResource("36_7caya")]
