@@ -25,3 +25,4 @@ Day 12 - Souchet Ferdinand (@khusheete)
 | 8x8 Gold Coin Spinning Animation | https://evercrazy.itch.io/gold-coin-spinning-animation  |
 | Pixel Art Effect Slashing        | https://nyknck.itch.io/fx084                            |
 | Sound effects pixabay            | https://pixabay.com/sound-effects/search/portal/        |
+| Skeleton Sprite Pack             | https://jesse-m.itch.io/skeleton-pack                   |
