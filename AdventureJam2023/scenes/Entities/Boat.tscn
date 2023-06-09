@@ -221,6 +221,7 @@ color = Color(0.376471, 0.65098, 0.756863, 1)
 
 [node name="Key" parent="Boat" instance=ExtResource("3_pvwxq")]
 position = Vector2(66.5, -15)
+flip_h = true
 frame = 20
 
 [node name="InteractionRange" type="Area2D" parent="Boat"]

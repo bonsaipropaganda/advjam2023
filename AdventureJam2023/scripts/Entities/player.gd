@@ -192,7 +192,7 @@ func respawn(checkpoint: Node2D) -> void:
 
 func _on_health_checker_body_entered(body: Node2D) -> void:
 	if can_get_hit:
-		if body is Slime or body is Splash:
+		if body is Slime or body is Splash or body is Zombie:
 			take_damage()
 			can_get_hit = false
 			await get_tree().create_timer(0.5).timeout

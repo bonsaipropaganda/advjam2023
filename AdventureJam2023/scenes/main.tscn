@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=70 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bn4oppscot64y" path="res://sprites/best_boat.png" id="22_emfah"]
 [ext_resource type="Script" path="res://scenes/StartBoat.gd" id="23_ibk78"]
 [ext_resource type="PackedScene" uid="uid://cd205urxt86y8" path="res://scenes/Entities/Enemies/Boss.tscn" id="26_uvxo7"]
+[ext_resource type="PackedScene" uid="uid://cxu80qqu2idf5" path="res://scenes/coin.tscn" id="27_27o8m"]
 
 [sub_resource type="Animation" id="Animation_kskyf"]
 length = 0.001
@@ -368,7 +369,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_5w7u2")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_erdhu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jam3s"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_7stf8")
 
@@ -670,7 +671,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_r7lk4")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rbih"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3l288"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_vfcnq")
 
@@ -735,8 +736,9 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_xi8ne")
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
-material = SubResource("ShaderMaterial_erdhu")
+material = SubResource("ShaderMaterial_jam3s")
 position = Vector2(783, 589)
+speed = 200.0
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
 y_sort_enabled = true
@@ -891,8 +893,7 @@ position = Vector2(-273, -502)
 
 [node name="MainIslandZombieSpawner" parent="Map/Spawners" instance=ExtResource("6_soa44")]
 spawn_time = 3.0
-entity = "res://scenes/Entities/Enemies/Slime.tscn"
-max_entity_count = 10
+entity = "res://scenes/Entities/Enemies/Zombie.tscn"
 
 [node name="position2" type="Marker2D" parent="Map/Spawners/MainIslandZombieSpawner"]
 position = Vector2(130, -88)
@@ -1007,8 +1008,9 @@ position = Vector2(9.00003, -1)
 shape = SubResource("RectangleShape2D_kilk4")
 
 [node name="Boss" parent="." instance=ExtResource("26_uvxo7")]
-material = SubResource("ShaderMaterial_7rbih")
+material = SubResource("ShaderMaterial_3l288")
 position = Vector2(825, -2107)
+coin_scene = ExtResource("27_27o8m")
 
 [connection signal="dialogue_finished" from="Map/NPCs/SwordShop" to="Player" method="_on_sword_shop_dialogue_finished"]
 [connection signal="sold" from="Map/NPCs/SwordShop" to="Map/NPCs/Judgement" method="_on_sword_sold"]

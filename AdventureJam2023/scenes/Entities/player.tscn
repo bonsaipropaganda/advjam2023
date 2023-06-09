@@ -905,6 +905,7 @@ z_index = 1
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_38v6o")
+disabled = true
 
 [node name="SwordSlash" parent="." instance=ExtResource("10_183k2")]
 visible = false
