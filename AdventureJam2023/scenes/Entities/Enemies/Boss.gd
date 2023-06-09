@@ -4,7 +4,7 @@ class_name Boss
 
 signal boss_defeated
 
-@export var max_hp = 12
+@export var max_hp = 15
 
 @onready var player: Object = get_tree().get_nodes_in_group("Player")[0]
 @onready var alive = true
@@ -25,6 +25,8 @@ var wander_timer: float = 3
 # Chase stuff
 var chase_distance: float = 80
 var is_chasing: bool = false
+# this is used to make the splash effect happen every other time
+var just_splashed = false
 
 
 func _process(delta):
@@ -110,5 +112,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func spawn_splash():
 	var _splash = splash.instantiate()
-	add_child(_splash)
+	if just_splashed == false:
+		add_child(_splash)
+		just_splashed = true
+	else: just_splashed = false
 	pass

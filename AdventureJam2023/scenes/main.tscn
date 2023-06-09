@@ -369,7 +369,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_5w7u2")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jam3s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21ncg"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_7stf8")
 
@@ -671,7 +671,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_r7lk4")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3l288"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eoi32"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_vfcnq")
 
@@ -736,9 +736,8 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_xi8ne")
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
-material = SubResource("ShaderMaterial_jam3s")
+material = SubResource("ShaderMaterial_21ncg")
 position = Vector2(783, 589)
-speed = 200.0
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
 y_sort_enabled = true
@@ -1008,7 +1007,7 @@ position = Vector2(9.00003, -1)
 shape = SubResource("RectangleShape2D_kilk4")
 
 [node name="Boss" parent="." instance=ExtResource("26_uvxo7")]
-material = SubResource("ShaderMaterial_3l288")
+material = SubResource("ShaderMaterial_eoi32")
 position = Vector2(825, -2107)
 coin_scene = ExtResource("27_27o8m")
 

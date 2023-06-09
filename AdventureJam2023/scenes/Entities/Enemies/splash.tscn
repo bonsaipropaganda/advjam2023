@@ -114,7 +114,6 @@ texture = ExtResource("1_56bnb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Splash"
-speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_5qvnj")
 }
