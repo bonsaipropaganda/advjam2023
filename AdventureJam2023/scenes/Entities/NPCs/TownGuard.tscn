@@ -95,6 +95,8 @@ figure_name = "Town Guard"
 dialogue_file = "res://resources/dialogue/TownGuard.json"
 
 [node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(1, -4)
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_oq5h4")
 frame = 5
 frame_progress = 0.922034

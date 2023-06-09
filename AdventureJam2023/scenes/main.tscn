@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=74 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -18,12 +18,17 @@
 [ext_resource type="PackedScene" uid="uid://defejqrdkoqd1" path="res://scenes/Entities/NPCs/SwordShop.tscn" id="10_2vi4q"]
 [ext_resource type="PackedScene" uid="uid://dolfh6hsub1iy" path="res://scenes/Entities/NPCs/Judgement.tscn" id="12_lrhnj"]
 [ext_resource type="PackedScene" uid="uid://dcmey1uiv53qi" path="res://scenes/Tent.tscn" id="13_ul51i"]
-[ext_resource type="PackedScene" uid="uid://bwyyc3byn3kh4" path="res://scenes/Entities/NPCs/TownGuard.tscn" id="14_44h01"]
 [ext_resource type="PackedScene" uid="uid://y21y6t4nxldl" path="res://scenes/Entities/Boat.tscn" id="15_8g45w"]
 [ext_resource type="PackedScene" uid="uid://bi18eh0el5fdh" path="res://scenes/ActivationArea.tscn" id="15_cqb0l"]
 [ext_resource type="PackedScene" uid="uid://ctid3jy7wisu" path="res://scenes/GUI/HeadUpDisplay.tscn" id="16_fngjq"]
 [ext_resource type="PackedScene" uid="uid://blaqutbpswj6r" path="res://scenes/Checkpoint.tscn" id="16_orn1j"]
+[ext_resource type="PackedScene" uid="uid://p1iunoilcpd2" path="res://scenes/Entities/village_elder.tscn" id="18_vfdeu"]
+[ext_resource type="PackedScene" uid="uid://qabkco750r4m" path="res://scenes/Entities/NPCs/town_guard_2.tscn" id="19_0syts"]
+[ext_resource type="Script" path="res://scenes/Entities/village_elder.gd" id="19_v0lab"]
+[ext_resource type="Script" path="res://scenes/Entities/NPCs/town_guard_2.gd" id="20_u6471"]
+[ext_resource type="PackedScene" uid="uid://c0hf87nduwsgt" path="res://scenes/Entities/NPCs/potion_seller.tscn" id="21_5mtnj"]
 [ext_resource type="Texture2D" uid="uid://bn4oppscot64y" path="res://sprites/best_boat.png" id="22_emfah"]
+[ext_resource type="Script" path="res://scenes/Entities/NPCs/witch.gd" id="22_y3ihy"]
 [ext_resource type="Script" path="res://scenes/StartBoat.gd" id="23_ibk78"]
 [ext_resource type="PackedScene" uid="uid://cd205urxt86y8" path="res://scenes/Entities/Enemies/Boss.tscn" id="26_uvxo7"]
 [ext_resource type="PackedScene" uid="uid://cxu80qqu2idf5" path="res://scenes/coin.tscn" id="27_27o8m"]
@@ -369,7 +374,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_5w7u2")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_otkdi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_igb00"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_7stf8")
 
@@ -567,10 +572,6 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_dw6n3")
 
-[sub_resource type="GDScript" id="GDScript_y5m1c"]
-script/source = "extends NPC
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drooy"]
 size = Vector2(181, 5.5)
 
@@ -671,7 +672,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_r7lk4")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_126ma"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ftyy7"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_vfcnq")
 
@@ -736,7 +737,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_xi8ne")
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
-material = SubResource("ShaderMaterial_otkdi")
+material = SubResource("ShaderMaterial_igb00")
 position = Vector2(783, 589)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
@@ -819,10 +820,23 @@ position = Vector2(-328, 264)
 position = Vector2(-400, -192)
 figure_name = "Agatha"
 
-[node name="TownGuard" parent="Map/NPCs" instance=ExtResource("14_44h01")]
-position = Vector2(-551, -283)
-script = SubResource("GDScript_y5m1c")
+[node name="VillageElder" parent="Map/NPCs" instance=ExtResource("18_vfdeu")]
+position = Vector2(-601, -367)
+script = ExtResource("19_v0lab")
+figure_name = "Elder"
+dialogue_file = "res://resources/dialogue/VillageElder.json"
+
+[node name="TownGuard2" parent="Map/NPCs" instance=ExtResource("19_0syts")]
+position = Vector2(-566, -224)
+script = ExtResource("20_u6471")
 figure_name = "Guard"
+dialogue_file = "res://resources/dialogue/TownGuard.json"
+
+[node name="Witch" parent="Map/NPCs" instance=ExtResource("21_5mtnj")]
+position = Vector2(432, 563)
+script = ExtResource("22_y3ihy")
+figure_name = "Witch"
+dialogue_file = "res://resources/dialogue/Witch.json"
 
 [node name="Pier1" type="StaticBody2D" parent="Map"]
 y_sort_enabled = true
@@ -1008,7 +1022,7 @@ position = Vector2(9.00003, -1)
 shape = SubResource("RectangleShape2D_kilk4")
 
 [node name="Boss" parent="." instance=ExtResource("26_uvxo7")]
-material = SubResource("ShaderMaterial_126ma")
+material = SubResource("ShaderMaterial_ftyy7")
 position = Vector2(825, -2107)
 coin_scene = ExtResource("27_27o8m")
 
@@ -1017,13 +1031,18 @@ coin_scene = ExtResource("27_27o8m")
 [connection signal="sold" from="Map/NPCs/SwordShop" to="GUI/HUD" method="_on_sword_shop_sold"]
 [connection signal="dialogue_finished" from="Map/NPCs/DarkFigure" to="Player" method="_on_dark_figure_dialogue_finished"]
 [connection signal="dialogue_finished" from="Map/NPCs/Judgement" to="Player" method="_on_judgement_dialogue_finished"]
-[connection signal="dialogue_finished" from="Map/NPCs/TownGuard" to="Player" method="_on_town_guard_dialogue_finished"]
+[connection signal="dialogue_finished" from="Map/NPCs/VillageElder" to="Player" method="_on_village_elder_dialogue_finished"]
+[connection signal="dialogue_finished" from="Map/NPCs/TownGuard2" to="Player" method="_on_town_guard_dialogue_finished"]
+[connection signal="dialogue_finished" from="Map/NPCs/Witch" to="Player" method="_on_potion_seller_dialogue_finished"]
+[connection signal="dialogue_finished" from="Map/NPCs/Witch" to="Map/NPCs/Witch" method="_on_dialogue_finished"]
+[connection signal="do_action" from="Map/NPCs/Witch" to="Map/NPCs/Witch" method="_on_do_action"]
 [connection signal="button_down" from="GUI/DeathScreen/Button" to="Player" method="_on_button_button_down"]
 [connection signal="button_down" from="GUI/DeathScreen/Button" to="GUI/HUD" method="_on_button_button_down"]
+[connection signal="boss_defeated" from="Boss" to="Map/NPCs/VillageElder" method="_on_boss_boss_defeated"]
+[connection signal="boss_defeated" from="Boss" to="Map/NPCs/TownGuard2" method="_on_boss_boss_defeated"]
 
 [editable path="Map/NPCs/SwordShop"]
 [editable path="Map/NPCs/ForceField"]
 [editable path="Map/NPCs/DarkFigure"]
 [editable path="Map/NPCs/Judgement"]
-[editable path="Map/NPCs/TownGuard"]
 [editable path="GUI/DeathScreen"]

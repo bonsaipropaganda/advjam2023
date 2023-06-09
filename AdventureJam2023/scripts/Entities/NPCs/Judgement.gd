@@ -13,4 +13,4 @@ func _action(act_name: String) -> void:
 
 
 func _on_sword_sold() -> void:
-	queue_free() # TODO ?
+	queue_free()

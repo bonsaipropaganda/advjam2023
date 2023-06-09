@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://p1iunoilcpd2"]
+
+[ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_8mnwc"]
+[ext_resource type="Texture2D" uid="uid://0c1o7y10j6io" path="res://sprites/Entities/NPCs/ChikBoy_idle.png" id="2_8u53n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42d7p"]
+atlas = ExtResource("2_8u53n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83daq"]
+atlas = ExtResource("2_8u53n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejyia"]
+atlas = ExtResource("2_8u53n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siri0"]
+atlas = ExtResource("2_8u53n")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oatud"]
+atlas = ExtResource("2_8u53n")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgr7a"]
+atlas = ExtResource("2_8u53n")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lxs0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42d7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83daq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejyia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siri0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oatud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgr7a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="BaseEntity" instance=ExtResource("1_8mnwc")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_lxs0g")
+frame_progress = 0.783057
+flip_h = true

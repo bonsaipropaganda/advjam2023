@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://qabkco750r4m"]
+
+[ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_rvmgb"]
+[ext_resource type="Texture2D" uid="uid://g6d52odnud1n" path="res://sprites/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Idle.png" id="2_ywof1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp5xv"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0qqc"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h115f"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odful"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62sou"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24m7b"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptvl4"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy82d"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1qkd"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ias0s"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23p8k"]
+atlas = ExtResource("2_ywof1")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btgib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp5xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0qqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h115f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odful")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62sou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24m7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptvl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy82d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1qkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ias0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23p8k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TownGuard2" instance=ExtResource("1_rvmgb")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(4, -5)
+sprite_frames = SubResource("SpriteFrames_btgib")
+
+[node name="Key" parent="." index="3"]
+visible = true
+position = Vector2(24, -27)

@@ -22,7 +22,7 @@ var input_direction: Vector2
 var is_slashing: bool
 var health: int = 100
 var can_get_hit := true
-var coins: int = 0
+var coins: int = 5
 var can_move := true
 @export var can_do_stuff := false
 
@@ -227,3 +227,11 @@ func _on_health_checker_area_entered(area: Area2D) -> void:
 			can_get_hit = false
 			await get_tree().create_timer(0.5).timeout
 			can_get_hit = true
+
+
+func _on_village_elder_dialogue_finished(dialogue_name) -> void:
+	can_do_stuff = true
+
+
+func _on_potion_seller_dialogue_finished(dialogue_name) -> void:
+	can_do_stuff = true

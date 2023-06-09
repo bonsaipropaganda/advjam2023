@@ -1,0 +1,29 @@
+{
+	"Meeting": [
+		{"text": "Howdy, travler, I'm a witch you see."},
+		{"text": "I understand folks like you are constantly getting beat up."},
+		{"text": "I've got a cure for that."},
+		{"text": "Health potions!"},
+		{"text": "Whether, you need the potion or not..\n..either way I'll take 5 coins from you. hehe.",
+		"next": "CheckIn"
+		},
+	],
+	"CheckIn": [
+		{"text": "Welcome back! You got the coins?",
+		
+		"actions": [
+				"check_in",
+		]
+		},
+	],
+	"Bought": [
+		{"text": "Thanks for the 5 coins! *wink*"},
+		{"text": "I hope you feel better!"},
+	],
+	"NotEnoughMoney": [
+		{"text": "Oh, not quite enough in your pocket."},
+		{"text": "That's a shame.",
+		"next": "CheckIn"
+		},
+	],
+}

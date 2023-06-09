@@ -1,0 +1,14 @@
+{
+	"Meeting": [
+		{"text": "I know who you are..bok bok."},
+		{"text": "I know what you've done.."},
+		{"text": "..but right now my people need your help. bok."},
+		{"text": "Help our village defeat the queen of slimes."},
+		{"text": "This is your chance to redeem yourself."},
+	],
+	"BossDefeated": [
+		{"text": "We can't thank you enough. bok bok."},
+		{"text": "bok bok. You've earned your freedom!"},
+		{"text": "Stay with our village and live peacefully."},
+	]
+}

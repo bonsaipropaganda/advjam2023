@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0hf87nduwsgt"]
+
+[ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_of5tq"]
+[ext_resource type="Texture2D" uid="uid://iv7276788tlf" path="res://sprites/Entities/NPCs/potion seller.png" id="2_3m7iu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pas0t"]
+atlas = ExtResource("2_3m7iu")
+region = Rect2(0, 0, 24, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdlc7"]
+atlas = ExtResource("2_3m7iu")
+region = Rect2(24, 0, 24, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anjt0"]
+atlas = ExtResource("2_3m7iu")
+region = Rect2(48, 0, 24, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3frl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pas0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdlc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anjt0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Witch" instance=ExtResource("1_of5tq")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_b3frl")
+frame_progress = 0.911204
