@@ -369,7 +369,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_5w7u2")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_21ncg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otkdi"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_7stf8")
 
@@ -671,7 +671,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_r7lk4")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eoi32"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_126ma"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_vfcnq")
 
@@ -736,7 +736,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_xi8ne")
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
-material = SubResource("ShaderMaterial_21ncg")
+material = SubResource("ShaderMaterial_otkdi")
 position = Vector2(783, 589)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
@@ -817,11 +817,12 @@ position = Vector2(-328, 264)
 
 [node name="Judgement" parent="Map/NPCs" instance=ExtResource("12_lrhnj")]
 position = Vector2(-400, -192)
+figure_name = "Agatha"
 
 [node name="TownGuard" parent="Map/NPCs" instance=ExtResource("14_44h01")]
-position = Vector2(-525, -256)
+position = Vector2(-551, -283)
 script = SubResource("GDScript_y5m1c")
-figure_name = "Camp Guard"
+figure_name = "Guard"
 
 [node name="Pier1" type="StaticBody2D" parent="Map"]
 y_sort_enabled = true
@@ -1007,7 +1008,7 @@ position = Vector2(9.00003, -1)
 shape = SubResource("RectangleShape2D_kilk4")
 
 [node name="Boss" parent="." instance=ExtResource("26_uvxo7")]
-material = SubResource("ShaderMaterial_eoi32")
+material = SubResource("ShaderMaterial_126ma")
 position = Vector2(825, -2107)
 coin_scene = ExtResource("27_27o8m")
 

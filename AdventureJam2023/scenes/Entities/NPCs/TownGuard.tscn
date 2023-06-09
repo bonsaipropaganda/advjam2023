@@ -1,9 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwyyc3byn3kh4"]
+[gd_scene load_steps=16 format=3 uid="uid://bwyyc3byn3kh4"]
 
 [ext_resource type="PackedScene" uid="uid://4ijdff06gv51" path="res://scenes/Entities/BaseNPC.tscn" id="1_byf34"]
 [ext_resource type="Script" path="res://scripts/Entities/NPC.gd" id="2_1qjg0"]
+[ext_resource type="Texture2D" uid="uid://g6d52odnud1n" path="res://sprites/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Idle.png" id="3_v487j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u03j1"]
+atlas = ExtResource("3_v487j")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_namii"]
+atlas = ExtResource("3_v487j")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pry2h"]
+atlas = ExtResource("3_v487j")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyuaw"]
+atlas = ExtResource("3_v487j")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keowb"]
+atlas = ExtResource("3_v487j")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4emtm"]
+atlas = ExtResource("3_v487j")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxv6n"]
+atlas = ExtResource("3_v487j")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nom0"]
+atlas = ExtResource("3_v487j")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tl6s"]
+atlas = ExtResource("3_v487j")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1hnl"]
+atlas = ExtResource("3_v487j")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aadm2"]
+atlas = ExtResource("3_v487j")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oq5h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u03j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_namii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pry2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyuaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keowb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4emtm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxv6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nom0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tl6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1hnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aadm2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BaseEntity" instance=ExtResource("1_byf34")]
 script = ExtResource("2_1qjg0")
 figure_name = "Town Guard"
 dialogue_file = "res://resources/dialogue/TownGuard.json"
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_oq5h4")
+frame = 5
+frame_progress = 0.922034

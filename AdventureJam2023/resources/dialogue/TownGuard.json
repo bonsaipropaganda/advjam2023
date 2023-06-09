@@ -1,13 +1,10 @@
 {
 	"Meeting": [
-		{"text": "Oh, hello there."},
-		{"text": "You're not from here, are you?."},
-		{"text": "Take a look around if you wish to."},
-		{"text": "This big red slime on other island is not that agressive"},
-		{"text": "But if he wants he will \nsmash all of our tents and we will probably not survive..."},
-		{"text": "If u want our help, you should help us first."},
-		{"text": "Kill that big red slime and we will give you some of our resources."},
-		{"text": "And then u can leave..."},
-		{"text": "Dont sit here too long..."}
+		{"text": "You're not from here, are you?"},
+		{"text": "Most of the villagers are gone.."},
+		{"text": "The slime Queen has been tormenting our village!"},
+		{"text": "She could attack again at any time."},
+		{"text": "Please help us get rid of her."},
+		{"text": "She lives on the big island to the East."},
 	]
 }
