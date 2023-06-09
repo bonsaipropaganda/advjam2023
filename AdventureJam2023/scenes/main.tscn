@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://gn45unwhl01b"]
+[gd_scene load_steps=82 format=3 uid="uid://gn45unwhl01b"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tv3gc"]
 [ext_resource type="PackedScene" uid="uid://ctftvg83q0ap5" path="res://scenes/Entities/player.tscn" id="1_vwy11"]
@@ -36,6 +36,8 @@
 [ext_resource type="Script" path="res://scenes/Entities/NPCs/witch_3.gd" id="26_tocl1"]
 [ext_resource type="PackedScene" uid="uid://cd205urxt86y8" path="res://scenes/Entities/Enemies/Boss.tscn" id="26_uvxo7"]
 [ext_resource type="PackedScene" uid="uid://cxu80qqu2idf5" path="res://scenes/coin.tscn" id="27_27o8m"]
+[ext_resource type="PackedScene" uid="uid://duahksnjldwob" path="res://scenes/GUI/ending.tscn" id="36_7caya"]
+[ext_resource type="Script" path="res://scenes/EndingCanvas.gd" id="37_ka65n"]
 
 [sub_resource type="Animation" id="Animation_kskyf"]
 length = 0.001
@@ -378,7 +380,7 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_5w7u2")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvfyl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_so00c"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_7stf8")
 
@@ -676,9 +678,40 @@ nodes/fragment/17/node = SubResource("VisualShaderNodeFloatFunc_r7lk4")
 nodes/fragment/17/position = Vector2(40, 60)
 nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 9, 0, 6, 0, 10, 0, 3, 0, 4, 0, 9, 0, 15, 0, 9, 1, 16, 0, 17, 0, 17, 0, 4, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbde1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03htt"]
 resource_local_to_scene = true
 shader = SubResource("VisualShader_vfcnq")
+
+[sub_resource type="Animation" id="Animation_br6mb"]
+resource_name = "fade"
+length = 15.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.6, 13, 15)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.6, 13, 15)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2r2ug"]
+_data = {
+"fade": SubResource("Animation_br6mb")
+}
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -736,7 +769,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_xi8ne")
 
 [node name="Player" parent="." instance=ExtResource("1_vwy11")]
-material = SubResource("ShaderMaterial_rvfyl")
+material = SubResource("ShaderMaterial_so00c")
 position = Vector2(783, 589)
 
 [node name="PlayerCamera" parent="Player" instance=ExtResource("6_ejmhg")]
@@ -856,6 +889,7 @@ dialogue_file = "res://resources/dialogue/Witch.json"
 [node name="Witch3" parent="Map/NPCs" instance=ExtResource("24_aao2a")]
 position = Vector2(81, -1169)
 script = ExtResource("26_tocl1")
+figure_name = "Witch"
 dialogue_file = "res://resources/dialogue/Witch.json"
 
 [node name="Pier1" type="StaticBody2D" parent="Map"]
@@ -1042,9 +1076,22 @@ position = Vector2(9.00003, -1)
 shape = SubResource("RectangleShape2D_kilk4")
 
 [node name="Boss" parent="." instance=ExtResource("26_uvxo7")]
-material = SubResource("ShaderMaterial_kbde1")
-position = Vector2(825, -2107)
+material = SubResource("ShaderMaterial_03htt")
+position = Vector2(833, -2109)
 coin_scene = ExtResource("27_27o8m")
+
+[node name="EndingCanvas" type="CanvasLayer" parent="."]
+visible = false
+scale = Vector2(0, 0)
+transform = Transform2D(0, 0, 0, 0, 0, 0)
+script = ExtResource("37_ka65n")
+
+[node name="Ending" parent="EndingCanvas" instance=ExtResource("36_7caya")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EndingCanvas"]
+libraries = {
+"": SubResource("AnimationLibrary_2r2ug")
+}
 
 [connection signal="dialogue_finished" from="Map/NPCs/SwordShop" to="Player" method="_on_sword_shop_dialogue_finished"]
 [connection signal="sold" from="Map/NPCs/SwordShop" to="Map/NPCs/Judgement" method="_on_sword_sold"]
@@ -1065,6 +1112,7 @@ coin_scene = ExtResource("27_27o8m")
 [connection signal="boss_defeated" from="Boss" to="Map/NPCs/Witch" method="_on_boss_boss_defeated"]
 [connection signal="boss_defeated" from="Boss" to="Map/NPCs/Witch2" method="_on_boss_boss_defeated"]
 [connection signal="boss_defeated" from="Boss" to="Map/NPCs/Witch3" method="_on_boss_boss_defeated"]
+[connection signal="boss_defeated" from="Boss" to="EndingCanvas" method="_on_boss_boss_defeated"]
 
 [editable path="Map/NPCs/SwordShop"]
 [editable path="Map/NPCs/ForceField"]

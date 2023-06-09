@@ -15,9 +15,9 @@ func _on_dialogue_finished(dialogue: String) -> void:
 func _action(act_name: String) -> void:
 	match act_name:
 		"check_in":
-			if player_reference.coins >= 10 and player_reference.health < 100:
-				player_reference.coins -= 10
-				player_reference.health += 50
+			if player_reference.coins >= 5 and player_reference.health < 100:
+				player_reference.coins -= 5
+				player_reference.health = 100
 				continue_dialogue("Bought")
 			elif player_reference.health >= 100:
 				continue_dialogue("AlreadyHealthy")

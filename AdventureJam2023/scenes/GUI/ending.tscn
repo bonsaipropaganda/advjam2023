@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://duahksnjldwob"]
+
+[ext_resource type="Script" path="res://scenes/GUI/ending.gd" id="1_nwubr"]
+[ext_resource type="Texture2D" uid="uid://dyflx2qwp2btc" path="res://sprites/GUI/Black.png" id="1_q0q8j"]
+
+[sub_resource type="Animation" id="Animation_s4qh7"]
+resource_name = "fade"
+length = 12.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-9, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-200, -0.25, 0, 0.25, 0, 477, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4, 4.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1500, -0.25, 0, 0.25, 0, 320, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4, 4.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_47431"]
+_data = {
+"fade": SubResource("Animation_s4qh7")
+}
+
+[node name="Ending" type="Node2D"]
+top_level = true
+z_index = 4096
+script = ExtResource("1_nwubr")
+
+[node name="BlackBackground" type="Sprite2D" parent="."]
+position = Vector2(620, 358)
+scale = Vector2(2.73608, 1.47362)
+texture = ExtResource("1_q0q8j")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 87.0
+offset_right = 1165.0
+offset_bottom = 601.0
+theme_override_font_sizes/font_size = 60
+text = "Bo, you've done it. You've redeemed yourself. You can live a quiet life in these islands now. Your past will fade like a shadow in the sunset. Feel free to walk around, talk to folks, and take it all in. You earned it."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_47431")
+}

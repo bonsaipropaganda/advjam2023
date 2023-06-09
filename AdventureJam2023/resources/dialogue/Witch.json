@@ -4,7 +4,7 @@
 		{"text": "I understand folks like you are constantly getting beat up."},
 		{"text": "I've got a cure for that."},
 		{"text": "Health potions!"},
-		{"text": "They only cost 10 coins.",
+		{"text": "They only cost 5 coins.",
 		"next": "CheckIn"
 		},
 	],
