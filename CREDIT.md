@@ -11,7 +11,9 @@ Day 8  - Whomst628
 Day 9  - Quaffy
 Day 10 - Abraxas
 Day 11 - GopherDev
-Day 12 - Souchet Ferdinand (@khusheete)
+Day 12 - khusheete
+Day 13 - BLOXA
+Day 14 - bonsaipropaganda
 
 
 # People whose work we used:
